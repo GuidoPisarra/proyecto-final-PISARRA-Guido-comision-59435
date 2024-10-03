@@ -1,4 +1,12 @@
-ng new [nombre-proyecto]
+# Angular 
+npm install -g @angular/cli                                                
+
+# Nuevo proyecto
+ng new [nombre-proyecto] --no-standalone
+
+# proyecto typescript
+ npx tsc --init 
+
 
 # generar componente 
 
@@ -17,9 +25,23 @@ ng add @angular/material
 ? Include the Angular animations module? Include and enable animations
 
 
-MODULOS
+# MODULOS
 ng generate module features/auth --routing
 
 
 APP MODULE Importamos el  module 
 APP module del componente exportamos el componente
+
+
+# PIPES --> convierten datos en la vista
+
+> ng  generate pipe shared/pipes/[nombre_pipe]
+
+# DIRECTIVAS --> nos permiten cambiar el comportamiento o apariencia html
+
+> ng generate directive shared/directives/highligth
+
+
+# primer preentrega 
+
+

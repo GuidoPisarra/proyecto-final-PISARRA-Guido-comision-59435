@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'proyecto-final-PISARRA-Guido-comision-59435';
+  title = 'pf-baez-59435';
 }
