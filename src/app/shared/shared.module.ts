@@ -13,11 +13,13 @@ import { MatTableModule } from '@angular/material/table';
 import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
+import { TitleFontSizeDirective } from './directives/title-font-size.directive';
 @NgModule({
   declarations: [
     UserFullNamePipe,
     HighlightDirective,
-    RepeatDirective
+    RepeatDirective,
+    TitleFontSizeDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -33,7 +35,8 @@ import { RepeatDirective } from './directives/repeat.directive';
     MatDialogModule,
     MatTableModule,
     UserFullNamePipe,
-    RepeatDirective
+    RepeatDirective,
+    TitleFontSizeDirective
   ],
 })
 export class SharedModule { }

@@ -1,37 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { User } from './models';
-
-const ELEMENT_DATA: User[] = [
-  {
-    id: 1,
-    firstName: 'Goku',
-    lastName: 'Son',
-    createdAt: new Date(),
-    email: 'gokussj3@gmail.com',
-  },
-];
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'createdAt', 'actions'];
-  dataSource = ELEMENT_DATA;
+  dataSource: User[] = [];
 
-  usuario = {
-    nombre: 'Josue',
-    apellido: 'Baez',
-  };
+  constructor(
+    private matDialog: MatDialog,
+    private http: HttpClient
+  ) { }
 
-  constructor(private matDialog: MatDialog) { }
+  ngOnInit(): void {
+    this.http.get<User[]>('assets/mockData.json').subscribe({
+      next: (data: User[]) => {
+        this.dataSource = data;
+      },
+      error: (err) => {
+        console.error('Error fetching users:', err);
+      }
+    });
+  }
 
-  onDelete(id: number) {
-    this.dataSource = this.dataSource.filter((user) => user.id !== id);
-
+  onDelete(id: number): void {
+    this.dataSource = this.dataSource.filter((user: User) => user.id !== id);
   }
 
   openModal(editingUser?: User): void {
@@ -46,7 +45,7 @@ export class UsersComponent {
         next: (result) => {
           if (!!result) {
             if (editingUser) {
-              this.dataSource = this.dataSource.map((user) =>
+              this.dataSource = this.dataSource.map((user: User) =>
                 user.id === editingUser.id ? { ...user, ...result } : user
               );
             } else {
@@ -57,4 +56,3 @@ export class UsersComponent {
       });
   }
 }
-
