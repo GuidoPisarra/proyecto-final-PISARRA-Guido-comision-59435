@@ -42,6 +42,3 @@ APP module del componente exportamos el componente
 > ng generate directive shared/directives/highligth
 
 
-# primer preentrega 
-
-
