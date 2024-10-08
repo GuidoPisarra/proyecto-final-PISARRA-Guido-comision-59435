@@ -42,3 +42,6 @@ APP module del componente exportamos el componente
 > ng generate directive shared/directives/highligth
 
 
+# Servicio (logica de datos)
+
+ng generate service core/services/[nombre_servicio]
