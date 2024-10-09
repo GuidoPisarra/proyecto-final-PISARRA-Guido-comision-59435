@@ -42,6 +42,8 @@ export class UserDialogComponent {
 
   onSave(): void {
     if (this.userForm.invalid) {
+      console.log(this.userForm.get('firstName')?.errors);
+
       this.userForm.markAllAsTouched();
     } else {
       this.matDialogRef.close({
@@ -54,6 +56,76 @@ export class UserDialogComponent {
           : new Date(),
       });
     }
+  }
+
+
+  get firstNameControl() {
+    return this.userForm.get('firstName');
+  }
+
+
+  get firstNameControlHasPatternError() {
+    return (
+      this.firstNameControl?.hasError('pattern') &&
+      this.firstNameControl.touched
+    );
+  }
+
+  get firstNameControlHasRequiredError() {
+    return (
+      this.firstNameControl?.hasError('required') &&
+      this.firstNameControl.touched
+    );
+  }
+
+  get firstNameControlHasMinLengthError() {
+    return (
+      this.firstNameControl?.hasError('minlength') &&
+      this.firstNameControl.touched
+    );
+  }
+
+  get lastNameControl() {
+    return this.userForm.get('lastName');
+  }
+
+  get lastNameControlHasPatternError() {
+    return (
+      this.lastNameControl?.hasError('pattern') &&
+      this.lastNameControl.touched
+    );
+  }
+
+  get lastNameControlHasRequiredError() {
+    return (
+      this.lastNameControl?.hasError('required') &&
+      this.lastNameControl.touched
+    );
+  }
+
+  get lastNameControlHasMinLengthError() {
+    return (
+      this.lastNameControl?.hasError('minlength') &&
+      this.lastNameControl.touched
+    );
+  }
+
+  get emailControl() {
+    return this.userForm.get('email');
+  }
+
+  get emailControlHasRequiredError() {
+    return (
+      this.emailControl?.hasError('required') &&
+      this.emailControl.touched
+    );
+  }
+
+  get emailControlHasEmailError() {
+    return (
+      this.emailControl?.hasError('email') &&
+      this.emailControl.touched
+    );
   }
 
 }

@@ -1,0 +1,19 @@
+@if (validationErrors?.['required']) {
+<small class="text-danger">Este campo es requerido</small>
+}
+@if (validationErrors?.['minlength']) {
+<small class="text-danger">
+  Este campo requiere al menos de
+  {{
+  validationErrors?.['minlength']
+  ?.requiredLength
+  }}
+  caracteres
+</small>
+}
+@if (validationErrors?.['pattern']) {
+<small class="text-danger">Este solo admite letras</small>
+}
+@if (validationErrors?.['email']) {
+<small class="text-danger">Por favor, ingrese un email válido.</small>
+}

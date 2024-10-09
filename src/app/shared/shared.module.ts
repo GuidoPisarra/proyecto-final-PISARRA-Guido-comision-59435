@@ -14,6 +14,7 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
 import { TitleFontSizeDirective } from './directives/title-font-size.directive';
+import { ComponentsModule } from '../components/components.module';
 @NgModule({
   declarations: [
     UserFullNamePipe,
@@ -36,7 +37,8 @@ import { TitleFontSizeDirective } from './directives/title-font-size.directive';
     MatTableModule,
     UserFullNamePipe,
     RepeatDirective,
-    TitleFontSizeDirective
+    TitleFontSizeDirective,
+    ComponentsModule
   ],
 })
 export class SharedModule { }
