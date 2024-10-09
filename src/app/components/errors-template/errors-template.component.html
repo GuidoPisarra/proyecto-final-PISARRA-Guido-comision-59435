@@ -14,6 +14,6 @@
 @if (validationErrors?.['pattern']) {
 <small class="text-danger">Este solo admite letras</small>
 }
-@if (validationErrors?.['email']) {
-<small class="text-danger">Por favor, ingrese un email válido.</small>
+@if (validationErrors?.['invalidEmail'] && !validationErrors?.['required']) {
+<small class="text-danger"> Por favor, ingrese un email válido.</small>
 }

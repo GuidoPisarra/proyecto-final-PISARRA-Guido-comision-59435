@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { generateRandomString } from '../../../../shared/utils';
 import { User } from '../models';
-import { UserNameValidator } from '../../../../shared/utils/validators/customValidators';
+import { EmailValidator, UserNameValidator } from '../../../../shared/utils/validators/customValidators';
 
 interface UserDialogData {
   editingUser?: User;
@@ -25,7 +25,7 @@ export class UserDialogComponent {
     this.userForm = this.formBuilder.group({
       firstName: [null, [UserNameValidator]],
       lastName: [null, [UserNameValidator]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, EmailValidator]],
     });
     this.patchFormValue();
   }
@@ -42,8 +42,6 @@ export class UserDialogComponent {
 
   onSave(): void {
     if (this.userForm.invalid) {
-      console.log(this.userForm.get('firstName')?.errors);
-
       this.userForm.markAllAsTouched();
     } else {
       this.matDialogRef.close({
@@ -115,17 +113,13 @@ export class UserDialogComponent {
   }
 
   get emailControlHasRequiredError() {
-    return (
-      this.emailControl?.hasError('required') &&
-      this.emailControl.touched
-    );
+    return this.emailControl?.hasError('required') && this.emailControl.touched;
   }
 
   get emailControlHasEmailError() {
-    return (
-      this.emailControl?.hasError('email') &&
-      this.emailControl.touched
-    );
+    return this.emailControl?.hasError('email') && this.emailControl.touched;
   }
-
+  get emailControlHasCustomEmailError() {
+    return this.emailControl?.hasError('invalidEmail') && this.emailControl.touched;
+  }
 }
