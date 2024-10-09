@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { generateRandomString } from '../../../../shared/utils';
 import { User } from '../models';
+import { UserNameValidator } from '../../../../shared/utils/validators/customValidators';
 
 interface UserDialogData {
   editingUser?: User;
@@ -11,7 +12,7 @@ interface UserDialogData {
 @Component({
   selector: 'app-user-dialog',
   templateUrl: './user-dialog.component.html',
-  styles: ``,
+  styles: ``
 })
 export class UserDialogComponent {
   userForm: FormGroup;
@@ -22,8 +23,8 @@ export class UserDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data?: UserDialogData
   ) {
     this.userForm = this.formBuilder.group({
-      firstName: [null, [Validators.required, Validators.minLength(3)]],
-      lastName: [null, [Validators.required, Validators.minLength(3)]],
+      firstName: [null, [UserNameValidator]],
+      lastName: [null, [UserNameValidator]],
       email: [null, [Validators.required, Validators.email]],
     });
     this.patchFormValue();
@@ -54,4 +55,5 @@ export class UserDialogComponent {
       });
     }
   }
+
 }

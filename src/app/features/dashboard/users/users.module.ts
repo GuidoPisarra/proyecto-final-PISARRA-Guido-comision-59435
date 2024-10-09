@@ -12,4 +12,4 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
   imports: [CommonModule, UsersRoutingModule, SharedModule],
   exports: [UsersComponent],
 })
-export class UsersModule {}
+export class UsersModule { }
