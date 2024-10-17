@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { User } from './models';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -15,18 +16,16 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog,
-    private http: HttpClient
+    private http: HttpClient,
+    private _userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.http.get<User[]>('assets/mockData.json').subscribe({
-      next: (data: User[]) => {
-        this.dataSource = data;
-      },
-      error: (err) => {
-        console.error('Error fetching users:', err);
-      }
+    this._userService.getUsers().subscribe({
+      next: (usuarios) => this.dataSource = usuarios,
+      complete: () => console.log('El observable se completo!'),
     });
+
   }
 
   onDelete(id: number): void {

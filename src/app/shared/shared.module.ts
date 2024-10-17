@@ -14,13 +14,14 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
 import { TitleFontSizeDirective } from './directives/title-font-size.directive';
-import { ComponentsModule } from '../components/components.module';
+import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/errors-template.component';
 @NgModule({
   declarations: [
     UserFullNamePipe,
     HighlightDirective,
     RepeatDirective,
-    TitleFontSizeDirective
+    TitleFontSizeDirective,
+    ErrorsTemplateComponent
   ],
   imports: [CommonModule],
   exports: [
@@ -38,7 +39,7 @@ import { ComponentsModule } from '../components/components.module';
     UserFullNamePipe,
     RepeatDirective,
     TitleFontSizeDirective,
-    ComponentsModule
+    ErrorsTemplateComponent
   ],
 })
 export class SharedModule { }

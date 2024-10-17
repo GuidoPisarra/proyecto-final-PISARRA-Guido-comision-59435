@@ -46,3 +46,6 @@ APP module del componente exportamos el componente
 
 > npm i sweetalert2
 
+# crea un módulo con su respectivo archivo routing
+
+> ng g module NOMBRE_MODULE --routing

@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { UsersModule } from './users/users.module';
 import { SharedModule } from '../../shared/shared.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -21,7 +22,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatToolbarModule,
     MatIconModule,
     UsersModule,
-    SharedModule
+    SharedModule,
+    HomeModule
   ],
   exports: [DashboardComponent],
 })

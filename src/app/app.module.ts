@@ -6,12 +6,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { USERS_URL } from './core/providers'
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, DashboardModule, HttpClientModule],
-  providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, DashboardModule],
+  providers: [provideAnimationsAsync(), provideNativeDateAdapter(), USERS_URL],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
