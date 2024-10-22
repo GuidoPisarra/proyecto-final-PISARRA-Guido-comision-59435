@@ -7,6 +7,8 @@ import { DashboardModule } from './features/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

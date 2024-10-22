@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatNavList } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDialogModule,
     MatTableModule,
     MatSidenavModule,
+    MatNavList
   ],
   exports: [
     MatButtonModule,
@@ -37,6 +39,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDialogModule,
     MatTableModule,
     MatSidenavModule,
+    MatNavList
   ]
 })
 export class MaterialModule { }

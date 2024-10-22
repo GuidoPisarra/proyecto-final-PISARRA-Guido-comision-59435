@@ -12,15 +12,12 @@ export class DashboardComponent {
 
   constructor(private router: Router) { }
 
-
-
-
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
   }
 
-  onDrawerStateChange(isOpen: boolean) {
-    this.drawerOpen = isOpen;
+  onDrawerStateChange(state: boolean) {
+    this.drawerOpen = state;
   }
 
 

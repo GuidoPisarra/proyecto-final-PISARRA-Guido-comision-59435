@@ -6,9 +6,11 @@ import { UsersModule } from './users/users.module';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeModule } from '../home/home.module';
 import { MaterialModule } from '../../material/material.module';
+import { ClasesComponent } from './clases/clases.component';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, ClasesComponent, CoursesComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

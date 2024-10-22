@@ -8,8 +8,10 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$custom-font-color: #FFA500;
+
 // Define the theme object.
-$proyecto-final-PISARRA-Guido-59435-theme: mat.define-theme((color: (theme-type: light,
+$proyecto-final-PISARRA-Guido-59435-theme: mat.define-theme((color: (theme-type: dark,
         primary: mat.$azure-palette,
         tertiary: mat.$magenta-palette,
       ),
@@ -25,9 +27,11 @@ $proyecto-final-PISARRA-Guido-59435-theme: mat.define-theme((color: (theme-type:
 html,
 body {
   height: 100%;
+  color: $custom-font-color !important;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: $custom-font-color !important;
 }

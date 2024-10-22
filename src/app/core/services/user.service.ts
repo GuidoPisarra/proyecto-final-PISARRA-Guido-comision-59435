@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { USERS_URL } from '../providers';
-import { User } from '../models';
+import { User } from '../../features/dashboard/users/models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

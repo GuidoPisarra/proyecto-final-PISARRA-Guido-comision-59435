@@ -1,8 +1,6 @@
 <app-side-bar [isDrawerOpen]="drawerOpen" (drawerStateChange)="onDrawerStateChange($event)">
-  <!-- Aquí se coloca el contenido de la toolbar dentro del side-bar -->
   <app-tool-bar (toggle)="toggleDrawer()"></app-tool-bar>
   <div class="example-sidenav-content">
-    <!-- Aquí puede ir el contenido principal -->
     <app-users></app-users>
   </div>
 </app-side-bar>

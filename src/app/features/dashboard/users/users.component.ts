@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { User } from '../../../core/models';
+import { User } from './models';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../../core/services/user.service';
 
