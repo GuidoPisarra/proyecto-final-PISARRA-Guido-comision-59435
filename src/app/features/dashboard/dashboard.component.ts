@@ -8,8 +8,21 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
   showFiller = false;
+  drawerOpen = false;
 
   constructor(private router: Router) { }
+
+
+
+
+  toggleDrawer() {
+    this.drawerOpen = !this.drawerOpen;
+  }
+
+  onDrawerStateChange(isOpen: boolean) {
+    this.drawerOpen = isOpen;
+  }
+
 
   logout(): void {
     localStorage.removeItem('token');

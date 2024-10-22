@@ -1,17 +1,8 @@
-<mat-drawer-container class="example-container" autosize>
-  <!-- SIDEBAR (MENU LATERAL) -->
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p appTitleFontSize>Menú</p>
-  </mat-drawer>
+<app-side-bar [isDrawerOpen]="drawerOpen" (drawerStateChange)="onDrawerStateChange($event)">
+  <!-- Aquí se coloca el contenido de la toolbar dentro del side-bar -->
+  <app-tool-bar (toggle)="toggleDrawer()"></app-tool-bar>
   <div class="example-sidenav-content">
-    <!-- TOOLBAR -->
-    <mat-toolbar>
-      <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span appTitleFontSize>Gestión de usuarios</span>
-    </mat-toolbar>
-    <app-users />
+    <!-- Aquí puede ir el contenido principal -->
+    <app-users></app-users>
   </div>
-</mat-drawer-container>
+</app-side-bar>
