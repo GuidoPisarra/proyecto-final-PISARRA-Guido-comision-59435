@@ -16,7 +16,7 @@ export class SideBarComponent {
   authUser$: Observable<User | null>;
 
   constructor(
-    private _authService: AuthService,
+    private _authService: AuthService
   ) {
     this.authUser$ = this._authService.authUser$;
 

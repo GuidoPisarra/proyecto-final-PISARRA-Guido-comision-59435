@@ -1,16 +1,14 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer [(opened)]="isDrawerOpen" class="example-sidenav" mode="side">
-    <p appTitleFontSize class="menu">Menú</p>
-    <mat-nav-list>
-      <!--  <a routerLinkActive #homeLink="routerLinkActive" routerLink="home" [activated]="homeLink.isActive"
-        mat-list-item>Inicio</a>
-      <a routerLink="users" mat-list-item routerLinkActive #usersLink="routerLinkActive"
-        [activated]="usersLink.isActive">Usuarios</a>
-      <a routerLink="clases" mat-list-item routerLinkActive #clasesLink="routerLinkActive"
-        [activated]="clasesLink.isActive">Clases</a>
-      <a routerLink="courses" mat-list-item routerLinkActive #coursesLink="routerLinkActive"
-        [activated]="coursesLink.isActive">Cursos</a>
-      <a (click)="logout()" mat-list-item>Cerrar sesión</a> -->
-    </mat-nav-list>
-  </mat-drawer>
-</mat-drawer-container>
+<mat-drawer #drawer [(opened)]="isDrawerOpen" class="example-sidenav" mode="side">
+  <p appTitleFontSize class="menu">Menú</p>
+  <mat-nav-list>
+    <a routerLinkActive="active" #homeLink="routerLinkActive" routerLink="home" [activated]="homeLink.isActive"
+      mat-list-item>INICIO</a>
+    <!--     <a routerLinkActive #homeLink="routerLinkActive" routerLink="home" [activated]="homeLink.isActive"
+      mat-list-item>Inicio</a>
+    <a routerLink="clases" mat-list-item routerLinkActive #clasesLink="routerLinkActive"
+      [activated]="clasesLink.isActive">Clases</a>
+    <a routerLink="courses" mat-list-item routerLinkActive #coursesLink="routerLinkActive"
+      [activated]="coursesLink.isActive">Cursos</a> -->
+    <a (click)="logout()" mat-list-item>Cerrar sesión</a>
+  </mat-nav-list>
+</mat-drawer>

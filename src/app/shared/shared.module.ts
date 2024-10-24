@@ -9,6 +9,7 @@ import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/e
 import { ToolBarComponent } from '../features/dashboard/tool-bar/tool-bar.component';
 import { SideBarComponent } from '../features/dashboard/side-bar/side-bar.component';
 import { MaterialModule } from '../material/material.module';
+import { CoursesModule } from '../features/dashboard/courses/courses.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { MaterialModule } from '../material/material.module';
     TitleFontSizeDirective,
     ErrorsTemplateComponent,
     SideBarComponent,
-    ToolBarComponent,
+    ToolBarComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   exports: [

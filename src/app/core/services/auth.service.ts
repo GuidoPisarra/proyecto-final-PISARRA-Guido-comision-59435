@@ -32,12 +32,6 @@ export class AuthService {
     return of(FAKE_USER);
   }
 
-  logout() {
-    this._authUser$.next(null);
-    localStorage.removeItem('token');
-    this.router.navigate(['auth', 'login']);
-  }
-
   verifyToken(): Observable<boolean> {
     const isValid = localStorage.getItem('token') === FAKE_USER.token;
     if (isValid) {
@@ -46,5 +40,11 @@ export class AuthService {
       this._authUser$.next(null);
     }
     return of(isValid);
+  }
+
+  logout() {
+    this._authUser$.next(null);
+    localStorage.removeItem('token');
+    this.router.navigate(['auth', 'login']);
   }
 }

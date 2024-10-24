@@ -2,8 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SideBarRoutingModule } from './side-bar-routing.module';
-import { RouterModule } from '@angular/router';
 import { DashboardComponent } from '../dashboard.component';
+import { SharedModule } from '../../../shared/shared.module';
+import { MaterialModule } from '../../../material/material.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { DashboardRoutingModule } from '../dashboard-routing.module';
 
 
 @NgModule({
@@ -11,7 +17,15 @@ import { DashboardComponent } from '../dashboard.component';
   imports: [
     CommonModule,
     SideBarRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
+    MaterialModule,
+    MatSidenavModule,
+    MatListModule,
+    BrowserModule,
+    DashboardRoutingModule
+
+
   ]
 })
 export class SideBarModule { }

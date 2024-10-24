@@ -4,21 +4,23 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { UsersModule } from './users/users.module';
 import { SharedModule } from '../../shared/shared.module';
-import { HomeModule } from '../home/home.module';
+import { HomeModule } from './home/home.module';
 import { MaterialModule } from '../../material/material.module';
-import { ClasesComponent } from './clases/clases.component';
-import { CoursesComponent } from './courses/courses.component';
+import { ClasesModule } from './clases/clases.module';
+import { CoursesModule } from './courses/courses.module';
 
 @NgModule({
-  declarations: [DashboardComponent, ClasesComponent, CoursesComponent],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     UsersModule,
     SharedModule,
     HomeModule,
-    MaterialModule
+    MaterialModule,
+    ClasesModule,
+    CoursesModule,
   ],
-  exports: [DashboardComponent],
+  exports: [DashboardComponent, MaterialModule],
 })
 export class DashboardModule { }

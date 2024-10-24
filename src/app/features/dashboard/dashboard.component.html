@@ -1,6 +1,10 @@
-<app-side-bar [isDrawerOpen]="drawerOpen" (drawerStateChange)="onDrawerStateChange($event)">
-  <app-tool-bar (toggle)="toggleDrawer()"></app-tool-bar>
-  <div class="example-sidenav-content">
-    <app-users></app-users>
-  </div>
-</app-side-bar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer mode="side" [opened]="drawerOpen">
+    <app-side-bar [isDrawerOpen]="drawerOpen" (drawerStateChange)="onDrawerStateChange($event)">
+    </app-side-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-tool-bar (toggle)="toggleDrawer()"></app-tool-bar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
