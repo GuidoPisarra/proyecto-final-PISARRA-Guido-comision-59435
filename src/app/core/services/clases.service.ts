@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { COURSES_URL } from '../providers';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../../features/dashboard/courses/models/course';
+import { Clase } from '../../features/dashboard/clases/models/clase';
+import { CLASES_URL } from './../providers/index';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesService {
+export class ClasesService {
 
 
   constructor(
@@ -15,8 +17,8 @@ export class CoursesService {
 
   ) { }
 
-  getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(COURSES_URL.useValue);
+  getClases(): Observable<Clase[]> {
+    return this.http.get<Clase[]>(COURSES_URL.useValue);
 
   }
 
@@ -36,5 +38,13 @@ export class CoursesService {
   removeUserById(id: string): void/*  Observable<User[]> */ {
     /*  DATABASE = DATABASE.filter((user) => user.id.toString() != id);
      return of(DATABASE).pipe(delay(1000)); */
+  }
+
+  getClasesById(id: number): Observable<Clase[]> {
+    return this.http.get<Clase[]>(CLASES_URL.useValue)
+      .pipe(
+        map((clases: Clase[]) => clases.filter(clase => clase.courseId === id))
+      );
+
   }
 }

@@ -15,7 +15,6 @@ export class CoursesComponent {
   isLoading = false;
 
   constructor(
-    private matDialog: MatDialog,
     private _coursesService: CoursesService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -27,7 +26,7 @@ export class CoursesComponent {
 
   loadUsers(): void {
     this.isLoading = true;
-    this._coursesService.getUsers().subscribe({
+    this._coursesService.getCourses().subscribe({
       next: (courses: Course[]) => {
         this.dataSource = courses;
       },
