@@ -11,7 +11,7 @@ import { UserService } from '../../../core/services/user.service';
   styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['name', 'email', 'createdAt', 'actions'];
   dataSource: User[] = [];
   isLoading = false;
 

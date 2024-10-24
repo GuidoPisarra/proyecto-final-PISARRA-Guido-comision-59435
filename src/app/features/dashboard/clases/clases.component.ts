@@ -16,7 +16,7 @@ export class ClasesComponent {
   listOfCourses: Course[] = [];
   listOfClases: Clase[] = [];
   isLoading = true;
-  displayedColumns: string[] = ['courseId', 'classId', 'title', 'date', 'duration', 'actions'];
+  displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
 
 
   constructor(
@@ -99,6 +99,7 @@ export class ClasesComponent {
 
   onCourseChange(event: any) {
     const courseId = event.value;
+    this.selectedValue = courseId;
     this._clasesService.getClasesById(courseId).subscribe({
       next: (filteredClases: Clase[]) => {
         this.listOfClases = filteredClases;

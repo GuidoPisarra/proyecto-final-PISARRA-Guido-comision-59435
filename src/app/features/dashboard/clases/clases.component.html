@@ -1,59 +1,51 @@
-<form>
+<div class="container">
   <h4>Seleccione un curso</h4>
   <mat-form-field>
     <mat-label>Curso</mat-label>
     <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="onCourseChange($event)">
-      @for (course of listOfCourses; track course) {
-      <mat-option [value]="course.id">{{course.course}}</mat-option>
-      }
+      <mat-option *ngFor="let course of listOfCourses" [value]="course.id">
+        {{course.course}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
-</form>
 
-<button mat-fab extended (click)="openModal()" class="btn-crear-usuario">
-  <mat-icon>add</mat-icon>
-  Agregar clase
-</button>
+  <button mat-fab extended (click)="openModal()" class="btn-crear-usuario">
+    <mat-icon>add</mat-icon>
+    Agregar clase
+  </button>
 
+  <table mat-table [dataSource]="listOfClases" class="mat-elevation-z10">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Clase</th>
+      <td color="red" app-hightlight mat-cell *matCellDef="let clase">{{ clase.title }}</td>
+    </ng-container>
 
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let clase">{{ clase.date | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
 
-<table mat-table [dataSource]="listOfClases" class="mat-elevation-z10">
-  <ng-container matColumnDef="classId">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let clase">{{ clase.classId }}</td>
-  </ng-container>
-  <ng-container matColumnDef="courseId">
-    <th mat-header-cell *matHeaderCellDef>Curso</th>
-    <td color="red" app-hightlight mat-cell *matCellDef="let clase">{{ clase.courseId }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Clase</th>
-    <td color="red" app-hightlight mat-cell *matCellDef="let clase">{{ clase.title }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>Fecha</th>
-    <td mat-cell *matCellDef="let clase">{{ clase.date | date: 'dd/MM/yyyy' }}</td>
-  </ng-container>
-  <ng-container matColumnDef="duration">
-    <th mat-header-cell *matHeaderCellDef>Duración</th>
-    <td mat-cell *matCellDef="let clase">{{ clase.duration }}</td>
-  </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Duración</th>
+      <td mat-cell *matCellDef="let clase">{{ clase.duration }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Acciones</th>
-    <td mat-cell *matCellDef="let user">
-      <button mat-icon-button (click)="viewDetails(user)">
-        <mat-icon>visibility</mat-icon>
-      </button>
-      <button mat-icon-button (click)="openModal(user)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="onDelete(user.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let clase"> <!-- Cambia user a clase -->
+        <button mat-icon-button (click)="viewDetails(clase)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openModal(clase)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(clase.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

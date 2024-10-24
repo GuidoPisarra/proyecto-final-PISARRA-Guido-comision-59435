@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent {
-  displayedColumns: string[] = ['id', 'profesor', 'commitee', 'course', 'createdAt', 'startDate', 'endDate', 'actions'];
+  displayedColumns: string[] = ['profesor', 'commitee', 'course', 'createdAt', 'startDate', 'endDate', 'actions'];
   dataSource: Course[] = [];
   isLoading = false;
 
