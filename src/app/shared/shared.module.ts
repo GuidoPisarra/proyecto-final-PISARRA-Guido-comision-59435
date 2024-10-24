@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,8 +14,7 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ToolBarComponent } from '../features/dashboard/tool-bar/tool-bar.component';
-import { SideBarComponent } from '../features/dashboard/side-bar/side-bar.component';
+
 @NgModule({
   declarations: [UserFullNamePipe, HighlightDirective, RepeatDirective],
   imports: [CommonModule],
