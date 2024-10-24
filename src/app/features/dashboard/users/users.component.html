@@ -1,11 +1,11 @@
 <div class="container">
+  <h2>Usuarios</h2>
   <button mat-fab extended (click)="openModal()" class="btn-crear-usuario">
     <mat-icon>add</mat-icon>
     Crear usuario
   </button>
-  <h2>aaaaaaaaaaaaaaaa</h2>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z10">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let user">{{ user.id }}</td>
