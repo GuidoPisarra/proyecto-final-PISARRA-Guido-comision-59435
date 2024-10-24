@@ -2,25 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { UsersModule } from './users/users.module';
-import { SharedModule } from '../../shared/shared.module';
-import { HomeModule } from './home/home.module';
-import { MaterialModule } from '../../material/material.module';
-import { ClasesModule } from './clases/clases.module';
-import { CoursesModule } from './courses/courses.module';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ToolBarComponent } from './tool-bar/tool-bar.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, ToolBarComponent, SideBarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    UsersModule,
-    SharedModule,
-    HomeModule,
-    MaterialModule,
-    ClasesModule,
-    CoursesModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule
   ],
-  exports: [DashboardComponent, MaterialModule],
+  exports: [DashboardComponent],
 })
 export class DashboardModule { }
