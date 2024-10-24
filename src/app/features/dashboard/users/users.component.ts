@@ -13,13 +13,7 @@ import { UserService } from '../../../core/services/user.service';
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'createdAt', 'actions'];
   dataSource: User[] = [];
-
   isLoading = false;
-
-  usuario = {
-    nombre: 'Josue',
-    apellido: 'Baez',
-  };
 
   constructor(
     private matDialog: MatDialog,

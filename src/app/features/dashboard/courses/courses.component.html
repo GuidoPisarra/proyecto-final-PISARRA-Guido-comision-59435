@@ -1,1 +1,55 @@
-<p>courses works!</p>
+<div class="container">
+  <h2>Cursos</h2>
+  <button mat-fab extended (click)="openModal()" class="btn-crear-usuario">
+    <mat-icon>add</mat-icon>
+    Agregar curso
+  </button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z10">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef>Curso</th>
+      <td color="red" app-hightlight mat-cell *matCellDef="let course">{{ course.course }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="profesor">
+      <th mat-header-cell *matHeaderCellDef>Curso</th>
+      <td color="red" app-hightlight mat-cell *matCellDef="let course">{{ course.profesor }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="commitee">
+      <th mat-header-cell *matHeaderCellDef>Comisión</th>
+      <td mat-cell *matCellDef="let course">{{ course.commitee }}</td>
+    </ng-container>
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Creado</th>
+      <td mat-cell *matCellDef="let course">{{ course.createdAt | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Inicio</th>
+      <td mat-cell *matCellDef="let course">{{ course.startDate | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>Fin</th>
+      <td mat-cell *matCellDef="let course">{{ course.endDate | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-icon-button (click)="viewDetails(user)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openModal(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
