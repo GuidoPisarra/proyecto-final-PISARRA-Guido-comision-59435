@@ -106,4 +106,8 @@ export class UsersComponent implements OnInit {
       },
     });
   }
+
+  protected viewDetails(user: User): void {
+    console.log(user);
+  }
 }
