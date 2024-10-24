@@ -9,7 +9,7 @@
 @include mat.core();
 $custom-font-color: #FFA500;
 // Define the theme object.
-$proyecto-final-PISARRA-Guido-comision-59435-theme: mat.define-theme((color: (theme-type: light,
+$proyecto-final-PISARRA-Guido-comision-59435-theme: mat.define-theme((color: (theme-type: dark,
         primary: mat.$azure-palette,
         tertiary: mat.$blue-palette,
       ),
