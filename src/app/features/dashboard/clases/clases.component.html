@@ -8,8 +8,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <button mat-fab extended (click)="openModal()" class="btn-crear-usuario">
+  @if(selectedValue!=''){
+  <button mat-fab extended (click)="openModal()" class="btn-crear-clase">
     <mat-icon>add</mat-icon>
     Agregar clase
   </button>
@@ -48,4 +48,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  }
 </div>

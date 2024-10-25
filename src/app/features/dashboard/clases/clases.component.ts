@@ -4,6 +4,8 @@ import { ClasesService } from '../../../core/services/clases.service';
 import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
 
 
 @Component({
@@ -23,7 +25,8 @@ export class ClasesComponent {
     private _coursesService: CoursesService,
     private _clasesService: ClasesService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private matDialog: MatDialog
   ) {
     this._coursesService.getCourses().subscribe({
       next: (courses: Course[]) => {
@@ -38,12 +41,12 @@ export class ClasesComponent {
     });
   }
 
-  onDelete(id: string) {
-    /* if (confirm('Esta seguro?')) {
+  onDelete(id: number) {
+    if (confirm('Esta seguro?')) {
       this.isLoading = true;
-      this._coursesService.removeUserById(id).subscribe({
-        next: (courses: Course[]) => {
-          this.dataSource = courses;
+      this._clasesService.deleteClassById(id).subscribe({
+        next: (clases: Clase[]) => {
+          this.listOfClases = clases;
         },
         error: (err: any) => {
           this.isLoading = false;
@@ -52,7 +55,7 @@ export class ClasesComponent {
           this.isLoading = false;
         },
       });
-    } */
+    }
   }
 
   goToDetail(id: string): void {
@@ -61,32 +64,32 @@ export class ClasesComponent {
     });
   }
 
-  openModal(editingCourse?: Course): void {
-    /*  this.matDialog
-       .open(UserDialogComponent, {
-         data: {
-           editingUser,
-         },
-       })
-       .afterClosed()
-       .subscribe({
-         next: (result) => {
-           if (!!result) {
-             if (editingUser) {
-               this.handleUpdate(editingUser.id.toString(), result);
-             } else {
-               this.dataSource = [...this.dataSource, result];
-             }
-           }
-         },
-       }); */
+  openModal(editingClase?: Clase): void {
+    this.matDialog
+      .open(ClaseDialogComponent, {
+        data: {
+          editingClase,
+        },
+      })
+      .afterClosed()
+      .subscribe({
+        next: (result) => {
+          if (!!result) {
+            if (editingClase) {
+              this.handleUpdate(editingClase.classId.toString(), result);
+            } else {
+              this.listOfClases = [...this.listOfClases, result];
+            }
+          }
+        },
+      });
   }
 
-  handleUpdate(id: string, update: Course): void {
+  handleUpdate(id: string, update: Clase): void {
     this.isLoading = true;
-    /* this._coursesService.updateCourseById(id, update).subscribe({
-      next: (users: Course[]) => {
-        this.dataSource = users;
+    this._clasesService.updateClaseById(id, update).subscribe({
+      next: (clases: Clase[]) => {
+        this.listOfClases = clases;
       },
       error: (err: any) => {
         this.isLoading = false;
@@ -94,7 +97,7 @@ export class ClasesComponent {
       complete: () => {
         this.isLoading = false;
       },
-    }); */
+    });
   }
 
   onCourseChange(event: any) {

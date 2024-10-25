@@ -1,1 +1,49 @@
-<p>clase-dialog works!</p>
+<h1 mat-dialog-title>
+  {{ data?.editingClase ? "Editar" : "Crear" }} clase
+</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="claseForm">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="example-form-field w-100">
+          <mat-label>Clase</mat-label>
+          <input formControlName="title" matInput type="text" />
+          <mat-error>
+            @if(claseForm.get('title')?.hasError('required')) { Este campo es
+            requerido }
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-form-field w-100">
+          <mat-label>Fecha</mat-label>
+          <input formControlName="date" matInput type="date" />
+          <mat-error>
+            @if(claseForm.get('date')?.hasError('required')) { Este campo es
+            requerido }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field class="example-form-field w-100">
+          <mat-label>Duración</mat-label>
+          <input formControlName="duration" matInput type="text" />
+          <mat-error>
+            @if(claseForm.get('duration')?.hasError('required')) { Este campo es
+            requerido }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-dialog-close mat-button>Cancelar</button>
+  <button (click)="onSave()" mat-button>Guardar</button>
+</div>
