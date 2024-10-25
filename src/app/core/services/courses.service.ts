@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { COURSES_URL } from '../providers';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../../features/dashboard/courses/models/course';
@@ -8,7 +8,7 @@ import { Course } from '../../features/dashboard/courses/models/course';
   providedIn: 'root'
 })
 export class CoursesService {
-
+  private courses: Course[] = [];
 
   constructor(
     private http: HttpClient
@@ -16,25 +16,20 @@ export class CoursesService {
   ) { }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(COURSES_URL.useValue);
-
+    return this.http.get<Course[]>(COURSES_URL.useValue).pipe(
+      tap((courses: Course[]) => this.courses = courses)
+    );
   }
 
   updateCourseById(id: string, update: Partial<Course>) {
-    /* DATABASE = DATABASE.map((user) =>
-      user.id.toString() === id ? { ...user, ...update } : user
+    this.courses = this.courses.map(course =>
+      course.id.toString() === id ? { ...course, ...update } : course
     );
-
-    return new Observable<User[]>((observer) => {
-      setInterval(() => {
-        observer.next(DATABASE);
-        observer.complete();
-      }, 1000);
-    }); */
+    return of(this.courses);
   }
 
-  removeUserById(id: string): void/*  Observable<User[]> */ {
-    /*  DATABASE = DATABASE.filter((user) => user.id.toString() != id);
-     return of(DATABASE).pipe(delay(1000)); */
+  deleteUserById(id: string): Observable<Course[]> {
+    this.courses = this.courses.filter((course) => course.id.toString() != id);
+    return of(this.courses);
   }
 }

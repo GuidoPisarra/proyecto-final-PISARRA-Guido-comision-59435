@@ -42,9 +42,9 @@ export class CoursesComponent {
   }
 
   onDelete(id: string) {
-    /* if (confirm('Esta seguro?')) {
+    if (confirm('Esta seguro?')) {
       this.isLoading = true;
-      this._coursesService.removeUserById(id).subscribe({
+      this._coursesService.deleteUserById(id).subscribe({
         next: (courses: Course[]) => {
           this.dataSource = courses;
         },
@@ -55,7 +55,7 @@ export class CoursesComponent {
           this.isLoading = false;
         },
       });
-    } */
+    }
   }
 
   goToDetail(id: string): void {
@@ -87,9 +87,9 @@ export class CoursesComponent {
 
   handleUpdate(id: string, update: Course): void {
     this.isLoading = true;
-    /* this._coursesService.updateCourseById(id, update).subscribe({
-      next: (users: Course[]) => {
-        this.dataSource = users;
+    this._coursesService.updateCourseById(id, update).subscribe({
+      next: (courses: Course[]) => {
+        this.dataSource = courses;
       },
       error: (err: any) => {
         this.isLoading = false;
@@ -97,7 +97,7 @@ export class CoursesComponent {
       complete: () => {
         this.isLoading = false;
       },
-    }); */
+    });
   }
 
   protected viewDetails(course: Course): void {

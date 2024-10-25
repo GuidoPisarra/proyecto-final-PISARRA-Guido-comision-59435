@@ -37,7 +37,13 @@ export class CourseDialogComponent {
 
   patchFormValue() {
     if (this.data?.editingCourse) {
-      this.courseForm.patchValue(this.data.editingCourse);
+      const { startDate, endDate, ...otherData } = this.data.editingCourse;
+
+      this.courseForm.patchValue({
+        ...otherData,
+        startDate: this.formatDate(startDate),
+        endDate: this.formatDate(endDate)
+      });
     }
   }
 
@@ -56,4 +62,11 @@ export class CourseDialogComponent {
       });
     }
   }
+
+  private formatDate(date: Date | string): string {
+    if (!date) return '';
+    const d = new Date(date);
+    return d.toISOString().split('T')[0]; // Devuelve el formato YYYY-MM-DD
+  }
+
 }

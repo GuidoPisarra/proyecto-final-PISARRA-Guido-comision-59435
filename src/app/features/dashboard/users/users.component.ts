@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
     if (confirm('Esta seguro?')) {
       // this.dataSource = this.dataSource.filter((user) => user.id !== id);
       this.isLoading = true;
-      this.usersService.removeUserById(id).subscribe({
+      this.usersService.deleteUserById(id).subscribe({
         next: (users: User[]) => {
           this.dataSource = users;
         },
