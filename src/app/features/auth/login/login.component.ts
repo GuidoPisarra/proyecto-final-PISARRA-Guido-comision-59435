@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   passwordInputType: 'password' | 'text' = 'password';
-
   loginForm: FormGroup;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +36,6 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      // login
       this._authService.login(this.loginForm.value).subscribe({
         next: (result) => {
           this.router.navigate(['dashboard', 'home']);

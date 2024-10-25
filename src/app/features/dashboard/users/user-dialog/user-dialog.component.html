@@ -10,9 +10,10 @@
           <mat-label>Nombre</mat-label>
           <input formControlName="firstName" matInput type="text" />
           <mat-error>
-            @if(userForm.get('firstName')?.hasError('required')) { Este campo es
-            requerido }
+            <app-errors-template *ngIf="firstName?.touched"
+              [validationErrors]="firstName?.errors"></app-errors-template>
           </mat-error>
+
         </mat-form-field>
       </div>
       <div class="col-6">
@@ -20,8 +21,7 @@
           <mat-label>Apellido</mat-label>
           <input formControlName="lastName" matInput type="text" />
           <mat-error>
-            @if(userForm.get('lastName')?.hasError('required')) { Este campo es
-            requerido }
+            <app-errors-template *ngIf="lastName?.touched" [validationErrors]="lastName?.errors"></app-errors-template>
           </mat-error>
         </mat-form-field>
       </div>
@@ -30,8 +30,7 @@
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput type="email" />
           <mat-error>
-            @if(userForm.get('email')?.hasError('required')) { Este campo es
-            requerido }
+            <app-errors-template *ngIf="email?.touched" [validationErrors]="email?.errors"></app-errors-template>
           </mat-error>
         </mat-form-field>
       </div>

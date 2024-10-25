@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { generateRandomString } from '../../../../shared/utils';
 import { User } from '../models';
+import { EmailValidator, UserNameValidator } from '../../../../shared/utils/validators/customValidators';
 
 interface UserDialogData {
   editingUser?: User;
@@ -22,9 +23,9 @@ export class UserDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data?: UserDialogData
   ) {
     this.userForm = this.formBuilder.group({
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
-      email: [null, [Validators.required]],
+      firstName: [null, [Validators.required, UserNameValidator]],
+      lastName: [null, [Validators.required, UserNameValidator]],
+      email: [null, [EmailValidator]],
     });
     this.patchFormValue();
   }
@@ -54,4 +55,15 @@ export class UserDialogComponent {
       });
     }
   }
+
+  get firstName() {
+    return this.userForm.get('firstName');
+  }
+  get lastName() {
+    return this.userForm.get('lastName');
+  }
+  get email() {
+    return this.userForm.get('email');
+  }
+
 }

@@ -1,13 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-errors-template',
   templateUrl: './errors-template.component.html',
 })
-export class ErrorsTemplateComponent implements OnInit {
-  @Input() validationErrors: any;
+export class ErrorsTemplateComponent {
+  @Input() validationErrors: ValidationErrors | null | undefined = null;
 
-  ngOnInit(): void {
-    console.log('validationErrors:', this.validationErrors);
-  }
+
 }

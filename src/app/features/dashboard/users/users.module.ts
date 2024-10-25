@@ -6,9 +6,10 @@ import { UsersComponent } from './users.component';
 
 import { SharedModule } from '../../../shared/shared.module';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { ErrorsTemplateComponent } from '../errors-template/errors-template.component';
 
 @NgModule({
-  declarations: [UsersComponent, UserDialogComponent],
+  declarations: [UsersComponent, UserDialogComponent, ErrorsTemplateComponent],
   imports: [CommonModule, UsersRoutingModule, SharedModule],
   exports: [UsersComponent],
 })
