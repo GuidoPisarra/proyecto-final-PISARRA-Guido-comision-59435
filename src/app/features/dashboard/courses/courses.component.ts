@@ -3,6 +3,7 @@ import { Course } from './models/course';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesService } from '../../../core/services/courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +18,8 @@ export class CoursesComponent {
   constructor(
     private _coursesService: CoursesService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -63,24 +65,24 @@ export class CoursesComponent {
   }
 
   openModal(editingCourse?: Course): void {
-    /*  this.matDialog
-       .open(UserDialogComponent, {
-         data: {
-           editingUser,
-         },
-       })
-       .afterClosed()
-       .subscribe({
-         next: (result) => {
-           if (!!result) {
-             if (editingUser) {
-               this.handleUpdate(editingUser.id.toString(), result);
-             } else {
-               this.dataSource = [...this.dataSource, result];
-             }
-           }
-         },
-       }); */
+    this.matDialog
+      .open(CourseDialogComponent, {
+        data: {
+          editingCourse,
+        },
+      })
+      .afterClosed()
+      .subscribe({
+        next: (result) => {
+          if (!!result) {
+            if (editingCourse) {
+              this.handleUpdate(editingCourse.id.toString(), result);
+            } else {
+              this.dataSource = [...this.dataSource, result];
+            }
+          }
+        },
+      });
   }
 
   handleUpdate(id: string, update: Course): void {

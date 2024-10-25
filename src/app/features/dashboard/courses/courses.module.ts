@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { CoursesRoutingModule } from './courses-routing.module';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 
 
 @NgModule({
-  declarations: [CoursesComponent],
+  declarations: [CoursesComponent, CourseDialogComponent],
   imports: [
     CommonModule,
     SharedModule,

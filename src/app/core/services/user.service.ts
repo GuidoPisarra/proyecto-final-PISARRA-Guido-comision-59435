@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable, of, tap } from 'rxjs';
 import { USERS_URL } from '../providers';
 import { User } from '../../features/dashboard/users/models';
 import { HttpClient } from '@angular/common/http';
@@ -22,31 +22,25 @@ let DATABASE: User[] = [
 })
 export class UserService {
 
-  constructor(
-    private http: HttpClient
+  private users: User[] = [];
 
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(USERS_URL.useValue);
-
+    return this.http.get<User[]>(USERS_URL.useValue).pipe(
+      tap((users: User[]) => this.users = users)
+    );
   }
 
   updateUserById(id: string, update: Partial<User>) {
-    DATABASE = DATABASE.map((user) =>
+    this.users = this.users.map(user =>
       user.id.toString() === id ? { ...user, ...update } : user
     );
-
-    return new Observable<User[]>((observer) => {
-      setInterval(() => {
-        observer.next(DATABASE);
-        observer.complete();
-      }, 1000);
-    });
+    return of(this.users);
   }
 
   removeUserById(id: string): Observable<User[]> {
-    DATABASE = DATABASE.filter((user) => user.id.toString() != id);
-    return of(DATABASE).pipe(delay(1000));
+    this.users = this.users.filter((user) => user.id.toString() != id);
+    return of(this.users);
   }
 }
