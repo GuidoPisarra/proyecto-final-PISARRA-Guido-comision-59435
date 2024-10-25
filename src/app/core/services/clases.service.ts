@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
-import { COURSES_URL } from '../providers';
 import { HttpClient } from '@angular/common/http';
-import { Course } from '../../features/dashboard/courses/models/course';
 import { Clase } from '../../features/dashboard/clases/models/clase';
 import { CLASES_URL } from './../providers/index';
 
@@ -30,16 +28,20 @@ export class ClasesService {
     return of(this.clases);
   }
 
-  deleteClassById(id: number): Observable<Clase[]> {
-    this.clases = this.clases.filter((clase) => clase.classId != id);
+  deleteClassById(classId: number): Observable<Clase[]> {
+    this.clases = this.clases.filter((clase) => clase.classId != classId);
     return of(this.clases);
   }
 
   getClasesById(id: number): Observable<Clase[]> {
     return this.http.get<Clase[]>(CLASES_URL.useValue)
       .pipe(
-        map((clases: Clase[]) => clases.filter(clase => clase.courseId === id))
+        map((clases: Clase[]) => clases.filter(clase => clase.courseId === id)),
+        tap((filteredClases: Clase[]) => {
+          this.clases = filteredClases;
+        })
       );
 
   }
+
 }

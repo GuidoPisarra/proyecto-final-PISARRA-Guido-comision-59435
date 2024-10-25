@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../../core/services/courses.service';
 import { ClasesService } from '../../../core/services/clases.service';
 import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
 
@@ -13,38 +12,36 @@ import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
   templateUrl: './clases.component.html',
   styleUrl: './clases.component.scss'
 })
-export class ClasesComponent {
-  selectedValue: string = '';
-  listOfCourses: Course[] = [];
-  listOfClases: Clase[] = [];
-  isLoading = true;
-  displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
+export class ClasesComponent implements OnInit {
+  protected selectedValue: string = '';
+  protected listOfCourses: Course[] = [];
+  protected listOfClases: Clase[] = [];
+  protected isLoading = true;
+  protected displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
 
 
   constructor(
     private _coursesService: CoursesService,
     private _clasesService: ClasesService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     private matDialog: MatDialog
-  ) {
+  ) { }
+
+  ngOnInit() {
     this._coursesService.getCourses().subscribe({
       next: (courses: Course[]) => {
         this.listOfCourses = courses;
-      },
-      error: () => {
         this.isLoading = false;
       },
-      complete: () => {
+      error: () => {
         this.isLoading = false;
       },
     });
   }
 
-  onDelete(id: number) {
+  protected onDelete(classId: number) {
     if (confirm('Esta seguro?')) {
       this.isLoading = true;
-      this._clasesService.deleteClassById(id).subscribe({
+      this._clasesService.deleteClassById(classId).subscribe({
         next: (clases: Clase[]) => {
           this.listOfClases = clases;
         },
@@ -58,13 +55,7 @@ export class ClasesComponent {
     }
   }
 
-  goToDetail(id: string): void {
-    this.router.navigate([id, 'detail'], {
-      relativeTo: this.activatedRoute,
-    });
-  }
-
-  openModal(editingClase?: Clase): void {
+  protected openModal(editingClase?: Clase): void {
     this.matDialog
       .open(ClaseDialogComponent, {
         data: {
@@ -85,7 +76,7 @@ export class ClasesComponent {
       });
   }
 
-  handleUpdate(id: string, update: Clase): void {
+  protected handleUpdate(id: string, update: Clase): void {
     this.isLoading = true;
     this._clasesService.updateClaseById(id, update).subscribe({
       next: (clases: Clase[]) => {
@@ -100,7 +91,7 @@ export class ClasesComponent {
     });
   }
 
-  onCourseChange(event: any) {
+  protected onCourseChange(event: any) {
     const courseId = event.value;
     this.selectedValue = courseId;
     this._clasesService.getClasesById(courseId).subscribe({
@@ -114,6 +105,7 @@ export class ClasesComponent {
       }
     });
   }
+
   protected viewDetails(course: Course): void {
     console.log(course);
   }

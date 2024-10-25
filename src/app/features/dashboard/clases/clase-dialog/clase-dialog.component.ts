@@ -37,10 +37,9 @@ export class ClaseDialogComponent {
   patchFormValue() {
     if (this.data?.editingClase) {
       const { date, ...otherData } = this.data.editingClase;
-
       this.claseForm.patchValue({
         ...otherData,
-        startDate: this.formatDate(date)
+        date: this.formatDate(date)
       });
     }
   }
