@@ -49,3 +49,19 @@ APP module del componente exportamos el componente
 # crea un módulo con su respectivo archivo routing
 
 > ng g module NOMBRE_MODULE --routing
+
+
+# JSON SERVER
+
+Instalación 
+
+> npm i json-server -g
+
+Ejecutar:
+
+Primero crear el archivo db.json que es donde va a aestar nuestra bbdd mockeada
+
+luego ejecutamos 
+
+> json-server db.json --watch
+

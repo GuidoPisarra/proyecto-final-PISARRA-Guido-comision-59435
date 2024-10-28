@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Homero",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "homer.simpson@gmail.com"
+    },
+    {
+      "id": "2",
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "marge.simpson@gmail.com"
+    },
+    {
+      "id": "3",
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "bart.simpson@gmail.com"
+    },
+    {
+      "id": "4",
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "lisa.simpson@gmail.com"
+    },
+    {
+      "id": "5",
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "maggie.simpson@gmail.com"
+    },
+    {
+      "id": "6",
+      "firstName": "Apu",
+      "lastName": "Nahasapeemapetilon",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "apu@kwikemart.com"
+    },
+    {
+      "id": "7",
+      "firstName": "Ned",
+      "lastName": "Flanders",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "ned.flanders@gmail.com"
+    },
+    {
+      "id": "8",
+      "firstName": "Montgomery",
+      "lastName": "Burns",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "monty.burns@burnscorp.com"
+    },
+    {
+      "id": "9",
+      "firstName": "Moe",
+      "lastName": "Szyslak",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "moe.szyslak@moestavern.com"
+    },
+    {
+      "id": "10",
+      "firstName": "Krusty",
+      "lastName": "The Clown",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "krusty@krustytheclown.com"
+    },
+    {
+      "id": "04ac",
+      "firstName": "Guido",
+      "lastNAme": "Pisarra",
+      "email": "pisarraguido@gmail.com",
+      "role": "ADMIN",
+      "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232"
+    },
+    {
+      "id": "00cd",
+      "firstName": "Guido",
+      "lastNAme": "Pisarra",
+      "email": "pisarraguido@gmail.com",
+      "password": "12345",
+      "role": "ADMIN",
+      "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
+      "createdAt": "2024-10-28T21:56:34.217Z"
+    }
+  ]
+}

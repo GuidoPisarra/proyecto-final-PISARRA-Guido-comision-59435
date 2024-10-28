@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../../features/dashboard/users/models';
 import { AuthData } from '../../features/auth/models';
+import { HttpClient } from '@angular/common/http';
 
 
 const FAKE_USER: User = {
@@ -21,7 +22,10 @@ export class AuthService {
 
   public authUser$ = this._authUser$.asObservable();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private _httpClient: HttpClient
+  ) { }
 
   login(data: AuthData): Observable<User> {
     if (data.email != FAKE_USER.email || data.password != FAKE_USER.password) {
