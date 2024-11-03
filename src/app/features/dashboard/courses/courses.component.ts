@@ -23,10 +23,10 @@ export class CoursesComponent {
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadCourses();
   }
 
-  loadUsers(): void {
+  loadCourses(): void {
     this.isLoading = true;
     this._coursesService.getCourses().subscribe({
       next: (courses: Course[]) => {

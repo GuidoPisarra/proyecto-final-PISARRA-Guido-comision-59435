@@ -65,3 +65,33 @@ luego ejecutamos
 
 > json-server db.json --watch
 
+# ENVIRONMENT
+ng generate --configuration production --> toma el environment de producción
+
+# NG mocks 
+
+> npm install ng-mocks
+
+# TEST 
+
+> ng test
+si agregamos una 'x' antes del describe, esa prueba se omite --> ejemplo --> xdescribe('AppComponent', () => {
+si agregamos una 'f' antes del describe, solo se ejecuta/n esa prueba/s --> ejemplo --> fdescribe('AppComponent', () => {
+
+Para obtener el estado de las pruebas unitarias:
+> ng test --code-coverage
+
+Se puede ver  en la consola o en el navegador abriendo el archivo index.html que esta dentro de la carpeta coverage
+
+# REDUX 
+Permite entre otras cosas manejar los estados
+
+> ng add @ngrx/store
+
+crear carpeta store en src y dentro de ella un archivo ts
+
+en app.component.ts importamos  StoreModule.forRoot(RootReducer)
+
+instalar en chrome extension redux devtools --> para que funcione hay que instalar en el proyecto  
+
+> ng add @ngrx/store-devtools@latest
