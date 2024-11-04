@@ -28,7 +28,7 @@ export class CoursesService {
     return of(this.courses);
   }
 
-  deleteUserById(id: string): Observable<Course[]> {
+  deleteCourseById(id: string): Observable<Course[]> {
     this.courses = this.courses.filter((course) => course.id.toString() != id);
     return of(this.courses);
   }

@@ -5,7 +5,7 @@ import { generateRandomString } from '../../../../shared/utils';
 import { Student } from '../models';
 import { EmailValidator, StudentNameValidator } from '../../../../shared/utils/validators/customValidators';
 
-interface UserDialogData {
+interface StudentDialogData {
   editingStudent?: Student;
 }
 
@@ -20,7 +20,7 @@ export class StudentDialogComponent {
   constructor(
     private matDialogRef: MatDialogRef<StudentDialogComponent>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data?: UserDialogData
+    @Inject(MAT_DIALOG_DATA) public data?: StudentDialogData
   ) {
     this.studentForm = this.formBuilder.group({
       firstName: [null, [Validators.required, StudentNameValidator]],

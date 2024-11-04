@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Student } from '../../features/dashboard/students/models';
 
 @Pipe({
-  name: 'userFullName'
+  name: 'studentFullName'
 })
 export class StudentFullNamePipe implements PipeTransform {
 

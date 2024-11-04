@@ -1,8 +1,8 @@
-import { CLASES_MOCK_URL, COURSES_MOCK_URL, USERS_MOCK_URL } from '../injection_tokens';
+import { CLASES_MOCK_URL, COURSES_MOCK_URL, STUDENTS_MOCK_URL } from '../injection_tokens';
 
-export const USERS_URL = {
-  provide: USERS_MOCK_URL,
-  useValue: 'http://localhost:4200/assets/usersMock.json',
+export const STUDENTS_URL = {
+  provide: STUDENTS_MOCK_URL,
+  useValue: 'http://localhost:4200/assets/studentsMock.json',
 };
 export const COURSES_URL = {
   provide: COURSES_MOCK_URL,

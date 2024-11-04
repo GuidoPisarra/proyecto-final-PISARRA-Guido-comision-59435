@@ -10,10 +10,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { StudentFullNamePipe } from './pipes/user-full-name.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 
 @NgModule({
   declarations: [StudentFullNamePipe, HighlightDirective, RepeatDirective],

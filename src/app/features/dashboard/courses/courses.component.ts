@@ -44,7 +44,7 @@ export class CoursesComponent {
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
       this.isLoading = true;
-      this._coursesService.deleteUserById(id).subscribe({
+      this._coursesService.deleteCourseById(id).subscribe({
         next: (courses: Course[]) => {
           this.dataSource = courses;
         },

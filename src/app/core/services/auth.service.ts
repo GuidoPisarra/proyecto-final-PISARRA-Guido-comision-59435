@@ -46,8 +46,10 @@ export class AuthService {
       )
       .pipe(
         map((students) => {
-          const user = this.handleAuthentication(students);
-          if (user) {
+          console.log(students);
+          const student = this.handleAuthentication(students);
+          console.log(student);
+          if (student) {
             return FAKE_STUDENT;
           } else {
             throw new Error('Los datos son invalidos');

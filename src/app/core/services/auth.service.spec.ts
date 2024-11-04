@@ -56,13 +56,13 @@ describe('AuthService', () => {
 
   it('Debe realizarse el login debe establecer el token en localStorage', (done) => {
     service.login(mockAuthData).subscribe({
-      next: (user) => {
-        expect(user.id).toEqual(mockStudent.id);
-        expect(user.firstName).toEqual(mockStudent.firstName);
-        expect(user.lastName).toEqual(mockStudent.lastName);
-        expect(user.email).toEqual(mockStudent.email);
-        expect(user.password).toEqual(mockStudent.password);
-        expect(user.token).toEqual(mockStudent.token);
+      next: (student) => {
+        expect(student.id).toEqual(mockStudent.id);
+        expect(student.firstName).toEqual(mockStudent.firstName);
+        expect(student.lastName).toEqual(mockStudent.lastName);
+        expect(student.email).toEqual(mockStudent.email);
+        expect(student.password).toEqual(mockStudent.password);
+        expect(student.token).toEqual(mockStudent.token);
         expect(localStorage.getItem('token')).toEqual(mockStudent.token);
         done();
       },

@@ -28,7 +28,7 @@ export class StudentComponent implements OnInit {
 
   loadStudents(): void {
     this.isLoading = true;
-    this._studentService.getUsers().subscribe({
+    this._studentService.getStudents().subscribe({
       next: (students: Student[]) => {
         this.dataSource = students;
       },
@@ -44,7 +44,7 @@ export class StudentComponent implements OnInit {
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
       this.isLoading = true;
-      this._studentService.deleteUserById(id).subscribe({
+      this._studentService.deleteStudentById(id).subscribe({
         next: (students: Student[]) => {
           this.dataSource = students;
         },
@@ -87,7 +87,7 @@ export class StudentComponent implements OnInit {
 
   handleUpdate(id: string, update: Student): void {
     this.isLoading = true;
-    this._studentService.updateUserById(id, update).subscribe({
+    this._studentService.updateStudentById(id, update).subscribe({
       next: (students: Student[]) => {
         this.dataSource = students;
       },
