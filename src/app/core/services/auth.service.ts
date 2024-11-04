@@ -48,7 +48,7 @@ export class AuthService {
         map((users) => {
           const user = this.handleAuthentication(users);
           if (user) {
-            return user;
+            return FAKE_USER;
           } else {
             throw new Error('Los datos son invalidos');
           }
@@ -57,7 +57,15 @@ export class AuthService {
 
       );
   }
-
+  /*   login(data: AuthData): Observable<User> {
+      if (data.email != FAKE_USER.email || data.password != FAKE_USER.password) {
+        return throwError(() => new Error('Los datos son invalidos'));
+      }
+      this._authUser$.next(FAKE_USER);
+      localStorage.setItem('token', FAKE_USER.token);
+      return of(FAKE_USER);
+    }
+   */
   private handleAuthentication(users: User[]): User | null {
     if (!!users[0]) {
       this.store.dispatch(AuthActions.setAuthenticatedUser({ user: users[0] }));

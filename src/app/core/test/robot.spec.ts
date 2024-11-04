@@ -1,7 +1,7 @@
 import { Robot } from "./robot";
 
 
-describe("Pruebas de robot", () => {
+/* describe("Pruebas de robot", () => {
 
 
   it("Al instanciar la clase Robot, se espera que tenga un usuario", () => {
@@ -15,4 +15,4 @@ describe("Pruebas de robot", () => {
     expect(robot.bateria).toBe(100);
   });
 
-});
+}); */

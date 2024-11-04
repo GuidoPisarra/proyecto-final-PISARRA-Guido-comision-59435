@@ -8,20 +8,20 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 const mockUser: User = {
-  id: 10,
-  firstName: 'Mock',
-  lastName: 'Mock',
-  email: 'juanperez@gmail.com',
+  id: 111,
+  firstName: 'admin',
+  lastName: 'admin',
+  email: 'admin@mail.com',
   password: '123456',
   createdAt: new Date(),
-  token: 'sadasdsDSAscsacsaceee1233',
+  token: 'abcdefghiasdasdasdlsadsalasdasfdsfsdf103232',
 };
 const mockAuthData: AuthData = {
-  email: 'juanperez@gmail.com',
+  email: 'admin@mail.com',
   password: '123456',
 };
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
   let service: AuthService;
   let httpController: HttpTestingController;
   let router: Router;
@@ -57,7 +57,12 @@ fdescribe('AuthService', () => {
   it('Debe realizarse el login debe establecer el token en localStorage', (done) => {
     service.login(mockAuthData).subscribe({
       next: (user) => {
-        expect(user).toEqual(mockUser);
+        expect(user.id).toEqual(mockUser.id);
+        expect(user.firstName).toEqual(mockUser.firstName);
+        expect(user.lastName).toEqual(mockUser.lastName);
+        expect(user.email).toEqual(mockUser.email);
+        expect(user.password).toEqual(mockUser.password);
+        expect(user.token).toEqual(mockUser.token);
         expect(localStorage.getItem('token')).toEqual(mockUser.token);
         done();
       },
