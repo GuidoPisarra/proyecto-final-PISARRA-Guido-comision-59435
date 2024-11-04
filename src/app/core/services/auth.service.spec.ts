@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthData } from '../../features/auth/models';
-import { User } from '../../features/dashboard/users/models';
 import { MockProvider } from 'ng-mocks';
 import { NavigationExtras, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Student } from '../../features/dashboard/students/models';
 
-const mockUser: User = {
+const mockStudent: Student = {
   id: 111,
   firstName: 'admin',
   lastName: 'admin',
@@ -57,21 +57,21 @@ describe('AuthService', () => {
   it('Debe realizarse el login debe establecer el token en localStorage', (done) => {
     service.login(mockAuthData).subscribe({
       next: (user) => {
-        expect(user.id).toEqual(mockUser.id);
-        expect(user.firstName).toEqual(mockUser.firstName);
-        expect(user.lastName).toEqual(mockUser.lastName);
-        expect(user.email).toEqual(mockUser.email);
-        expect(user.password).toEqual(mockUser.password);
-        expect(user.token).toEqual(mockUser.token);
-        expect(localStorage.getItem('token')).toEqual(mockUser.token);
+        expect(user.id).toEqual(mockStudent.id);
+        expect(user.firstName).toEqual(mockStudent.firstName);
+        expect(user.lastName).toEqual(mockStudent.lastName);
+        expect(user.email).toEqual(mockStudent.email);
+        expect(user.password).toEqual(mockStudent.password);
+        expect(user.token).toEqual(mockStudent.token);
+        expect(localStorage.getItem('token')).toEqual(mockStudent.token);
         done();
       },
     });
     const mockReq = httpController.expectOne({
-      url: `${service['baseURL']}/users?email=${mockAuthData.email}&password=${mockAuthData.password}`,
+      url: `${service['baseURL']}/students?email=${mockAuthData.email}&password=${mockAuthData.password}`,
       method: 'GET',
     });
-    mockReq.flush([mockUser]);
+    mockReq.flush([mockStudent]);
   });
 
   it('Debe retornar un error al realizar un login invalido', (done) => {
@@ -84,7 +84,7 @@ describe('AuthService', () => {
     });
 
     const mockReq = httpController.expectOne({
-      url: `${service['baseURL']}/users?email=${mockAuthData.email}&password=${mockAuthData.password}`,
+      url: `${service['baseURL']}/students?email=${mockAuthData.email}&password=${mockAuthData.password}`,
       method: 'GET',
     });
 
@@ -96,16 +96,16 @@ describe('AuthService', () => {
 
     service.login(mockAuthData).subscribe();
     const mockReq = httpController.expectOne({
-      url: `${service['baseURL']}/users?email=${mockAuthData.email}&password=${mockAuthData.password}`,
+      url: `${service['baseURL']}/students?email=${mockAuthData.email}&password=${mockAuthData.password}`,
       method: 'GET',
     });
-    mockReq.flush([mockUser]);
+    mockReq.flush([mockStudent]);
 
     service.logout();
     expect(localStorage.getItem('token')).toBeNull();
-    service.authUser$.subscribe({
-      next: (user) => {
-        expect(user).toBeNull();
+    service.authStudent$.subscribe({
+      next: (student) => {
+        expect(student).toBeNull();
         done();
       },
     });

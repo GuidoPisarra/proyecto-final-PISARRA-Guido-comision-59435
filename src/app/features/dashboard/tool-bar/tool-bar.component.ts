@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../users/models';
 import { AuthService } from '../../../core/services/auth.service';
+import { Student } from '../students/models';
 
 @Component({
   selector: 'app-tool-bar',
@@ -11,10 +11,10 @@ import { AuthService } from '../../../core/services/auth.service';
 export class ToolBarComponent {
   @Output() toggle = new EventEmitter<void>();
 
-  authUser$: Observable<User | null>;
+  authStudent$: Observable<Student | null>;
 
-  constructor(private authService: AuthService) {
-    this.authUser$ = this.authService.authUser$;
+  constructor(private _authService: AuthService) {
+    this.authStudent$ = this._authService.authStudent$;
   }
   toggleSideBar() {
     this.toggle.emit();

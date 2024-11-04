@@ -5,8 +5,8 @@
   </button>
   <div class="d-flex justify-content-between align-items-center w-100 h-100">
     <span appTitleFontSize>Gestión de usuarios</span>
-    <div *ngIf="authUser$ | async; let authUser" class="h-50">
-      <p>Hola, {{ authUser.firstName }} {{ authUser.lastName }}</p>
+    <div *ngIf="authStudent$ | async; let authStudent" class="h-50">
+      <p>Hola, {{ authStudent.firstName }} {{ authStudent.lastName }}</p>
     </div>
   </div>
 

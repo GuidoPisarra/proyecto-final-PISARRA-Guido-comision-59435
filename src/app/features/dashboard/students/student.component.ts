@@ -1,36 +1,36 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { User } from './models';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../core/services/user.service';
+import { StudentsService } from '../../../core/services/students.service';
+import { Student } from './models';
+import { StudentDialogComponent } from './student-dialog/student-dialog.component';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss',
+  selector: 'app-student',
+  templateUrl: './student.component.html',
+  styleUrl: './student.component.scss',
 })
-export class UsersComponent implements OnInit {
+export class StudentComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'createdAt', 'actions'];
-  dataSource: User[] = [];
+  dataSource: Student[] = [];
   isLoading = false;
 
   constructor(
     private matDialog: MatDialog,
-    private usersService: UserService,
+    private _studentService: StudentsService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadStudents();
   }
 
-  loadUsers(): void {
+  loadStudents(): void {
     this.isLoading = true;
-    this.usersService.getUsers().subscribe({
-      next: (users: User[]) => {
-        this.dataSource = users;
+    this._studentService.getUsers().subscribe({
+      next: (students: Student[]) => {
+        this.dataSource = students;
       },
       error: () => {
         this.isLoading = false;
@@ -43,11 +43,10 @@ export class UsersComponent implements OnInit {
 
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
-      // this.dataSource = this.dataSource.filter((user) => user.id !== id);
       this.isLoading = true;
-      this.usersService.deleteUserById(id).subscribe({
-        next: (users: User[]) => {
-          this.dataSource = users;
+      this._studentService.deleteUserById(id).subscribe({
+        next: (students: Student[]) => {
+          this.dataSource = students;
         },
         error: (err: any) => {
           this.isLoading = false;
@@ -65,19 +64,19 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  openModal(editingUser?: User): void {
+  openModal(editingStudent?: Student): void {
     this.matDialog
-      .open(UserDialogComponent, {
+      .open(StudentDialogComponent, {
         data: {
-          editingUser,
+          editingStudent,
         },
       })
       .afterClosed()
       .subscribe({
         next: (result) => {
           if (!!result) {
-            if (editingUser) {
-              this.handleUpdate(editingUser.id.toString(), result);
+            if (editingStudent) {
+              this.handleUpdate(editingStudent.id.toString(), result);
             } else {
               this.dataSource = [...this.dataSource, result];
             }
@@ -86,11 +85,11 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  handleUpdate(id: string, update: User): void {
+  handleUpdate(id: string, update: Student): void {
     this.isLoading = true;
-    this.usersService.updateUserById(id, update).subscribe({
-      next: (users: User[]) => {
-        this.dataSource = users;
+    this._studentService.updateUserById(id, update).subscribe({
+      next: (students: Student[]) => {
+        this.dataSource = students;
       },
       error: (err: any) => {
         this.isLoading = false;
@@ -101,7 +100,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  protected viewDetails(user: User): void {
-    console.log(user);
+  protected viewDetails(student: Student): void {
+    console.log(student);
   }
 }

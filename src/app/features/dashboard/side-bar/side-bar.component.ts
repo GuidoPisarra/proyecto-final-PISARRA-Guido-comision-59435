@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Observable } from 'rxjs';
-import { User } from '../users/models';
+import { Student } from '../students/models';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,12 +13,12 @@ export class SideBarComponent {
   @Output() drawerStateChange = new EventEmitter<boolean>();
   showFiller = false;
 
-  authUser$: Observable<User | null>;
+  authStudent$: Observable<Student | null>;
 
   constructor(
     private _authService: AuthService
   ) {
-    this.authUser$ = this._authService.authUser$;
+    this.authStudent$ = this._authService.authStudent$;
 
   }
 
