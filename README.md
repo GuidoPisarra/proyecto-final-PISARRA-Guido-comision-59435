@@ -95,3 +95,5 @@ en app.component.ts importamos  StoreModule.forRoot(RootReducer)
 instalar en chrome extension redux devtools --> para que funcione hay que instalar en el proyecto  
 
 > ng add @ngrx/store-devtools@latest
+> ng add @ngrx/schematics -->se generan los reducers, actions y selectors de una manera mas sencilla
+> ng add @ngrx/effects@latest

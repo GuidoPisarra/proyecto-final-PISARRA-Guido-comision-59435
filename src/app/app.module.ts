@@ -8,10 +8,11 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RootReducer } from './store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot(RootReducer, {}), StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })],
+  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot(RootReducer, {}), StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }), EffectsModule.forRoot([])],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })

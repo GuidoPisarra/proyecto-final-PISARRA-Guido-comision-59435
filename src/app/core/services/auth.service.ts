@@ -45,22 +45,23 @@ export class AuthService {
         `${this.baseURL}/students?email=${data.email}&password=${data.password}`
       )
       .pipe(
+
         map((students) => {
-          console.log(students);
           const student = this.handleAuthentication(students);
-          console.log(student);
           if (student) {
-            return FAKE_STUDENT;
+            return student;
           } else {
-            throw new Error('Los datos son invalidos');
+            throw new Error('Los datos son inválidos');
           }
         }),
-        catchError(() => throwError(() => new Error('Los datos son invalidos')))
 
+        catchError(() => throwError(() => new Error('Los datos son inválidos')))
       );
   }
 
+
   private handleAuthentication(students: Student[]): Student | null {
+    console.log(students);
     if (!!students[0]) {
       this.store.dispatch(AuthActions.setAuthenticatedStudent({ student: students[0] }));
       localStorage.setItem('token', students[0].token);
