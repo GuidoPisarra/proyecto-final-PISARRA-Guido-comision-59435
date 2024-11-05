@@ -61,7 +61,6 @@ export class AuthService {
 
 
   private handleAuthentication(students: Student[]): Student | null {
-    console.log(students);
     if (!!students[0]) {
       this.store.dispatch(AuthActions.setAuthenticatedStudent({ student: students[0] }));
       localStorage.setItem('token', students[0].token);

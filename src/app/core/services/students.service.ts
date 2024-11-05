@@ -2,21 +2,26 @@ import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../../features/dashboard/students/models';
-import { STUDENTS_URL } from '../providers';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsService {
+  private baseURL = environment.baseURL;
 
   private students: Student[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private _httpClient: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(STUDENTS_URL.useValue).pipe(
-      tap((students: Student[]) => this.students = students)
-    );
+    return this._httpClient
+      .get<Student[]>(
+        `${this.baseURL}/students`
+      )
+      .pipe(
+        tap((students: Student[]) => this.students = students)
+      );
   }
 
   updateStudentById(id: string, update: Partial<Student>) {

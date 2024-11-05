@@ -97,3 +97,6 @@ instalar en chrome extension redux devtools --> para que funcione hay que instal
 > ng add @ngrx/store-devtools@latest
 > ng add @ngrx/schematics -->se generan los reducers, actions y selectors de una manera mas sencilla
 > ng add @ngrx/effects@latest
+
+# desplegar aplicacion
+> https://render.com/
