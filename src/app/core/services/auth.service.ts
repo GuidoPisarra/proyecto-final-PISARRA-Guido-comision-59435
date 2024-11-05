@@ -60,16 +60,6 @@ export class AuthService {
   }
 
 
-
-  /*   login(data: AuthData): Observable<Student> {
-      if (data.email != FAKE_STUDENT.email || data.password != FAKE_STUDENT.password) {
-        return throwError(() => new Error('Los datos son invalidos'));
-      }
-      this._authStudent$.next(FAKE_STUDENT);
-      localStorage.setItem('token', FAKE_STUDENT.token);
-      return of(FAKE_STUDENT);
-    } */
-
   private handleAuthentication(students: Student[]): Student | null {
     console.log(students);
     if (!!students[0]) {

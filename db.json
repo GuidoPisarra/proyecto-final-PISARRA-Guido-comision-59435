@@ -71,22 +71,13 @@
       "email": "krusty@krustytheclown.com"
     },
     {
-      "id": "04ac",
-      "firstName": "Guido",
-      "lastNAme": "Pisarra",
-      "email": "pisarraguido@gmail.com",
-      "role": "ADMIN",
+      "id": "111",
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "createdAt": "2024-10-28T21:56:34.217Z",
       "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232"
-    },
-    {
-      "id": "00cd",
-      "firstName": "Guido",
-      "lastNAme": "Pisarra",
-      "email": "pisarraguido@gmail.com",
-      "password": "12345",
-      "role": "ADMIN",
-      "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
-      "createdAt": "2024-10-28T21:56:34.217Z"
     }
   ]
 }

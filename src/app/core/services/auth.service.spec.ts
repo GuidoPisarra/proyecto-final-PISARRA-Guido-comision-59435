@@ -78,7 +78,7 @@ describe('AuthService', () => {
     service.login(mockAuthData).subscribe({
       error: (err) => {
         expect(err).toBeInstanceOf(Error);
-        expect(err['message']).toBe('Los datos son invalidos');
+        expect(err['message']).toBe('Los datos son inválidos');
         done();
       },
     });
@@ -90,6 +90,7 @@ describe('AuthService', () => {
 
     mockReq.flush([], { status: 401, statusText: 'Unauthorized' });
   });
+
 
   it('Logout debe remover el token de localstorage, debe desestablecer el usuario autenticado y debe redirigir a /auth/login', (done) => {
     const spyOnNavigate = spyOn(router, 'navigate');
