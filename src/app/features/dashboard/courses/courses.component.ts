@@ -41,6 +41,22 @@ export class CoursesComponent {
     });
   }
 
+  addCourse(course: Course): void {
+    this.isLoading = true;
+    console.log(course);
+    this._coursesService.addCourse(course).subscribe({
+      next: (newCourse: Course) => {
+        this.dataSource = [...this.dataSource, newCourse];
+      },
+      error: () => {
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
+
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
       this.isLoading = true;
@@ -79,6 +95,7 @@ export class CoursesComponent {
               this.handleUpdate(editingCourse.id.toString(), result);
             } else {
               this.dataSource = [...this.dataSource, result];
+              this.addCourse(result)
             }
           }
         },
