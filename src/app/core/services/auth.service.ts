@@ -18,6 +18,7 @@ const FAKE_STUDENT: Student = {
   createdAt: new Date(),
   password: '123456',
   token: 'abcdefghiasdasdasdlsadsalasdasfdsfsdf103232',
+  role: 'admin'
 };
 
 

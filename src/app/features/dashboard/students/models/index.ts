@@ -6,4 +6,5 @@ export interface Student {
   password: string;
   createdAt: Date;
   token: string;
+  role: string;
 }

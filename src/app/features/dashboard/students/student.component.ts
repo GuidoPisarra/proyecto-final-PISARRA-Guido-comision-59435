@@ -41,6 +41,22 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  addStudent(student: Student): void {
+    this.isLoading = true;
+    student.role = 'user';
+    this._studentService.addStudent(student).subscribe({
+      next: (newStudent: Student) => {
+        this.dataSource = [...this.dataSource, newStudent];
+      },
+      error: () => {
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
+
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
       this.isLoading = true;
@@ -79,6 +95,7 @@ export class StudentComponent implements OnInit {
               this.handleUpdate(editingStudent.id.toString(), result);
             } else {
               this.dataSource = [...this.dataSource, result];
+              this.addStudent(result)
             }
           }
         },
