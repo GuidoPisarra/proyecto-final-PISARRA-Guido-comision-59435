@@ -1,6 +1,6 @@
 export interface Clase {
-  courseId: number,
-  classId: number,
+  courseId: string,
+  id: string,
   title: string,
   date: string,
   duration: string

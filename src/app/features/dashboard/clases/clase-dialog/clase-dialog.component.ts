@@ -51,7 +51,7 @@ export class ClaseDialogComponent {
       this.matDialogRef.close({
         ...this.claseForm.value,
         id: this.isEditing
-          ? this.data!.editingClase!.classId
+          ? this.data!.editingClase!.id
           : generateRandomString(4),
         createdAt: this.isEditing
           ? this.data!.editingClase!.date

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, switchMap, tap } from 'rxjs';
-import { COURSES_URL } from '../providers';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../../features/dashboard/courses/models/course';
 import { environment } from '../../../environments/environment.development';
@@ -33,12 +32,17 @@ export class CoursesService {
     );
   }
 
-  updateCourseById(id: string, update: Partial<Course>) {
-    this.courses = this.courses.map(course =>
-      course.id.toString() === id ? { ...course, ...update } : course
+  updateCourseById(id: string, update: Partial<Course>): Observable<Course[]> {
+    return this._httpClient.patch<Course>(`${this.baseURL}/courses/${id}`, update).pipe(
+      tap((updatedCourse) => {
+        this.courses = this.courses.map(course =>
+          course.id.toString() === id ? { ...course, ...updatedCourse } : course
+        );
+      }),
+      switchMap(() => of(this.courses))
     );
-    return of(this.courses);
   }
+
 
   deleteCourseById(id: string): Observable<Course[]> {
     return this._httpClient.delete<void>(`${this.baseURL}/courses/${id}`).pipe(

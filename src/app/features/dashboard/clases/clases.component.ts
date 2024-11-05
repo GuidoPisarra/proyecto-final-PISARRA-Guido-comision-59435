@@ -6,7 +6,6 @@ import { Clase } from './models/clase';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
 
-
 @Component({
   selector: 'app-clases',
   templateUrl: './clases.component.html',
@@ -19,7 +18,6 @@ export class ClasesComponent implements OnInit {
   protected isLoading = true;
   protected displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
 
-
   constructor(
     private _coursesService: CoursesService,
     private _clasesService: ClasesService,
@@ -27,30 +25,61 @@ export class ClasesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadCourses();
+  }
+
+  private loadCourses(): void {
+    this.isLoading = true;
     this._coursesService.getCourses().subscribe({
       next: (courses: Course[]) => {
         this.listOfCourses = courses;
-        this.isLoading = false;
       },
       error: () => {
         this.isLoading = false;
       },
+      complete: () => {
+        this.isLoading = false;
+      }
     });
   }
 
-  protected onDelete(classId: number) {
-    if (confirm('Esta seguro?')) {
+  protected onCourseChange(event: any): void {
+    const courseId = event.value;
+    this.selectedValue = courseId;
+    this.loadClases(courseId);
+  }
+
+  private loadClases(courseId: string): void {
+    this.isLoading = true;
+    this._clasesService.getClases(courseId).subscribe({
+      next: (filteredClases: Clase[]) => {
+        this.listOfClases = filteredClases;
+      },
+      error: (err: any) => {
+        console.error('Error al obtener clases:', err);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
+    });
+  }
+
+  protected onDelete(clase: Clase): void {
+    console.log(clase);
+    if (confirm('¿Está seguro de que desea eliminar esta clase?')) {
       this.isLoading = true;
-      this._clasesService.deleteClassById(classId).subscribe({
+      this._clasesService.deleteClassById(clase.id, clase.courseId).subscribe({
         next: (clases: Clase[]) => {
           this.listOfClases = clases;
         },
         error: (err: any) => {
+          console.error('Error al eliminar la clase:', err);
           this.isLoading = false;
         },
         complete: () => {
           this.isLoading = false;
-        },
+        }
       });
     }
   }
@@ -58,49 +87,50 @@ export class ClasesComponent implements OnInit {
   protected openModal(editingClase?: Clase): void {
     this.matDialog
       .open(ClaseDialogComponent, {
-        data: {
-          editingClase,
-        },
+        data: { editingClase },
       })
       .afterClosed()
       .subscribe({
         next: (result) => {
           if (!!result) {
             if (editingClase) {
-              this.handleUpdate(editingClase.classId.toString(), result);
+              this.handleUpdate(editingClase.id.toString(), result);
             } else {
-              this.listOfClases = [...this.listOfClases, result];
+              this.addClass(result);
             }
           }
-        },
+        }
       });
   }
 
-  protected handleUpdate(id: string, update: Clase): void {
+  private addClass(newClase: Clase): void {
     this.isLoading = true;
-    this._clasesService.updateClaseById(id, update).subscribe({
-      next: (clases: Clase[]) => {
-        this.listOfClases = clases;
+    newClase.courseId = this.selectedValue;
+    this._clasesService.addClass(newClase).subscribe({
+      next: (addedClase: Clase) => {
+        this.listOfClases = [...this.listOfClases, addedClase];
       },
-      error: (err: any) => {
+      error: (err) => {
+        console.error('Error al agregar la clase:', err);
         this.isLoading = false;
       },
       complete: () => {
         this.isLoading = false;
-      },
+      }
     });
   }
 
-  protected onCourseChange(event: any) {
-    const courseId = event.value;
-    this.selectedValue = courseId;
-    this._clasesService.getClasesById(courseId).subscribe({
-      next: (filteredClases: Clase[]) => {
-        this.listOfClases = filteredClases;
+  protected handleUpdate(id: string, update: Clase): void {
+    this.isLoading = true;
+    this._clasesService.updateClassById(id, update).subscribe({
+      next: (updatedClases: Clase[]) => {
+        this.listOfClases = updatedClases;
+      },
+      error: (err: any) => {
+        console.error('Error al actualizar la clase:', err);
         this.isLoading = false;
       },
-      error: (err) => {
-        console.error('Error al obtener clases:', err);
+      complete: () => {
         this.isLoading = false;
       }
     });
@@ -109,5 +139,4 @@ export class ClasesComponent implements OnInit {
   protected viewDetails(course: Course): void {
     console.log(course);
   }
-
 }
