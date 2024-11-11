@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [DashboardComponent, ToolBarComponent, SideBarComponent],
   imports: [
@@ -18,7 +19,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     MatButtonModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
   ],
   exports: [DashboardComponent],
 })

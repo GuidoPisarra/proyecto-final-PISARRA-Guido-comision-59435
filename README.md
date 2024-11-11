@@ -100,3 +100,8 @@ instalar en chrome extension redux devtools --> para que funcione hay que instal
 
 # desplegar aplicacion
 > https://render.com/
+
+
+# effects
+
+>  ng add @ngrx/effects

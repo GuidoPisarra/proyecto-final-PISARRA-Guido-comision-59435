@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CoursesService } from '../../../core/services/courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
 
 @Component({
   selector: 'app-courses',
@@ -118,6 +119,9 @@ export class CoursesComponent {
   }
 
   protected viewDetails(course: Course): void {
-    console.log(course);
+    const dialogRef = this.matDialog.open(CourseDetailsModalComponent, {
+      width: '500px',
+      data: course
+    });
   }
 }

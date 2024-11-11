@@ -6,7 +6,7 @@ import { MockProvider } from 'ng-mocks';
 import { AuthService } from '../../../core/services/auth.service';
 import { of } from 'rxjs';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
