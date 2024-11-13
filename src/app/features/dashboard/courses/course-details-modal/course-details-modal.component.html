@@ -3,9 +3,8 @@
   <p><strong>Curso:</strong> {{ data.course }}</p>
   <p><strong>Profesor:</strong> {{ data.profesor }}</p>
   <p><strong>Comisión:</strong> {{ data.commitee }}</p>
-  <p><strong>Creado:</strong> {{ data.createdAt }}</p>
-  <p><strong>Inicio:</strong> {{ data.startDate }}</p>
-  <p><strong>Fin:</strong> {{ data.endDate }}</p>
+  <p><strong>Inicio:</strong> {{ data.startDate | date: 'dd/MM/yyyy' }}</p>
+  <p><strong>Fin:</strong> {{ data.endDate | date: 'dd/MM/yyyy' }}</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onClose()">Cerrar</button>

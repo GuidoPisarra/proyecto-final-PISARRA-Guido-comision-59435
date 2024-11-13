@@ -15,6 +15,7 @@ const mockStudent: Student = {
   password: '123456',
   createdAt: new Date(),
   token: 'abcdefghiasdasdasdlsadsalasdasfdsfsdf103232',
+  role:'admin'
 };
 const mockAuthData: AuthData = {
   email: 'admin@mail.com',

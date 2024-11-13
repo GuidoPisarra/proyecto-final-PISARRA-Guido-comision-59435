@@ -22,8 +22,6 @@ import { DashboardRoutingModule } from '../dashboard-routing.module';
     MatListModule,
     BrowserModule,
     DashboardRoutingModule
-
-
   ]
 })
 export class SideBarModule { }

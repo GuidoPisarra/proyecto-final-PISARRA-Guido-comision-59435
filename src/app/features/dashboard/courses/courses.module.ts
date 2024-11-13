@@ -5,15 +5,17 @@ import { SharedModule } from '../../../shared/shared.module';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
-  declarations: [CoursesComponent, CourseDialogComponent],
+  declarations: [CoursesComponent, CourseDialogComponent, CourseDetailsModalComponent],
   imports: [
     CommonModule,
     SharedModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    MatDialogModule
   ],
   exports: [CoursesComponent]
 })

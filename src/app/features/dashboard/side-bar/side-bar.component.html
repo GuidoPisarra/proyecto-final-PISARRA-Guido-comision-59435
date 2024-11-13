@@ -1,13 +1,25 @@
 <mat-drawer #drawer [(opened)]="isDrawerOpen" class="example-sidenav" mode="side">
   <p appTitleFontSize class="menu">Menú</p>
   <mat-nav-list>
-    <a routerLinkActive #homeLink="routerLinkActive" routerLink="home" mat-list-item (click)="toggleDrawer()">Inicio</a>
-    <a routerLinkActive #clasesLink="routerLinkActive" routerLink="clases" mat-list-item
-      (click)="toggleDrawer()">Clases</a>
-    <a routerLinkActive #coursesLink="routerLinkActive" routerLink="courses" mat-list-item
-      (click)="toggleDrawer()">Cursos</a>
-    <a routerLinkActive #studentsLink="routerLinkActive" routerLink="students" mat-list-item
-      (click)="toggleDrawer()">Alumnos</a>
-    <a (click)="logout()" mat-list-item>Cerrar sesión</a>
+    <a routerLink="home" mat-list-item (click)="toggleDrawer()">
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </a>
+    <a routerLink="clases" mat-list-item (click)="toggleDrawer()">
+      <mat-icon>work</mat-icon>
+      <span>Clases</span>
+    </a>
+    <a routerLink="courses" mat-list-item (click)="toggleDrawer()">
+      <mat-icon>book</mat-icon>
+      <span>Cursos</span>
+    </a>
+    <a routerLink="students" mat-list-item (click)="toggleDrawer()">
+      <mat-icon>group</mat-icon>
+      <span>Alumnos</span>
+    </a>
+    <a (click)="logout()" mat-list-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Cerrar sesión</span>
+    </a>
   </mat-nav-list>
 </mat-drawer>

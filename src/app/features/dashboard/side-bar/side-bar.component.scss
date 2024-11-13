@@ -8,3 +8,26 @@
 mat-drawer {
   background-color: #333333;
 }
+
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.icon-text mat-icon {
+  margin-right: 8px;
+}
+
+.example-sidenav mat-icon {
+  line-height: 1;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.example-sidenav a:hover mat-icon {
+  color: #FFA500 !important;
+}
+
+.example-sidenav a:hover span {
+  color: #FFA500 !important;
+}
