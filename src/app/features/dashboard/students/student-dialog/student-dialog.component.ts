@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { generateRandomString } from '../../../../shared/utils';
+import { generateRandomID } from '../../../../shared/utils';
 import { Student } from '../models';
 import { EmailValidator, StudentNameValidator } from '../../../../shared/utils/validators/customValidators';
 
@@ -48,7 +48,7 @@ export class StudentDialogComponent {
         ...this.studentForm.value,
         id: this.isEditing
           ? this.data!.editingStudent!.id
-          : generateRandomString(4),
+          : generateRandomID(4),
         createdAt: this.isEditing
           ? this.data!.editingStudent!.createdAt
           : new Date(),

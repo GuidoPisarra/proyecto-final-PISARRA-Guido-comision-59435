@@ -95,7 +95,6 @@ export class StudentComponent implements OnInit {
             if (editingStudent) {
               this.handleUpdate(editingStudent.id.toString(), result);
             } else {
-              this.dataSource = [...this.dataSource, result];
               this.addStudent(result)
             }
           }

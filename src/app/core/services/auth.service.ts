@@ -52,9 +52,16 @@ export class AuthService {
   }
 
   verifyToken(): Observable<boolean> {
-    const token = localStorage.getItem('token');
-    const isValid = !!token;
-    return of(isValid);
+    return this._httpClient
+      .get<Student[]>(
+        `${this.baseURL}/students?token=${localStorage.getItem('token')}`
+      )
+      .pipe(
+        map((users) => {
+          const user = this.handleAuthentication(users);
+          return !!user;
+        })
+      );
   }
 
   getUserRole(): Observable<string> {
@@ -65,8 +72,8 @@ export class AuthService {
 
   logout() {
     this.store.dispatch(AuthActions.unsetAuthenticatedStudent());
-    localStorage.removeItem('token');
     this._authStudent$.next(null);
+    localStorage.removeItem('token');
     this.router.navigate(['auth', 'login']);
   }
 }

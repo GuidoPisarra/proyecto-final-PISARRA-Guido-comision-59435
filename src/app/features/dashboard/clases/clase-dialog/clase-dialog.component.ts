@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CourseDialogComponent } from '../../courses/course-dialog/course-dialog.component';
-import { generateRandomString } from '../../../../shared/utils';
+import { generateRandomID } from '../../../../shared/utils';
 import { Clase } from '../models/clase';
 
 interface ClaseDialogData {
@@ -60,7 +60,7 @@ export class ClaseDialogComponent {
         ...this.claseForm.value,
         id: this.isEditing
           ? this.data!.editingClase!.id
-          : generateRandomString(4),
+          : generateRandomID(4),
         createdAt: this.isEditing
           ? this.data!.editingClase!.date
           : new Date(),
