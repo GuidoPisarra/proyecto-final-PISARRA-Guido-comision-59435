@@ -10,4 +10,3 @@ Por otro lado, estaría bueno implementar también el modulo de inscripciones.
 
 
 Falta implementar el guard de admin que verifica el rol de los usuarios
-El login está validando el email solamente, o la contraseña parcialmente porque pude ingresar poniendo '1234' como psw

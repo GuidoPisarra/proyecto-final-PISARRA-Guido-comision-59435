@@ -9,27 +9,11 @@ import { AuthActions } from '../../store/actions/auth.actions';
 import { Student } from '../../features/dashboard/students/models';
 import { selectAutheticatedStudent } from '../../store/selectors/auth.selector';
 
-
-const FAKE_STUDENT: Student = {
-  email: 'admin@mail.com',
-  firstName: 'admin',
-  lastName: 'admin',
-  id: 111,
-  createdAt: new Date(),
-  password: '123456',
-  token: 'abcdefghiasdasdasdlsadsalasdasfdsfsdf103232',
-  role: 'admin'
-};
-
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private _authStudent$ = new BehaviorSubject<null | Student>(null);
-
   public authStudent$ = this._authStudent$.asObservable();
-
   private baseURL = environment.baseURL;
-
 
   constructor(
     private router: Router,
@@ -37,7 +21,6 @@ export class AuthService {
     private store: Store
   ) {
     this.authStudent$ = this.store.select(selectAutheticatedStudent);
-
   }
 
   login(data: AuthData): Observable<Student> {
@@ -46,7 +29,6 @@ export class AuthService {
         `${this.baseURL}/students?email=${data.email}&password=${data.password}`
       )
       .pipe(
-
         map((students) => {
           const student = this.handleAuthentication(students);
           if (student) {
@@ -55,38 +37,36 @@ export class AuthService {
             throw new Error('Los datos son inválidos');
           }
         }),
-
         catchError(() => throwError(() => new Error('Los datos son inválidos')))
       );
   }
 
-
   private handleAuthentication(students: Student[]): Student | null {
-    if (!!students[0]) {
-      this.store.dispatch(AuthActions.setAuthenticatedStudent({ student: students[0] }));
-      localStorage.setItem('token', students[0].token);
-      return students[0];
-    } else {
-      return null;
+    if (students.length > 0) {
+      const student = students[0];
+      this.store.dispatch(AuthActions.setAuthenticatedStudent({ student }));
+      localStorage.setItem('token', student.token);
+      return student;
     }
+    return null;
   }
 
   verifyToken(): Observable<boolean> {
-    const isValid = localStorage.getItem('token') === FAKE_STUDENT.token;
-    if (isValid) {
-      this._authStudent$.next(FAKE_STUDENT);
-    } else {
-      this._authStudent$.next(null);
-    }
+    const token = localStorage.getItem('token');
+    const isValid = !!token;
     return of(isValid);
   }
 
+  getUserRole(): Observable<string> {
+    return this.authStudent$.pipe(
+      map((student) => student?.role || 'user')
+    );
+  }
 
   logout() {
     this.store.dispatch(AuthActions.unsetAuthenticatedStudent());
     localStorage.removeItem('token');
-    this.authStudent$ = of(null);
+    this._authStudent$.next(null);
     this.router.navigate(['auth', 'login']);
   }
-
 }

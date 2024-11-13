@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../../../core/services/students.service';
 import { Student } from './models';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
-import { StudentDetailModalComponent } from './student-detail-modal/student-detail-modal.component';
+import { StudentDetailModalComponent } from '../../../student-detail-modal/student-detail-modal.component';
 
 @Component({
   selector: 'app-student',

@@ -5,7 +5,7 @@ import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
-import { ClasesDetailsModalComponent } from './clases-details-modal/clases-details-modal.component';
+import { ClasesDetailsModalComponent } from '../../../clases-details-modal/clases-details-modal.component';
 
 @Component({
   selector: 'app-clases',
