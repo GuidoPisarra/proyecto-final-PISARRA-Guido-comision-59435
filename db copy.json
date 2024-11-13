@@ -1,0 +1,909 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Homero",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "homer.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_1",
+      "role": "user"
+    },
+    {
+      "id": "2",
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "marge.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_2",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "bart.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_3",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "lisa.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_4",
+      "role": "user"
+    },
+    {
+      "id": "5",
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "maggie.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_5",
+      "role": "user"
+    },
+    {
+      "id": "6",
+      "firstName": "Apu",
+      "lastName": "Nahasapeemapetilon",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "apu@kwikemart.com",
+      "password": "password123",
+      "token": "token_6",
+      "role": "user"
+    },
+    {
+      "id": "7",
+      "firstName": "Ned",
+      "lastName": "Flanders",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "ned.flanders@gmail.com",
+      "password": "password123",
+      "token": "token_7",
+      "role": "user"
+    },
+    {
+      "id": "8",
+      "firstName": "Montgomery",
+      "lastName": "Burns",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "monty.burns@burnscorp.com",
+      "password": "password123",
+      "token": "token_8",
+      "role": "user"
+    },
+    {
+      "id": "9",
+      "firstName": "Moe",
+      "lastName": "Szyslak",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "moe.szyslak@moestavern.com",
+      "password": "password123",
+      "token": "token_9",
+      "role": "user"
+    },
+    {
+      "id": "10",
+      "firstName": "Krusty",
+      "lastName": "The Clown",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "krusty@krustytheclown.com",
+      "password": "password123",
+      "token": "token_10",
+      "role": "user"
+    },
+    {
+      "id": "111",
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "createdAt": "2024-10-28T21:56:34.217Z",
+      "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
+      "role": "admin"
+    }
+  ],
+  "clases": [
+    {
+      "courseId": 1,
+      "title": "Introducción a HTML",
+      "date": "2024-10-04T12:00:00Z",
+      "duration": "2h",
+      "id": "4c67"
+    },
+    {
+      "courseId": 1,
+      "title": "Estructura básica de un documento HTML",
+      "date": "2024-10-06T12:00:00Z",
+      "duration": "2h",
+      "id": "dd2d"
+    },
+    {
+      "courseId": 1,
+      "title": "Etiquetas y atributos",
+      "date": "2024-10-08T12:00:00Z",
+      "duration": "2h",
+      "id": "e798"
+    },
+    {
+      "courseId": 1,
+      "title": "Listas y enlaces",
+      "date": "2024-10-10T12:00:00Z",
+      "duration": "2h",
+      "id": "eb0c"
+    },
+    {
+      "courseId": 1,
+      "title": "Imágenes en HTML",
+      "date": "2024-10-12T12:00:00Z",
+      "duration": "2h",
+      "id": "865d"
+    },
+    {
+      "courseId": 1,
+      "title": "Tablas",
+      "date": "2024-10-14T12:00:00Z",
+      "duration": "2h",
+      "id": "4539"
+    },
+    {
+      "courseId": 1,
+      "title": "Formularios",
+      "date": "2024-10-16T12:00:00Z",
+      "duration": "2h",
+      "id": "1cf0"
+    },
+    {
+      "courseId": 1,
+      "title": "Multimedia",
+      "date": "2024-10-18T12:00:00Z",
+      "duration": "2h",
+      "id": "3119"
+    },
+    {
+      "courseId": 1,
+      "title": "SEO básico",
+      "date": "2024-10-20T12:00:00Z",
+      "duration": "2h",
+      "id": "65df"
+    },
+    {
+      "courseId": 1,
+      "title": "Práctica final",
+      "date": "2024-10-22",
+      "duration": "3h",
+      "id": "e9e6",
+      "createdAt": "2024-10-22"
+    },
+    {
+      "courseId": 2,
+      "title": "Introducción a CSS",
+      "date": "2024-10-11T09:30:00Z",
+      "duration": "2h",
+      "id": "447d"
+    },
+    {
+      "courseId": 2,
+      "title": "Selectores en CSS",
+      "date": "2024-10-13T09:30:00Z",
+      "duration": "2h",
+      "id": "1f68"
+    },
+    {
+      "courseId": 2,
+      "title": "Propiedades y valores",
+      "date": "2024-10-15T09:30:00Z",
+      "duration": "2h",
+      "id": "50f0"
+    },
+    {
+      "courseId": 2,
+      "title": "Estilos para texto",
+      "date": "2024-10-17T09:30:00Z",
+      "duration": "2h",
+      "id": "507f"
+    },
+    {
+      "courseId": 2,
+      "title": "Estilos para cajas",
+      "date": "2024-10-19T09:30:00Z",
+      "duration": "2h",
+      "id": "dd0a"
+    },
+    {
+      "courseId": 2,
+      "title": "Modelo de caja",
+      "date": "2024-10-21T09:30:00Z",
+      "duration": "2h",
+      "id": "9730"
+    },
+    {
+      "courseId": 2,
+      "title": "Posicionamiento",
+      "date": "2024-10-23T09:30:00Z",
+      "duration": "2h",
+      "id": "58fb"
+    },
+    {
+      "courseId": 2,
+      "title": "Diseño responsivo",
+      "date": "2024-10-25T09:30:00Z",
+      "duration": "2h",
+      "id": "1227"
+    },
+    {
+      "courseId": 2,
+      "title": "Flexbox",
+      "date": "2024-10-27T09:30:00Z",
+      "duration": "2h",
+      "id": "52d4"
+    },
+    {
+      "courseId": 2,
+      "title": "CSS Grid",
+      "date": "2024-10-29T09:30:00Z",
+      "duration": "2h",
+      "id": "1266"
+    },
+    {
+      "courseId": 3,
+      "title": "Introducción a JavaScript",
+      "date": "2024-10-02T14:00:00Z",
+      "duration": "2h",
+      "id": "2445"
+    },
+    {
+      "courseId": 3,
+      "title": "Tipos de datos y operadores",
+      "date": "2024-10-04T14:00:00Z",
+      "duration": "2h",
+      "id": "0b46"
+    },
+    {
+      "courseId": 3,
+      "title": "Condicionales y bucles",
+      "date": "2024-10-06T14:00:00Z",
+      "duration": "2h",
+      "id": "dc0c"
+    },
+    {
+      "courseId": 3,
+      "title": "Funciones",
+      "date": "2024-10-08T14:00:00Z",
+      "duration": "2h",
+      "id": "06b5"
+    },
+    {
+      "courseId": 3,
+      "title": "Objetos y arrays",
+      "date": "2024-10-10T14:00:00Z",
+      "duration": "2h",
+      "id": "a267"
+    },
+    {
+      "courseId": 3,
+      "title": "Eventos",
+      "date": "2024-10-12T14:00:00Z",
+      "duration": "2h",
+      "id": "c68b"
+    },
+    {
+      "courseId": 3,
+      "title": "DOM y manipulación",
+      "date": "2024-10-14T14:00:00Z",
+      "duration": "2h",
+      "id": "9f0f"
+    },
+    {
+      "courseId": 3,
+      "title": "Funciones avanzadas",
+      "date": "2024-10-16T14:00:00Z",
+      "duration": "2h",
+      "id": "742c"
+    },
+    {
+      "courseId": 3,
+      "title": "Promesas y asincronía",
+      "date": "2024-10-18T14:00:00Z",
+      "duration": "2h",
+      "id": "9001"
+    },
+    {
+      "courseId": 3,
+      "title": "Práctica final JavaScript",
+      "date": "2024-10-20T14:00:00Z",
+      "duration": "3h",
+      "id": "5dc0"
+    },
+    {
+      "courseId": 4,
+      "title": "Introducción a Python",
+      "date": "2024-09-16T11:45:00Z",
+      "duration": "2h",
+      "id": "d24d"
+    },
+    {
+      "courseId": 4,
+      "title": "Variables y tipos de datos",
+      "date": "2024-09-18T11:45:00Z",
+      "duration": "2h",
+      "id": "25df"
+    },
+    {
+      "courseId": 4,
+      "title": "Estructuras de control",
+      "date": "2024-09-20T11:45:00Z",
+      "duration": "2h",
+      "id": "412c"
+    },
+    {
+      "courseId": 4,
+      "title": "Funciones en Python",
+      "date": "2024-09-22T11:45:00Z",
+      "duration": "2h",
+      "id": "644e"
+    },
+    {
+      "courseId": 4,
+      "title": "Listas y tuplas",
+      "date": "2024-09-24T11:45:00Z",
+      "duration": "2h",
+      "id": "8795"
+    },
+    {
+      "courseId": 4,
+      "title": "Diccionarios y conjuntos",
+      "date": "2024-09-26T11:45:00Z",
+      "duration": "2h",
+      "id": "d972"
+    },
+    {
+      "courseId": 4,
+      "title": "Manejo de archivos",
+      "date": "2024-09-28T11:45:00Z",
+      "duration": "2h",
+      "id": "de63"
+    },
+    {
+      "courseId": 4,
+      "title": "Programación orientada a objetos",
+      "date": "2024-09-30T11:45:00Z",
+      "duration": "2h",
+      "id": "2ab1"
+    },
+    {
+      "courseId": 4,
+      "title": "Módulos y paquetes",
+      "date": "2024-10-02T11:45:00Z",
+      "duration": "2h",
+      "id": "46ce"
+    },
+    {
+      "courseId": 4,
+      "title": "Práctica final en Python",
+      "date": "2024-10-04T11:45:00Z",
+      "duration": "3h",
+      "id": "790d"
+    },
+    {
+      "courseId": 5,
+      "title": "Introducción a Django",
+      "date": "2024-10-15T16:30:00Z",
+      "duration": "2h",
+      "id": "2829"
+    },
+    {
+      "courseId": 5,
+      "title": "Configuración del entorno",
+      "date": "2024-10-17T16:30:00Z",
+      "duration": "2h",
+      "id": "8dcb"
+    },
+    {
+      "courseId": 5,
+      "title": "Modelos y bases de datos",
+      "date": "2024-10-20T16:30:00Z",
+      "duration": "2h",
+      "id": "8d71"
+    },
+    {
+      "courseId": 5,
+      "title": "Vistas y URL routing",
+      "date": "2024-10-22T16:30:00Z",
+      "duration": "2h",
+      "id": "191f"
+    },
+    {
+      "courseId": 5,
+      "title": "Templates y formularios",
+      "date": "2024-10-25T16:30:00Z",
+      "duration": "2h",
+      "id": "c8c8"
+    },
+    {
+      "courseId": 5,
+      "title": "Autenticación de usuarios",
+      "date": "2024-10-27T16:30:00Z",
+      "duration": "2h",
+      "id": "f11d"
+    },
+    {
+      "courseId": 5,
+      "title": "Pruebas unitarias",
+      "date": "2024-10-30T16:30:00Z",
+      "duration": "2h",
+      "id": "f2b1"
+    },
+    {
+      "courseId": 5,
+      "title": "Implementación de REST API",
+      "date": "2024-11-02T16:30:00Z",
+      "duration": "2h",
+      "id": "f876"
+    },
+    {
+      "courseId": 5,
+      "title": "Despliegue en producción",
+      "date": "2024-11-05T16:30:00Z",
+      "duration": "3h",
+      "id": "7501"
+    },
+    {
+      "courseId": 5,
+      "title": "Proyecto final",
+      "date": "2024-11-08T16:30:00Z",
+      "duration": "3h",
+      "id": "c174"
+    },
+    {
+      "courseId": 6,
+      "title": "Introducción a Node.js",
+      "date": "2024-08-01T13:20:00Z",
+      "duration": "2h",
+      "id": "2cda"
+    },
+    {
+      "courseId": 6,
+      "title": "Manejo de paquetes con npm",
+      "date": "2024-08-03T13:20:00Z",
+      "duration": "2h",
+      "id": "1315"
+    },
+    {
+      "courseId": 6,
+      "title": "Módulos y require",
+      "date": "2024-08-06T13:20:00Z",
+      "duration": "2h",
+      "id": "6cbe"
+    },
+    {
+      "courseId": 6,
+      "title": "Express y routing",
+      "date": "2024-08-08T13:20:00Z",
+      "duration": "2h",
+      "id": "023f"
+    },
+    {
+      "courseId": 6,
+      "title": "Bases de datos y MongoDB",
+      "date": "2024-08-11T13:20:00Z",
+      "duration": "2h",
+      "id": "fa5f"
+    },
+    {
+      "courseId": 6,
+      "title": "Autenticación y JWT",
+      "date": "2024-08-13T13:20:00Z",
+      "duration": "2h",
+      "id": "b795"
+    },
+    {
+      "courseId": 6,
+      "title": "Sockets y WebSockets",
+      "date": "2024-08-16T13:20:00Z",
+      "duration": "2h",
+      "id": "bbc2"
+    },
+    {
+      "courseId": 6,
+      "title": "Pruebas con Mocha",
+      "date": "2024-08-18T13:20:00Z",
+      "duration": "2h",
+      "id": "9ed5"
+    },
+    {
+      "courseId": 6,
+      "title": "Despliegue en servidores",
+      "date": "2024-08-21T13:20:00Z",
+      "duration": "3h",
+      "id": "7cf5"
+    },
+    {
+      "courseId": 6,
+      "title": "Proyecto final",
+      "date": "2024-08-24T13:20:00Z",
+      "duration": "3h",
+      "id": "c27d"
+    },
+    {
+      "courseId": 7,
+      "title": "Introducción a React",
+      "date": "2024-09-20T10:00:00Z",
+      "duration": "2h",
+      "id": "203f"
+    },
+    {
+      "courseId": 7,
+      "title": "Componentes y JSX",
+      "date": "2024-09-22T10:00:00Z",
+      "duration": "2h",
+      "id": "7553"
+    },
+    {
+      "courseId": 7,
+      "title": "Hooks y estado",
+      "date": "2024-09-25T10:00:00Z",
+      "duration": "2h",
+      "id": "1f42"
+    },
+    {
+      "courseId": 7,
+      "title": "Routing en React",
+      "date": "2024-09-27T10:00:00Z",
+      "duration": "2h",
+      "id": "a766"
+    },
+    {
+      "courseId": 7,
+      "title": "Consumo de APIs",
+      "date": "2024-09-30T10:00:00Z",
+      "duration": "2h",
+      "id": "f4f3"
+    },
+    {
+      "courseId": 7,
+      "title": "Manejo del estado global",
+      "date": "2024-10-02T10:00:00Z",
+      "duration": "2h",
+      "id": "1057"
+    },
+    {
+      "courseId": 7,
+      "title": "Pruebas unitarias con Jest",
+      "date": "2024-10-05T10:00:00Z",
+      "duration": "2h",
+      "id": "7247"
+    },
+    {
+      "courseId": 7,
+      "title": "React y TypeScript",
+      "date": "2024-10-07T10:00:00Z",
+      "duration": "2h",
+      "id": "4a02"
+    },
+    {
+      "courseId": 7,
+      "title": "Despliegue en producción",
+      "date": "2024-10-10T10:00:00Z",
+      "duration": "3h",
+      "id": "01f3"
+    },
+    {
+      "courseId": 7,
+      "title": "Proyecto final",
+      "date": "2024-10-12T10:00:00Z",
+      "duration": "3h",
+      "id": "3e8b"
+    },
+    {
+      "courseId": 8,
+      "title": "Introducción a Angular",
+      "date": "2024-06-20T08:00:00Z",
+      "duration": "2h",
+      "id": "94ce"
+    },
+    {
+      "courseId": 8,
+      "title": "Componentes y módulos",
+      "date": "2024-06-22T08:00:00Z",
+      "duration": "2h",
+      "id": "3e37"
+    },
+    {
+      "courseId": 8,
+      "title": "Directivas y pipes",
+      "date": "2024-06-25T08:00:00Z",
+      "duration": "2h",
+      "id": "759a"
+    },
+    {
+      "courseId": 8,
+      "title": "Inyección de dependencias",
+      "date": "2024-06-27T08:00:00Z",
+      "duration": "2h",
+      "id": "d484"
+    },
+    {
+      "courseId": 8,
+      "title": "Servicios y HTTP",
+      "date": "2024-06-30T08:00:00Z",
+      "duration": "2h",
+      "id": "08c8"
+    },
+    {
+      "courseId": 8,
+      "title": "Enrutamiento en Angular",
+      "date": "2024-07-02T08:00:00Z",
+      "duration": "2h",
+      "id": "967f"
+    },
+    {
+      "courseId": 8,
+      "title": "Pruebas unitarias con Jasmine",
+      "date": "2024-07-05T08:00:00Z",
+      "duration": "2h",
+      "id": "73a1"
+    },
+    {
+      "courseId": 8,
+      "title": "Angular y TypeScript",
+      "date": "2024-07-07T08:00:00Z",
+      "duration": "2h",
+      "id": "63c9"
+    },
+    {
+      "courseId": 8,
+      "title": "Despliegue en producción",
+      "date": "2024-07-10T08:00:00Z",
+      "duration": "3h",
+      "id": "bc41"
+    },
+    {
+      "courseId": 8,
+      "title": "Proyecto final",
+      "date": "2024-07-13T08:00:00Z",
+      "duration": "3h",
+      "id": "b05a"
+    },
+    {
+      "courseId": 9,
+      "title": "Introducción a Vue.js",
+      "date": "2024-09-10T15:45:00Z",
+      "duration": "2h",
+      "id": "e63d"
+    },
+    {
+      "courseId": 9,
+      "title": "Componentes y templates",
+      "date": "2024-09-13T15:45:00Z",
+      "duration": "2h",
+      "id": "96cf"
+    },
+    {
+      "courseId": 9,
+      "title": "Directivas y eventos",
+      "date": "2024-09-17T15:45:00Z",
+      "duration": "2h",
+      "id": "7d9b"
+    },
+    {
+      "courseId": 9,
+      "title": "Manejo de estado con Vuex",
+      "date": "2024-09-20T15:45:00Z",
+      "duration": "2h",
+      "id": "b08b"
+    },
+    {
+      "courseId": 9,
+      "title": "Routing con Vue Router",
+      "date": "2024-09-24T15:45:00Z",
+      "duration": "2h",
+      "id": "30a8"
+    },
+    {
+      "courseId": 9,
+      "title": "Consumo de APIs",
+      "date": "2024-09-27T15:45:00Z",
+      "duration": "2h",
+      "id": "0ec1"
+    },
+    {
+      "courseId": 9,
+      "title": "Pruebas unitarias en Vue.js",
+      "date": "2024-10-01T15:45:00Z",
+      "duration": "2h",
+      "id": "83ff"
+    },
+    {
+      "courseId": 9,
+      "title": "Optimización del rendimiento",
+      "date": "2024-10-04T15:45:00Z",
+      "duration": "2h",
+      "id": "5a90"
+    },
+    {
+      "courseId": 9,
+      "title": "Despliegue de aplicaciones Vue",
+      "date": "2024-10-08T15:45:00Z",
+      "duration": "3h",
+      "id": "366c"
+    },
+    {
+      "courseId": 9,
+      "title": "Proyecto final",
+      "date": "2024-10-12T15:45:00Z",
+      "duration": "3h",
+      "id": "1898"
+    },
+    {
+      "courseId": 10,
+      "title": "Introducción a TypeScript",
+      "date": "2024-08-01T17:15:00Z",
+      "duration": "2h",
+      "id": "11d9"
+    },
+    {
+      "courseId": 10,
+      "title": "Tipos básicos en TypeScript",
+      "date": "2024-08-04T17:15:00Z",
+      "duration": "2h",
+      "id": "b0dc"
+    },
+    {
+      "courseId": 10,
+      "title": "Interfaces y clases",
+      "date": "2024-08-08T17:15:00Z",
+      "duration": "2h",
+      "id": "cf9a"
+    },
+    {
+      "courseId": 10,
+      "title": "Tipos avanzados",
+      "date": "2024-08-11T17:15:00Z",
+      "duration": "2h",
+      "id": "28c6"
+    },
+    {
+      "courseId": 10,
+      "title": "Decoradores y metadata",
+      "date": "2024-08-15T17:15:00Z",
+      "duration": "2h",
+      "id": "d80a"
+    },
+    {
+      "courseId": 10,
+      "title": "Módulos y namespaces",
+      "date": "2024-08-18T17:15:00Z",
+      "duration": "2h",
+      "id": "58ac"
+    },
+    {
+      "courseId": 10,
+      "title": "TypeScript y React",
+      "date": "2024-08-22T17:15:00Z",
+      "duration": "2h",
+      "id": "f327"
+    },
+    {
+      "courseId": 10,
+      "title": "Pruebas con TypeScript",
+      "date": "2024-08-25T17:15:00Z",
+      "duration": "2h",
+      "id": "b3e9"
+    },
+    {
+      "courseId": 10,
+      "title": "Compilación y bundling",
+      "date": "2024-08-29T17:15:00Z",
+      "duration": "3h",
+      "id": "60bd"
+    },
+    {
+      "courseId": 10,
+      "title": "Proyecto final",
+      "date": "2024-09-02T17:15:00Z",
+      "duration": "3h",
+      "id": "d856"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "profesor": "Juan Gomez",
+      "commitee": "01html2024",
+      "course": "HTML",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "startDate": "2024-09-30T12:00:00Z",
+      "endDate": "2024-10-10T12:00:00Z"
+    },
+    {
+      "id": "2",
+      "profesor": "Maria Perez",
+      "commitee": "01css2024",
+      "course": "CSS",
+      "createdAt": "2024-10-04T09:30:00Z",
+      "startDate": "2024-10-05T09:30:00Z",
+      "endDate": "2024-10-20T09:30:00Z"
+    },
+    {
+      "id": "3",
+      "profesor": "Carlos Rodriguez",
+      "commitee": "01js2024",
+      "course": "JavaScript",
+      "createdAt": "2024-09-12T14:00:00Z",
+      "startDate": "2024-09-25T14:00:00Z",
+      "endDate": "2024-10-25T14:00:00Z"
+    },
+    {
+      "id": "4",
+      "profesor": "Ana Martinez",
+      "commitee": "01python2024",
+      "course": "Python",
+      "createdAt": "2024-08-22T11:45:00Z",
+      "startDate": "2024-09-01T11:45:00Z",
+      "endDate": "2024-10-01T11:45:00Z"
+    },
+    {
+      "id": "5",
+      "profesor": "Luis Hernandez",
+      "commitee": "01django2024",
+      "course": "Django",
+      "createdAt": "2024-10-02T16:30:00Z",
+      "startDate": "2024-10-05T16:30:00Z",
+      "endDate": "2024-10-20T16:30:00Z"
+    },
+    {
+      "id": "6",
+      "profesor": "Laura Garcia",
+      "commitee": "01nodejs2024",
+      "course": "Node.js",
+      "createdAt": "2024-07-19T13:20:00Z",
+      "startDate": "2024-07-25T13:20:00Z",
+      "endDate": "2024-08-15T13:20:00Z"
+    },
+    {
+      "id": "7",
+      "profesor": "Sergio Lopez",
+      "commitee": "01react2024",
+      "course": "React",
+      "createdAt": "2024-09-08T10:00:00Z",
+      "startDate": "2024-09-15T10:00:00Z",
+      "endDate": "2024-10-15T10:00:00Z"
+    },
+    {
+      "id": "8",
+      "profesor": "Patricia Gonzalez",
+      "commitee": "01angular2024",
+      "course": "Angular",
+      "createdAt": "2024-06-05T08:00:00Z",
+      "startDate": "2024-06-10T08:00:00Z",
+      "endDate": "2024-07-10T08:00:00Z"
+    },
+    {
+      "id": "9",
+      "profesor": "Roberto Sanchez",
+      "commitee": "01vue2024",
+      "course": "Vue.js",
+      "createdAt": "2024-08-30T15:45:00Z",
+      "startDate": "2024-09-01T15:45:00Z",
+      "endDate": "2024-09-20T15:45:00Z"
+    },
+    {
+      "id": "10",
+      "profesor": "Elena Morales",
+      "commitee": "01typescript2024",
+      "course": "TypeScript",
+      "createdAt": "2024-07-25T17:15:00Z",
+      "startDate": "2024-07-30",
+      "endDate": "2024-08-15"
+    }
+  ]
+}

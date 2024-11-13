@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Alumno</h2>
+<div mat-dialog-content>
+  <p><strong>Nombre y apellido:</strong> {{ data | studentFullName:'uppercase' }}</p>
+  <p><strong>Email:</strong> {{ data.email }}</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cerrar</button>
+</div>

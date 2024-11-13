@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../../../core/services/students.service';
 import { Student } from './models';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
+import { StudentDetailModalComponent } from './student-detail-modal/student-detail-modal.component';
 
 @Component({
   selector: 'app-student',
@@ -118,6 +119,9 @@ export class StudentComponent implements OnInit {
   }
 
   protected viewDetails(student: Student): void {
-    console.log(student);
+    const dialogRef = this.matDialog.open(StudentDetailModalComponent, {
+      width: '500px',
+      data: student
+    });
   }
 }

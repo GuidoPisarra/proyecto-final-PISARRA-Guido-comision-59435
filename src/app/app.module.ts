@@ -9,7 +9,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RootReducer } from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { CourseDetailsModalComponent } from './features/dashboard/courses/course-details-modal/course-details-modal.component';
 
 @NgModule({
   declarations: [AppComponent],

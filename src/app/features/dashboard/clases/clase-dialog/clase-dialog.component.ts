@@ -15,6 +15,14 @@ interface ClaseDialogData {
 })
 export class ClaseDialogComponent {
   claseForm: FormGroup;
+  durationOptions = [
+    { value: '30 min.', label: '30 minutos' },
+    { value: '1 h', label: '1 hora' },
+    { value: '1 h 30 min.', label: '1 hora 30 minutos' },
+    { value: '2 hs', label: '2 horas' },
+    { value: '2 hs 30 min.', label: '2 horas 30 minutos' },
+    { value: '3 hs', label: '3 horas' }
+  ];
 
   constructor(
     private matDialogRef: MatDialogRef<CourseDialogComponent>,

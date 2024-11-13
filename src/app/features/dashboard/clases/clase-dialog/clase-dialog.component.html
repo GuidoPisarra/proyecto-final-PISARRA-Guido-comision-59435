@@ -29,10 +29,13 @@
       <div class="col-6">
         <mat-form-field class="example-form-field w-100">
           <mat-label>Duración</mat-label>
-          <input formControlName="duration" matInput type="text" />
+          <mat-select formControlName="duration">
+            <mat-option *ngFor="let duration of durationOptions" [value]="duration.value">
+              {{ duration.label }}
+            </mat-option>
+          </mat-select>
           <mat-error>
-            @if(claseForm.get('duration')?.hasError('required')) { Este campo es
-            requerido }
+            <span *ngIf="claseForm.get('duration')?.hasError('required')">Este campo es requerido</span>
           </mat-error>
         </mat-form-field>
       </div>

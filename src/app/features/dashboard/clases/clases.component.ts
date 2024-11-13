@@ -5,6 +5,7 @@ import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
+import { ClasesDetailsModalComponent } from './clases-details-modal/clases-details-modal.component';
 
 @Component({
   selector: 'app-clases',
@@ -66,7 +67,6 @@ export class ClasesComponent implements OnInit {
   }
 
   protected onDelete(clase: Clase): void {
-    console.log(clase);
     if (confirm('¿Está seguro de que desea eliminar esta clase?')) {
       this.isLoading = true;
       this._clasesService.deleteClassById(clase.id, clase.courseId).subscribe({
@@ -136,7 +136,10 @@ export class ClasesComponent implements OnInit {
     });
   }
 
-  protected viewDetails(course: Course): void {
-    console.log(course);
+  protected viewDetails(clase: Clase): void {
+    const dialogRef = this.matDialog.open(ClasesDetailsModalComponent, {
+      width: '500px',
+      data: clase
+    });
   }
 }

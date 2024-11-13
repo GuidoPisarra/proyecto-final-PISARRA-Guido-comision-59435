@@ -43,15 +43,13 @@ export class ClasesService {
 
 
   deleteClassById(id: string, courseId: string): Observable<Clase[]> {
-    console.log(id);
-    console.log(courseId);
     return this._httpClient.delete<void>(`${this.baseURL}/clases/${id}?courseId=${courseId}`).pipe(
-      tap(() => {
-        this.clases = this.clases.filter((clase) =>
-          clase.id.toString() !== id || clase.courseId.toString() !== courseId
+      switchMap(() => {
+        this.clases = this.clases.filter(clase =>
+          clase.id !== id || clase.courseId !== courseId
         );
-      }),
-      switchMap(() => of(this.clases))
+        return of(this.clases);
+      })
     );
   }
 
