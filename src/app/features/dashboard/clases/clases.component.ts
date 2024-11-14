@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
 import { ClasesDetailsModalComponent } from './clases-details-modal/clases-details-modal.component';
 import { AlertService } from '../../../core/services/alert.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-clases',
@@ -18,14 +19,20 @@ export class ClasesComponent implements OnInit {
   protected listOfCourses: Course[] = [];
   protected listOfClases: Clase[] = [];
   protected isLoading = true;
+  protected isAdmin = true;
   protected displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
 
   constructor(
     private _coursesService: CoursesService,
     private _clasesService: ClasesService,
     private _alertService: AlertService,
+    private _authService: AuthService,
     private matDialog: MatDialog
-  ) { }
+  ) {
+    this._authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
+  }
 
   ngOnInit() {
     this.loadCourses();

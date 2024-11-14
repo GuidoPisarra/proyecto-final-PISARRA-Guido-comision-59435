@@ -36,10 +36,10 @@
         <button mat-icon-button (click)="viewDetails(clase)">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-icon-button (click)="openModal(clase)">
+        <button *ngIf="isAdmin" mat-icon-button (click)="openModal(clase)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button (click)="onDelete(clase)">
+        <button *ngIf="isAdmin" mat-icon-button (click)="onDelete(clase)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

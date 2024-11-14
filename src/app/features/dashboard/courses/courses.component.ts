@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
 import { AlertService } from '../../../core/services/alert.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-courses',
@@ -16,14 +17,20 @@ export class CoursesComponent {
   displayedColumns: string[] = ['profesor', 'commitee', 'course', 'createdAt', 'startDate', 'endDate', 'actions'];
   dataSource: Course[] = [];
   isLoading = false;
+  isAdmin = false;
 
   constructor(
     private _coursesService: CoursesService,
     private _alertService: AlertService,
+    private _authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private matDialog: MatDialog
-  ) { }
+  ) {
+    this._authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
+  }
 
   ngOnInit(): void {
     this.loadCourses();

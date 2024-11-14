@@ -11,15 +11,16 @@ import { Student } from '../students/models';
 export class SideBarComponent {
   @Input() isDrawerOpen = false;
   @Output() drawerStateChange = new EventEmitter<boolean>();
-  showFiller = false;
 
   authStudent$: Observable<Student | null>;
-
+  isAdmin: boolean = false;
   constructor(
     private _authService: AuthService
   ) {
     this.authStudent$ = this._authService.authStudent$;
-
+    this._authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
   }
 
   toggleDrawer() {

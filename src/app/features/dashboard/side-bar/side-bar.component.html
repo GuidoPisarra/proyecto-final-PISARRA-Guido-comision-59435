@@ -17,7 +17,7 @@
       <mat-icon>group</mat-icon>
       <span>Alumnos</span>
     </a>
-    <a routerLink="users" mat-list-item (click)="toggleDrawer()">
+    <a *ngIf="isAdmin" routerLink="users" mat-list-item (click)="toggleDrawer()">
       <mat-icon>group</mat-icon>
       <span>Usuarios</span>
     </a>

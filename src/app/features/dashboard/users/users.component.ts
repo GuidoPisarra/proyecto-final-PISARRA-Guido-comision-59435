@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../students/models';
 import { StudentDetailModalComponent } from '../students/student-detail-modal/student-detail-modal.component';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -16,15 +17,21 @@ export class UsersComponent {
   displayedColumns: string[] = ['name', 'email', 'createdAt', 'actions'];
   dataSource: Student[] = [];
   isLoading = false;
+  isAdmin = false;
 
   constructor(
     private matDialog: MatDialog,
     private _studentService: StudentsService,
     private _alertService: AlertService,
+    private _authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute
 
-  ) { }
+  ) {
+    this._authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
+  }
 
   ngOnInit(): void {
     this.loadStudents();

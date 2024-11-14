@@ -6,6 +6,7 @@ import { Student } from './models';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
 import { StudentDetailModalComponent } from './student-detail-modal/student-detail-modal.component';
 import { AlertService } from '../../../core/services/alert.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-student',
@@ -16,15 +17,21 @@ export class StudentComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'createdAt', 'actions'];
   dataSource: Student[] = [];
   isLoading = false;
+  isAdmin = false;
 
   constructor(
     private matDialog: MatDialog,
     private _studentService: StudentsService,
     private _alertService: AlertService,
+    private _authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
 
-  ) { }
+  ) {
+    this._authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
+  }
 
   ngOnInit(): void {
     this.loadStudents();

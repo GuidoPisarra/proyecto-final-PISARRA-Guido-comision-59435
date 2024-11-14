@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { Student } from '../students/models';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tool-bar',
@@ -18,16 +18,31 @@ export class ToolBarComponent implements OnInit {
 
   constructor(
     private _authService: AuthService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+
   ) {
     this.authStudent$ = this._authService.authStudent$;
   }
   ngOnInit(): void {
-    const routeData = this.activatedRoute.snapshot.firstChild?.data;
-    console.log(routeData);
-    if (routeData && routeData['title']) {
-      this.currentTitle = routeData['title'];
-    }
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        map((route) => route.snapshot.data)
+      )
+      .subscribe((data) => {
+        if (data && data['title']) {
+          this.currentTitle = data['title'];
+        }
+      });
   }
 
   toggleSideBar() {
