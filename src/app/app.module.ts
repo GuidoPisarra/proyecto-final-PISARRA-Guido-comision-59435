@@ -17,6 +17,5 @@ import { EffectsModule } from '@ngrx/effects';
   bootstrap: [AppComponent],
 })
 export class AppModule { }
-//
-//nueva forma de utilizar http
-//provideHttpClient(withFetch())
+
+

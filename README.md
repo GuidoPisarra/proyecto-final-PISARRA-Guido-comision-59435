@@ -105,3 +105,6 @@ instalar en chrome extension redux devtools --> para que funcione hay que instal
 # effects
 
 >  ng add @ngrx/effects
+
+//nueva forma de utilizar http
+//provideHttpClient(withFetch())
