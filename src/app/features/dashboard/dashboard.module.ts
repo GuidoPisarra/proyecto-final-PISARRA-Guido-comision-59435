@@ -10,9 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UsersComponent } from './users/users.component';
+
 @NgModule({
-  declarations: [DashboardComponent, ToolBarComponent, SideBarComponent, UsersComponent],
+  declarations: [DashboardComponent, ToolBarComponent, SideBarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

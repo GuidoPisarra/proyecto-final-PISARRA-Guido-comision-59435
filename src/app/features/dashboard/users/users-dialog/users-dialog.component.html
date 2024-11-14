@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  {{ data?.editingStudent ? "Editando" : "Creando" }} alumno
+  {{ data?.editingStudent ? "Editando" : "Creando" }} usuario
 </h1>
 
 <div mat-dialog-content>
@@ -10,8 +10,7 @@
           <mat-label>Nombre</mat-label>
           <input formControlName="firstName" matInput type="text" />
           <mat-error>
-            <app-errors-template *ngIf="firstName?.touched"
-              [validationErrors]="firstName?.errors"></app-errors-template>
+
           </mat-error>
 
         </mat-form-field>
@@ -21,7 +20,6 @@
           <mat-label>Apellido</mat-label>
           <input formControlName="lastName" matInput type="text" />
           <mat-error>
-            <app-errors-template *ngIf="lastName?.touched" [validationErrors]="lastName?.errors"></app-errors-template>
           </mat-error>
         </mat-form-field>
       </div>
@@ -30,7 +28,6 @@
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput type="email" />
           <mat-error>
-            <app-errors-template *ngIf="email?.touched"></app-errors-template>
           </mat-error>
         </mat-form-field>
       </div>
