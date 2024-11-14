@@ -39,3 +39,19 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.swal2-confirm-btn {
+  background-color: #3085d6 !important;
+  color: white !important;
+  margin-right: 10%;
+}
+
+.swal2-cancel-btn {
+  background-color: #d33 !important;
+  color: white !important;
+}
+
+.swal2-actions {
+  display: flex;
+  width: 100%;
+}

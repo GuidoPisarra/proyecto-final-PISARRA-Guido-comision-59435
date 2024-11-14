@@ -5,6 +5,7 @@ import { CoursesService } from '../../../core/services/courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
+import { AlertService } from '../../../core/services/alert.service';
 
 @Component({
   selector: 'app-courses',
@@ -18,6 +19,7 @@ export class CoursesComponent {
 
   constructor(
     private _coursesService: CoursesService,
+    private _alertService: AlertService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private matDialog: MatDialog
@@ -59,20 +61,33 @@ export class CoursesComponent {
   }
 
   onDelete(id: string) {
-    if (confirm('Esta seguro?')) {
-      this.isLoading = true;
-      this._coursesService.deleteCourseById(id).subscribe({
-        next: (courses: Course[]) => {
-          this.dataSource = courses;
-        },
-        error: (err: any) => {
-          this.isLoading = false;
-        },
-        complete: () => {
-          this.isLoading = false;
-        },
-      });
-    }
+    this._alertService.showAlert({
+      title: '¡Advertencia!',
+      text: '¿Estás seguro de eliminar este curso?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'swal2-confirm-btn',
+        cancelButton: 'swal2-cancel-btn',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = true;
+        this._coursesService.deleteCourseById(id).subscribe({
+          next: (courses: Course[]) => {
+            this.dataSource = courses;
+          },
+          error: (err: any) => {
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.isLoading = false;
+          },
+        });
+      }
+    });
   }
 
   goToDetail(id: string): void {

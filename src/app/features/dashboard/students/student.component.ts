@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../../../core/services/students.service';
 import { Student } from './models';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
-import { StudentDetailModalComponent } from '../../../student-detail-modal/student-detail-modal.component';
+import { StudentDetailModalComponent } from './student-detail-modal/student-detail-modal.component';
+import { AlertService } from '../../../core/services/alert.service';
 
 @Component({
   selector: 'app-student',
@@ -19,12 +20,16 @@ export class StudentComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private _studentService: StudentsService,
+    private _alertService: AlertService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+
   ) { }
 
   ngOnInit(): void {
     this.loadStudents();
+    this._alertService.subscribeToAlerts();
+
   }
 
   loadStudents(): void {
@@ -59,20 +64,33 @@ export class StudentComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    if (confirm('Esta seguro?')) {
-      this.isLoading = true;
-      this._studentService.deleteStudentById(id).subscribe({
-        next: (students: Student[]) => {
-          this.dataSource = students;
-        },
-        error: (err: any) => {
-          this.isLoading = false;
-        },
-        complete: () => {
-          this.isLoading = false;
-        },
-      });
-    }
+    this._alertService.showAlert({
+      title: '¡Advertencia!',
+      text: '¿Estás seguro de eliminar este estudiante?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'swal2-confirm-btn',
+        cancelButton: 'swal2-cancel-btn',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = true;
+        this._studentService.deleteStudentById(id).subscribe({
+          next: (students: Student[]) => {
+            this.dataSource = students;
+          },
+          error: () => {
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.isLoading = false;
+          },
+        });
+      }
+    });
   }
 
   goToDetail(id: string): void {

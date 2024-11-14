@@ -5,7 +5,8 @@ import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
-import { ClasesDetailsModalComponent } from '../../../clases-details-modal/clases-details-modal.component';
+import { ClasesDetailsModalComponent } from './clases-details-modal/clases-details-modal.component';
+import { AlertService } from '../../../core/services/alert.service';
 
 @Component({
   selector: 'app-clases',
@@ -22,6 +23,7 @@ export class ClasesComponent implements OnInit {
   constructor(
     private _coursesService: CoursesService,
     private _clasesService: ClasesService,
+    private _alertService: AlertService,
     private matDialog: MatDialog
   ) { }
 
@@ -66,22 +68,36 @@ export class ClasesComponent implements OnInit {
     });
   }
 
-  protected onDelete(clase: Clase): void {
-    if (confirm('¿Está seguro de que desea eliminar esta clase?')) {
-      this.isLoading = true;
-      this._clasesService.deleteClassById(clase.id, clase.courseId).subscribe({
-        next: (clases: Clase[]) => {
-          this.listOfClases = clases;
-        },
-        error: (err: any) => {
-          console.error('Error al eliminar la clase:', err);
-          this.isLoading = false;
-        },
-        complete: () => {
-          this.isLoading = false;
-        }
-      });
-    }
+
+  onDelete(clase: Clase) {
+    this._alertService.showAlert({
+      title: '¡Advertencia!',
+      text: '¿Estás seguro de eliminar esta clase?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'swal2-confirm-btn',
+        cancelButton: 'swal2-cancel-btn',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = true;
+        this._clasesService.deleteClassById(clase.id, clase.courseId).subscribe({
+          next: (clases: Clase[]) => {
+            this.listOfClases = clases;
+          },
+          error: (err: any) => {
+            console.error('Error al eliminar la clase:', err);
+            this.isLoading = false;
+          },
+          complete: () => {
+            this.isLoading = false;
+          }
+        });
+      }
+    });
   }
 
   protected openModal(editingClase?: Clase): void {
