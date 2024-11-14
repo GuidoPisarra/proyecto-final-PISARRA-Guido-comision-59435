@@ -14,9 +14,10 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { RepeatDirective } from './directives/repeat.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
+import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/errors-template.component';
 
 @NgModule({
-  declarations: [StudentFullNamePipe, HighlightDirective, RepeatDirective],
+  declarations: [StudentFullNamePipe, HighlightDirective, RepeatDirective, ErrorsTemplateComponent],
   imports: [CommonModule],
   exports: [
     MatProgressSpinnerModule,
@@ -34,7 +35,8 @@ import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
     StudentFullNamePipe,
     HighlightDirective,
     RepeatDirective,
-    FormsModule
+    FormsModule,
+    ErrorsTemplateComponent
   ],
 })
 export class SharedModule { }
