@@ -20,7 +20,7 @@
       "password": "password123",
       "token": "token_2",
       "role": "user",
-      "avatarUrl": ""
+      "avatarUrl": "assets/avatars/marge_simpson.jpg"
     },
     {
       "id": "3",
