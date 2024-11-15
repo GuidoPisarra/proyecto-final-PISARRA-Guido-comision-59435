@@ -97,12 +97,6 @@ export class CoursesComponent {
     });
   }
 
-  goToDetail(id: string): void {
-    this.router.navigate([id, 'detail'], {
-      relativeTo: this.activatedRoute,
-    });
-  }
-
   openModal(editingCourse?: Course): void {
     this.matDialog
       .open(CourseDialogComponent, {

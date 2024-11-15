@@ -1,110 +1,165 @@
-# Angular 
-> npm install -g @angular/cli                                                
+# Proyecto Angular - Gestión de Alumnos y Cursos
 
-# Nuevo proyecto
-> ng new [nombre-proyecto] --no-standalone
+Este proyecto está diseñado para gestionar alumnos, cursos e inscripciones, con funcionalidades específicas para administradores y usuarios. Utiliza Angular, Angular Material, NgRx, y se implementa un sistema de autenticación y gestión de roles.
 
-# proyecto typescript
-> npx tsc --init 
+## 1. Configuración Inicial del Proyecto
 
-# generar componente 
-> comando ng g c "carpeta"/"nombre_componente" [opcion]
+### Crear el proyecto en Angular
+Ejecuta el siguiente comando para crear un nuevo proyecto Angular:
 
---> opciones 
-    --inline-style (sin scss)
-    --skip-tests (sin test)
-    --inline-template (sin html)
+> ng new nombre-proyecto
+
+### Instalar dependencias necesarias
+- **Angular Material**:
+- **NgRx**:
 
 
-> ng add @angular/material
+### Configurar estructura de carpetas
+Crea los siguientes módulos para organizar mejor el código:
+- **core**: Contendrá servicios y configuraciones generales.
+- **shared**: Componentes reutilizables y directivas.
+- **feature**: Para cada funcionalidad específica del sistema.
 
-> ? Choose a prebuilt theme name, or "custom" for a custom theme: Custom
-> ? Set up global Angular Material typography styles? yes
-> ? Include the Angular animations module? Include and enable animations
+Configura rutas en `app-routing.module.ts` y utiliza **módulos lazy-loaded** para cada sección.
 
+---
 
-# MODULOS
-> ng generate module features/auth --routing
+## 2. Autenticación y Roles de Usuario
 
-APP MODULE Importamos el  module 
-APP module del componente exportamos el componente
+### Crear un servicio de autenticación (`AuthService`)
+- Métodos para **login**, **logout** y gestión de sesiones.
 
+### Implementar el componente de Login
+- Formulario para ingresar **credenciales**.
+- Validaciones básicas (campos obligatorios, formato de email).
+- **Redireccionamiento post-login**.
 
-# PIPES --> convierten datos en la vista
-> ng  generate pipe shared/pipes/[nombre_pipe]
+### Gestionar el rol de usuario en el sistema
+- Almacenar la información de **rol** y **perfil** en el servicio o en el estado global (NgRx).
+- **Restringir acceso** a rutas usando `canActivate` para verificar roles.
 
-# DIRECTIVAS --> nos permiten cambiar el comportamiento o apariencia html
-> ng generate directive shared/directives/highligth
+---
 
-# Servicio (logica de datos)
-> ng generate service core/services/[nombre_servicio]
+## 3. Estructura de Navegación y UI
 
-# Rxjs documentacion
-> https://rxjs.dev/api
+### Configurar la barra de navegación lateral
+- Mostrar **opciones de menú dinámicas** según el rol de usuario.
+- Opción de **deslogueo**.
 
-# SweetAlert
+### Configurar la barra de herramientas (toolbar)
+- Mostrar el **nombre de la aplicación** y **del usuario logueado**.
+- Cambiar el **título dinámicamente** basado en la funcionalidad actual.
 
-> npm i sweetalert2
+---
 
-# crea un módulo con su respectivo archivo routing
+## 4. Módulo de Alumnos
 
-> ng g module NOMBRE_MODULE --routing
+### Componente de Listado de Alumnos
+- Mostrar listado en formato **tabla**.
+- Incluir **columnas básicas** (nombre, email, cursos inscritos, etc.).
+- Opciones para **ver detalles**, **editar** y **eliminar**.
 
+### Componente de Detalle de Alumno
+- Vista detallada del alumno, incluyendo los **cursos en los que está inscrito**.
+- Botón para **agregar/eliminar cursos**.
 
-# JSON SERVER
+### Formularios para Agregar/Editar Alumnos
+- **Formularios reactivos** con validaciones.
+- Acciones de **guardar cambios** y **cancelar**.
 
-Instalación 
+---
 
-> npm i json-server -g
+## 5. Módulo de Cursos
 
-Ejecutar:
+### Componente de Listado de Cursos
+- Mostrar los **cursos** en una **tabla**.
+- Opción para **ver alumnos inscritos** en cada curso.
 
-Primero crear el archivo db.json que es donde va a aestar nuestra bbdd mockeada
+### Formularios para Agregar/Editar Cursos
+- **Formularios reactivos** con validaciones.
+- Acciones de **guardar cambios** y **cancelar**.
 
-luego ejecutamos 
+---
 
-> json-server db.json --watch
+## 6. Módulo de Inscripciones
 
-# ENVIRONMENT
-ng generate --configuration production --> toma el environment de producción
+### Vista para inscribir/desinscribir alumnos en cursos
+- Selección de **alumnos** y **cursos** desde listas desplegables.
+- Botones para **inscribir** y **desinscribir**.
+- Actualizar listado de alumnos y cursos tras cada cambio.
 
-# NG mocks 
+---
 
-> npm install ng-mocks
+## 7. Módulo de Usuarios (Administrador)
 
-# TEST 
+### Componente de Listado de Usuarios
+- **Tabla** para mostrar la lista de usuarios.
+- Opciones para **ver detalles**, **editar** y **eliminar** usuarios.
 
-> ng test
-si agregamos una 'x' antes del describe, esa prueba se omite --> ejemplo --> xdescribe('AppComponent', () => {
-si agregamos una 'f' antes del describe, solo se ejecuta/n esa prueba/s --> ejemplo --> fdescribe('AppComponent', () => {
+### Formularios para Agregar/Editar Usuarios
+- **Formularios reactivos** con validaciones.
+- Acciones de **guardar cambios** y **cancelar**.
 
-Para obtener el estado de las pruebas unitarias:
-> ng test --code-coverage
+### Implementar control de roles en el formulario de usuario
+- Permitir la **selección del rol** (administrador o usuario).
 
-Se puede ver  en la consola o en el navegador abriendo el archivo index.html que esta dentro de la carpeta coverage
+---
 
-# REDUX 
-Permite entre otras cosas manejar los estados
+## 8. Implementación del Estado Global (NgRx)
 
-> ng add @ngrx/store
+### Configurar NgRx Store
+- Crear **slices** para alumnos, cursos, usuarios e inscripciones.
 
-crear carpeta store en src y dentro de ella un archivo ts
+### Configurar NgRx Effects
+- Implementar **efectos** para gestionar llamadas HTTP y actualizar el estado en el Store.
 
-en app.component.ts importamos  StoreModule.forRoot(RootReducer)
+### Configurar NgRx DevTools
+- Permitir la **inspección** del estado global en el navegador.
 
-instalar en chrome extension redux devtools --> para que funcione hay que instalar en el proyecto  
+---
 
-> ng add @ngrx/store-devtools@latest
-> ng add @ngrx/schematics -->se generan los reducers, actions y selectors de una manera mas sencilla
-> ng add @ngrx/effects@latest
+## 9. Servicios y Llamadas HTTP
 
-# desplegar aplicacion
-> https://render.com/
+### Crear servicios para consumir la API
+- **AlumnosService**, **CursosService**, **UsuariosService**, **InscripcionesService**.
 
+### Configurar endpoints con mockapi.io (u otra API de prueba en la nube)
 
-# effects
+### Realizar llamadas HTTP desde los efectos de NgRx
+- Obtener, crear, actualizar y eliminar datos de manera eficiente.
 
->  ng add @ngrx/effects
+---
 
-//nueva forma de utilizar http
-//provideHttpClient(withFetch())
+## 10. Test Unitarios
+
+### Escribir pruebas unitarias para componentes
+- Pruebas básicas para verificar que los **componentes** se crean correctamente.
+
+### Escribir pruebas unitarias para servicios
+- **Mock** de dependencias para verificar que los métodos de servicios devuelvan los datos esperados.
+
+### Escribir pruebas unitarias para efectos y reducers de NgRx
+- Verificar **cobertura de pruebas** para cumplir con los requisitos de calidad.
+
+---
+
+## 11. Validaciones y Seguridad
+
+### Validar formularios antes de enviar datos
+- Asegurar que los datos enviados son válidos.
+
+### Gestionar errores de API con mensajes claros
+- Mostrar mensajes de error claros para el usuario.
+
+### Evitar uso de `console.log()` en producción
+- Asegurar que los logs se eliminan o se gestionan adecuadamente.
+
+---
+
+## Tecnologías Utilizadas
+
+- **Angular**: Framework para el desarrollo del frontend.
+- **NgRx**: Gestión del estado global.
+- **Angular Material**: Componentes de UI.
+- **RxJS**: Programación reactiva.
+- **API Mock (mockapi.io)**: API para pruebas.
