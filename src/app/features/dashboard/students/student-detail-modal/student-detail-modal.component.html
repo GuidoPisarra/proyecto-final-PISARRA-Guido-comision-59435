@@ -1,9 +1,13 @@
-<h2 mat-dialog-title>Alumno</h2>
+<h2 mat-dialog-title>
+  <div class="dialog-header">
+    <img [src]="data.avatarUrl || data.avatarUrl==''" alt="Avatar" class="avatar" (error)="onImageError($event)" />
+    Alumno
+  </div>
+</h2>
 <div mat-dialog-content>
-  <p><strong>Nombre y apellido:</strong> {{ data | studentFullName:'uppercase' }}</p>
+  <p><strong>Nombre y apellido:</strong> {{ data | studentFullName: 'uppercase' }}</p>
   <p><strong>Email:</strong> {{ data.email }}</p>
-
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
   <button mat-button (click)="onClose()">Cerrar</button>
 </div>

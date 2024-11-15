@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-student-detail-modal',
   templateUrl: './student-detail-modal.component.html',
-  styles: ``
+  styleUrl: './student-detail-modal.component.scss'
 })
 export class StudentDetailModalComponent {
   constructor(
@@ -14,5 +14,9 @@ export class StudentDetailModalComponent {
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = '../../../../../assets/avatars/noImage.jpg';
   }
 }

@@ -8,7 +8,8 @@
       "email": "homer.simpson@gmail.com",
       "password": "password123",
       "token": "token_1",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/homero_simpson.jpg"
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "email": "marge.simpson@gmail.com",
       "password": "password123",
       "token": "token_2",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": ""
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "email": "bart.simpson@gmail.com",
       "password": "password123",
       "token": "token_3",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/bart_simpson.jpg"
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "email": "lisa.simpson@gmail.com",
       "password": "password123",
       "token": "token_4",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/lisa_simpson.jpg"
     },
     {
       "id": "5",
@@ -48,7 +52,8 @@
       "email": "maggie.simpson@gmail.com",
       "password": "password123",
       "token": "token_5",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/maggie_simpson.jpg"
     },
     {
       "id": "6",
@@ -58,7 +63,8 @@
       "email": "apu@kwikemart.com",
       "password": "password123",
       "token": "token_6",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/apu_nahasapeemapetilon.jpg"
     },
     {
       "id": "7",
@@ -68,7 +74,8 @@
       "email": "ned.flanders@gmail.com",
       "password": "password123",
       "token": "token_7",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/ned_flanders.jpg"
     },
     {
       "id": "8",
@@ -78,7 +85,8 @@
       "email": "monty.burns@burnscorp.com",
       "password": "password123",
       "token": "token_8",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/montgomery_burns.jpg"
     },
     {
       "id": "9",
@@ -88,7 +96,8 @@
       "email": "moe.szyslak@moestavern.com",
       "password": "password123",
       "token": "token_9",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/moe_szyslak.jpg"
     },
     {
       "id": "10",
@@ -98,17 +107,19 @@
       "email": "krusty@krustytheclown.com",
       "password": "password123",
       "token": "token_10",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/krusty_the_clown.jpg"
     },
     {
       "id": "111",
       "firstName": "admin",
       "lastName": "admin",
+      "createdAt": "2024-10-28T21:56:34.217Z",
       "email": "admin@mail.com",
       "password": "123456",
-      "createdAt": "2024-10-28T21:56:34.217Z",
       "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
-      "role": "admin"
+      "role": "admin",
+      "avatarUrl": "assets/avatars/admin_admin.jpg"
     }
   ],
   "clases": [

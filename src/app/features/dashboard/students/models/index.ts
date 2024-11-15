@@ -7,4 +7,5 @@ export interface Student {
   createdAt: Date;
   token: string;
   role: string;
+  avatarUrl?: string;
 }

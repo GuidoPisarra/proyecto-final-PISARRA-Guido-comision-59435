@@ -100,12 +100,6 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  goToDetail(id: string): void {
-    this.router.navigate([id, 'detail'], {
-      relativeTo: this.activatedRoute,
-    });
-  }
-
   openModal(editingStudent?: Student): void {
     this.matDialog
       .open(StudentDialogComponent, {
