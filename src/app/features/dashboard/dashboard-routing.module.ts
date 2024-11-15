@@ -34,6 +34,12 @@ const routes: Routes = [
     loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
   },
   {
+    path: 'inscripciones',
+    data: { title: 'Inscripciones', roles: ['admin'] },
+    loadChildren: () =>
+      import('./register-course/register-course.module').then((m) => m.RegisterCourseModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

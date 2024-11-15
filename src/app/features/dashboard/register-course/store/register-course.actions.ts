@@ -10,7 +10,7 @@ export const RegisterCourseActions = createActionGroup({
     'Load Register Courses Success': props<{ data: RegisterCourse[] }>(),
     'Load Register Courses Failure': props<{ error: Error }>(),
 
-    'Create Register Course': props<{ productId: string; userId: string }>(),
+    'Create Register Course': props<{ courseId: string; userId: string }>(),
     'Create Register Course Success': props<{ data: RegisterCourse }>(),
     'Create Register Course Failure': props<{ error: Error }>(),
 

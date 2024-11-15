@@ -15,6 +15,7 @@ import { RepeatDirective } from './directives/repeat.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/errors-template.component';
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/e
     HighlightDirective,
     RepeatDirective,
     FormsModule,
+    MatOptionModule,
     ErrorsTemplateComponent
   ],
 })

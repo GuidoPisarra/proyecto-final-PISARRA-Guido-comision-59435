@@ -12,11 +12,11 @@ import { forkJoin, of } from 'rxjs';
 export class RegisterCourseEffects {
 
 
-  loadSales$: Actions<Action<string>>;
-  createSale$: Actions<Action<string>>;
-  createSaleSuccess$: Actions<Action<string>>;
+  loadRegisterCourse$: Actions<Action<string>>;
+  createRegisterCourse$: Actions<Action<string>>;
+  createRegisterCourseSuccess$: Actions<Action<string>>;
 
-  loadProductsAndUserOptions$: Actions<Action<string>>;
+  loadCoursesAndUserOptions$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -24,7 +24,7 @@ export class RegisterCourseEffects {
     private _userService: UsersService,
     private _registerCourse: RegisterCourseService
   ) {
-    this.loadSales$ = createEffect(() => {
+    this.loadRegisterCourse$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(RegisterCourseActions.loadRegisterCourses),
         concatMap(() =>
@@ -36,13 +36,13 @@ export class RegisterCourseEffects {
       );
     });
 
-    this.createSale$ = createEffect(() => {
+    this.createRegisterCourse$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(RegisterCourseActions.createRegisterCourse),
         concatMap((action) =>
           this._registerCourse
             .createRegisterCourse({
-              courseId: action.productId,
+              courseId: action.courseId,
               userId: action.userId,
             })
             .pipe(
@@ -55,14 +55,14 @@ export class RegisterCourseEffects {
       );
     });
 
-    this.createSaleSuccess$ = createEffect(() => {
+    this.createRegisterCourseSuccess$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(RegisterCourseActions.createRegisterCourseSuccess),
         map(() => RegisterCourseActions.loadRegisterCourses())
       );
     });
 
-    this.loadProductsAndUserOptions$ = createEffect(() => {
+    this.loadCoursesAndUserOptions$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(RegisterCourseActions.loadCoursesAndUserOptions),
         concatMap(() =>

@@ -21,6 +21,10 @@
       <mat-icon>group</mat-icon>
       <span>Usuarios</span>
     </a>
+    <a *ngIf="isAdmin" routerLink="inscripciones" mat-list-item (click)="toggleDrawer()">
+      <mat-icon>pencil</mat-icon>
+      <span>Inscripciones</span>
+    </a>
     <a (click)="logout()" mat-list-item>
       <mat-icon>exit_to_app</mat-icon>
       <span>Cerrar sesión</span>

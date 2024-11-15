@@ -19,12 +19,12 @@
 </form>
 
 @if(isLoadingRegisterCourses$| async) {
-<mat-spinner></mat-spinner>
+<p>Cargando</p>
 }@else {
 @if (loadRegisterCoursesError$ | async; as error) {
 <h2>Error!</h2>
 <p>{{ error["message"] }}</p>
 } @else {
-<pre>{{ registerCourse$ | async  }}</pre>
+<pre>{{ registerCourse$ | async  | json}}</pre>
 }
 }
