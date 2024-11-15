@@ -1,0 +1,30 @@
+<form [formGroup]="registerCourseForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Curso</mat-label>
+    <mat-select formControlName="courseId">
+      <mat-option [value]="course.id" *ngFor="let course of courseOptions$ | async">
+        {{ course.course }} - {{ course.profesor }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Usuario</mat-label>
+    <mat-select formControlName="userId">
+      <mat-option [value]="user.id" *ngFor="let user of userOptions$ | async">
+        {{ user.firstName }} {{ user.lastName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" mat-flat-button>Guardar</button>
+</form>
+
+@if(isLoadingRegisterCourses$| async) {
+<mat-spinner></mat-spinner>
+}@else {
+@if (loadRegisterCoursesError$ | async; as error) {
+<h2>Error!</h2>
+<p>{{ error["message"] }}</p>
+} @else {
+<pre>{{ registerCourse$ | async  }}</pre>
+}
+}
