@@ -12,7 +12,10 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [DashboardComponent, ToolBarComponent, SideBarComponent],
+  declarations: [
+    DashboardComponent,
+    ToolBarComponent,
+    SideBarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

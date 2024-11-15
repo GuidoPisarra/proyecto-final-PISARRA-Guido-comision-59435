@@ -12,8 +12,16 @@ import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot(RootReducer, {}), StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }), EffectsModule.forRoot([])],
-  providers: [provideAnimationsAsync(), provideNativeDateAdapter(), provideHttpClient(withFetch())],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot(RootReducer, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([])],
+  providers: [
+    provideAnimationsAsync(),
+    provideNativeDateAdapter(),
+    provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

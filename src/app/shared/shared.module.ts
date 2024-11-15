@@ -17,7 +17,11 @@ import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/errors-template.component';
 
 @NgModule({
-  declarations: [StudentFullNamePipe, HighlightDirective, RepeatDirective, ErrorsTemplateComponent],
+  declarations: [
+    StudentFullNamePipe,
+    HighlightDirective,
+    RepeatDirective,
+    ErrorsTemplateComponent],
   imports: [CommonModule],
   exports: [
     MatProgressSpinnerModule,
