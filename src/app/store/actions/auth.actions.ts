@@ -1,4 +1,4 @@
-import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { createAction, createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Student } from "../../features/dashboard/students/models";
 
 
@@ -9,3 +9,9 @@ export const AuthActions = createActionGroup({
     "Unset Authenticated Student": emptyProps()
   }
 });
+
+
+export const setPageTitle = createAction(
+  '[UI] Set Page Title',
+  props<{ title: string }>()
+);

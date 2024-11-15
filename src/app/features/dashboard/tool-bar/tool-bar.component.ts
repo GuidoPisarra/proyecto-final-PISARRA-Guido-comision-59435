@@ -3,6 +3,9 @@ import { filter, map, Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { Student } from '../students/models';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectPageTitle } from '../../../store/selectors/auth.selector';
+import { setPageTitle } from '../../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-tool-bar',
@@ -10,21 +13,22 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrl: './tool-bar.component.scss'
 })
 export class ToolBarComponent implements OnInit {
-  protected currentTitle: string = '';
-
   @Output() toggle = new EventEmitter<void>();
 
   authStudent$: Observable<Student | null>;
+  pageTitle$: Observable<string>;
 
   constructor(
     private _authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-
+    private router: Router,
+    private store: Store
   ) {
     this.authStudent$ = this._authService.authStudent$;
+    this.pageTitle$ = this.store.select(selectPageTitle);
   }
-  ngOnInit(): void {
+
+  public ngOnInit(): void {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -40,7 +44,7 @@ export class ToolBarComponent implements OnInit {
       )
       .subscribe((data) => {
         if (data && data['title']) {
-          this.currentTitle = data['title'];
+          this.store.dispatch(setPageTitle({ title: data['title'] }));
         }
       });
   }

@@ -5,7 +5,7 @@
   </button>
   <div class="d-flex justify-content-between align-items-center w-100 h-100">
     <span appTitleFontSize>Gestión de usuarios</span>
-    <span class="mx-2">{{ currentTitle }}</span>
+    <span class="mx-2">{{ pageTitle$ | async }}</span>
     <ng-container *ngIf="authStudent$ | async as authStudent">
       <div class="h-50" *ngIf="authStudent.role  === 'admin'">
         <p>Hola Admin, {{ authStudent.firstName }} {{ authStudent.lastName }}</p>

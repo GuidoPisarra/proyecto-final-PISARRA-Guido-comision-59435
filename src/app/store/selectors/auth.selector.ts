@@ -8,3 +8,8 @@ export const selectAutheticatedStudent = createSelector(
   selectAuthState,
   (state) => state.authenticatedStudent
 );
+
+export const selectPageTitle = createSelector(
+  selectAuthState,
+  (state: AuthState) => state.pageTitle
+);
