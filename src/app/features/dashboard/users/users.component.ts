@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsService } from '../../../core/services/students.service';
 import { AlertService } from '../../../core/services/alert.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../students/models';
 import { StudentDetailModalComponent } from '../students/student-detail-modal/student-detail-modal.component';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
@@ -23,10 +22,7 @@ export class UsersComponent {
     private matDialog: MatDialog,
     private _studentService: StudentsService,
     private _alertService: AlertService,
-    private _authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-
+    private _authService: AuthService
   ) {
     this._authService.getUserRole().subscribe(role => {
       this.isAdmin = role === 'admin';

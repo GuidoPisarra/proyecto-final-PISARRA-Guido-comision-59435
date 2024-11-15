@@ -1,11 +1,29 @@
-<h2 mat-dialog-title>Detalles del Curso</h2>
-<div mat-dialog-content>
-  <p><strong>Curso:</strong> {{ data.course }}</p>
-  <p><strong>Profesor:</strong> {{ data.profesor }}</p>
-  <p><strong>Comisión:</strong> {{ data.commitee }}</p>
-  <p><strong>Inicio:</strong> {{ data.startDate | date: 'dd/MM/yyyy' }}</p>
-  <p><strong>Fin:</strong> {{ data.endDate | date: 'dd/MM/yyyy' }}</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onClose()">Cerrar</button>
-</div>
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon aria-hidden="true">info</mat-icon>
+  Detalles del Curso
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <mat-card class="course-details-card">
+    <mat-card-content>
+      <div class="course-info">
+        <p><strong>Curso:</strong> {{ data.course }}</p>
+        <p><strong>Profesor:</strong> {{ data.profesor }}</p>
+        <p><strong>Comisión:</strong> {{ data.commitee }}</p>
+
+        <div class="date-row">
+          <p><strong>Inicio:</strong> {{ data.startDate | date: 'dd/MM/yyyy' }}</p>
+          <p><strong>Fin:</strong> {{ data.endDate | date: 'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button class="green-button" (click)="register()">
+    <mat-icon>edit</mat-icon> Inscribirme
+  </button>
+
+  <button mat-flat-button (click)="onClose()">Cerrar</button>
+</mat-dialog-actions>

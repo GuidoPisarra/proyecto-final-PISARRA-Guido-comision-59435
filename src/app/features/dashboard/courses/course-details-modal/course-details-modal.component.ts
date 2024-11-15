@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-course-details-modal',
   templateUrl: './course-details-modal.component.html',
-  styles: ``
+  styleUrls: ['./course-detail.component.scss']
 })
 export class CourseDetailsModalComponent {
   constructor(
@@ -14,5 +14,9 @@ export class CourseDetailsModalComponent {
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  register(): void {
+
   }
 }

@@ -1,9 +1,17 @@
-<h2 mat-dialog-title>Clase</h2>
-<div mat-dialog-content>
-  <p><strong>Nombre:</strong> {{data.title}}</p>
-  <p><strong>Duración:</strong> {{data.duration}}</p>
-
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onClose()">Cerrar</button>
-</div>
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon aria-hidden="true">info</mat-icon>
+  Detalles de la clase
+</h2>
+<mat-dialog-content class="dialog-content">
+  <mat-card class="course-details-card">
+    <mat-card-content>
+      <div class="course-info">
+        <p><strong>Curso:</strong> {{ data.title }}</p>
+        <p><strong>Duración:</strong> {{ data.duration }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button (click)="onClose()">Cerrar</button>
+</mat-dialog-actions>
