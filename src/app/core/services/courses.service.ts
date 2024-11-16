@@ -24,8 +24,6 @@ export class CoursesService {
       );
   }
 
-
-
   addCourse(course: Omit<Course, 'id'>): Observable<Course> {
     return this._httpClient.post<Course>(`${this.baseURL}/courses`, course).pipe();
   }
@@ -40,7 +38,6 @@ export class CoursesService {
       switchMap(() => of(this.courses))
     );
   }
-
 
   deleteCourseById(id: string): Observable<Course[]> {
     return this._httpClient.delete<void>(`${this.baseURL}/courses/${id}`).pipe(

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, map, mergeMap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 import { of } from 'rxjs';
 import { ClasesService } from '../../../../core/services/clases.service';
@@ -24,12 +24,14 @@ export class ClasesEffects {
     this.loadClases$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(ClasesActions.loadClases),
-        concatMap(() =>
-          this._clasesService.getClases('1').pipe(
-            map((response) => ClasesActions.loadClasesSuccess({ data: response })),
+        switchMap(({ courseId }) => {
+          return this._clasesService.getClases(courseId).pipe(
+            map((clases) =>
+              ClasesActions.loadClasesSuccess({ data: clases })
+            ),
             catchError((error) => of(ClasesActions.loadClasesFailure({ error })))
-          )
-        )
+          );
+        })
       );
     });
 
@@ -53,8 +55,8 @@ export class ClasesEffects {
 
     this.createClasesSuccess$ = createEffect(() => {
       return this.actions$.pipe(
-        ofType(ClasesActions.createClasesFailure),
-        map(() => ClasesActions.loadClases({ courseId: '1' }))
+        ofType(ClasesActions.createClasesSuccess),
+        map(({ data }) => ClasesActions.loadClases({ courseId: data.courseId }))
       );
     });
 
@@ -71,9 +73,6 @@ export class ClasesEffects {
         )
       )
     );
-
-
-
 
 
   }

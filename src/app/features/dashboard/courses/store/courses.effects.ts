@@ -26,7 +26,7 @@ export class CoursesEffects {
         ofType(CoursesActions.loadCourses),
         mergeMap(() =>
           this._coursesService.getCourses().pipe(
-            map((courses) => CoursesActions.loadCoursesSuccess({ courses })),
+            map((courses) => CoursesActions.loadCoursesSuccess({ courses: courses })),
             catchError((error) => of(CoursesActions.loadCoursesFailure({ error })))
           )
         )

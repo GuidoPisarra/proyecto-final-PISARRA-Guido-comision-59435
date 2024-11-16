@@ -19,9 +19,7 @@ export class ClasesService {
   getClases(courseId: string): Observable<Clase[]> {
     return this._httpClient
       .get<Clase[]>(`${this.baseURL}/clases?courseId=${courseId}`)
-      .pipe(
-        tap((clases: Clase[]) => this.clases = clases)
-      );
+
   }
 
   addClass(clase: Partial<Clase>): Observable<Clase> {

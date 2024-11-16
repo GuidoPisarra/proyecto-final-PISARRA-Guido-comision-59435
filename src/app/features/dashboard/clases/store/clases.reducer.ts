@@ -5,10 +5,10 @@ import { ClasesActions } from './clases.actions';
 export const clasesFeatureKey = 'clases';
 
 export interface State {
-  isLoadingClases: boolean;
-  loadClasesError: Error | null;
   clase: Clase[];
   claseOptions: Clase[];
+  isLoadingClases: boolean;
+  loadClasesError: Error | null;
 }
 
 export const initialState: State = {
@@ -23,23 +23,31 @@ export const reducer = createReducer(
   on(ClasesActions.createClases, (state) => {
     return {
       ...state,
-      isLoadingRegisterCourses: true,
-    };
-  }),
-  on(ClasesActions.loadClases, (state) => {
-    return {
-      ...state,
       isLoadingClases: true,
     };
   }),
-  on(ClasesActions.loadClasesSuccess, (state, { data }) => {
+  on(ClasesActions.createClasesSuccess, (state) => {
     return {
       ...state,
-      clases: data,
       loadClasesError: null,
       isLoadingClases: false,
     };
   }),
+  on(ClasesActions.loadClases, state => ({
+    ...state,
+    loading: true
+  })),
+  on(ClasesActions.loadClasesSuccess, (state, { data }) => ({
+    ...state,
+    clases: data,
+    claseOptions: data,
+    loading: false
+  })),
+  on(ClasesActions.loadClasesFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false
+  })),
   on(ClasesActions.deleteClasesSuccess, (state, { clase }) => ({
     ...state,
     clases: clase,

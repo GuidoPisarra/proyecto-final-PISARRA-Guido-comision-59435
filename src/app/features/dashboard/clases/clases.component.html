@@ -2,19 +2,21 @@
   <h4>Seleccione un curso</h4>
   <mat-form-field>
     <mat-label>Curso</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="course" (selectionChange)="onCourseChange($event)">
-      <mat-option *ngFor="let course of listOfCourses" [value]="course.id">
-        {{course.course}}
+    <mat-select [(ngModel)]="selectedValue" name="course" (selectionChange)="onCourseChange($event.value)">
+      <mat-option *ngIf="!(courses$ | async)?.length" [disabled]="true">No hay cursos disponibles</mat-option>
+      <mat-option [value]="course.id" *ngFor="let course of (courses$ | async)">
+        {{ course.course }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
   @if(selectedValue!=''){
   <button mat-fab extended (click)="openModal()" class="btn-crear-clase">
     <mat-icon>add</mat-icon>
     Agregar clase
   </button>
 
-  <table mat-table [dataSource]="listOfClases" class="mat-elevation-z10">
+  <table mat-table [dataSource]="clases$">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef>Clase</th>
       <td color="red" app-hightlight mat-cell *matCellDef="let clase">{{ clase.title }}</td>
@@ -48,5 +50,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+
   }
-</div>

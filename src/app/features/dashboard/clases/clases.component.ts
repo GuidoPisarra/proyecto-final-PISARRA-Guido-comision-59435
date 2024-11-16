@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../../../core/services/courses.service';
-import { ClasesService } from '../../../core/services/clases.service';
 import { Course } from '../courses/models/course';
 import { Clase } from './models/clase';
 import { MatDialog } from '@angular/material/dialog';
 import { ClaseDialogComponent } from './clase-dialog/clase-dialog.component';
 import { ClasesDetailsModalComponent } from './clases-details-modal/clases-details-modal.component';
 import { AlertService } from '../../../core/services/alert.service';
-import { AuthService } from '../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectClases, selectIsLoadingClases, selectLoadClasesError } from './store/clases.selector';
+import { selectClases, selectClasesOptions, selectIsLoadingClases, selectLoadClasesError } from './store/clases.selector';
 import { ClasesActions } from './store/clases.actions';
+import { CoursesActions } from '../courses/store/courses.actions';
+import { selectCourses } from '../courses/store/courses.selector';
 
 @Component({
   selector: 'app-clases',
@@ -19,56 +18,33 @@ import { ClasesActions } from './store/clases.actions';
   styleUrl: './clases.component.scss'
 })
 export class ClasesComponent implements OnInit {
+  courses$: Observable<Course[]>;
   clases$: Observable<Clase[]>;
   isLoading$: Observable<boolean>;
   error$: Observable<Error | null>;
 
   protected selectedValue: string = '';
-  protected listOfCourses: Course[] = [];
-  protected listOfClases: Clase[] = [];
-  protected isLoading = true;
   protected isAdmin = true;
   protected displayedColumns: string[] = ['title', 'date', 'duration', 'actions'];
 
   constructor(
     private store: Store,
     private _alertService: AlertService,
-    private _authService: AuthService,
     private matDialog: MatDialog
   ) {
-    this.clases$ = this.store.select(selectClases);
+    this.courses$ = this.store.select(selectCourses);
+    this.clases$ = this.store.select(selectClasesOptions);
     this.isLoading$ = this.store.select(selectIsLoadingClases);
     this.error$ = this.store.select(selectLoadClasesError);
   }
 
-
   ngOnInit() {
-
-    if (this.selectedValue) {
-      this.store.dispatch(ClasesActions.loadClases({ courseId: this.selectedValue }));
-    }
+    this.store.dispatch(CoursesActions.loadCourses());
   }
 
-
-  onCourseChange(courseId: any): void {
+  onCourseChange(courseId: string): void {
     this.selectedValue = courseId;
     this.store.dispatch(ClasesActions.loadClases({ courseId }));
-  }
-
-  private loadClases(courseId: string): void {
-    /*  this.isLoading = true;
-     this._clasesService.getClases(courseId).subscribe({
-       next: (filteredClases: Clase[]) => {
-         this.listOfClases = filteredClases;
-       },
-       error: (err: any) => {
-         console.error('Error al obtener clases:', err);
-         this.isLoading = false;
-       },
-       complete: () => {
-         this.isLoading = false;
-       }
-     }); */
   }
 
 

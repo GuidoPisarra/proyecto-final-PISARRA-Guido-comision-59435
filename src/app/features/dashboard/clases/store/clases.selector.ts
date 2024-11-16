@@ -16,6 +16,11 @@ export const selectClasesOptions = createSelector(
 );
 
 
+export const selectLoadClasesSuccess = createSelector(
+  selectClasesState,
+  (state) => state.claseOptions
+);
+
 export const selectLoadClasesError = createSelector(
   selectClasesState,
   (state) => state.loadClasesError

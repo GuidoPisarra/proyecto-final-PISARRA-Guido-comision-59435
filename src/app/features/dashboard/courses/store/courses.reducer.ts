@@ -18,18 +18,6 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(CoursesActions.createCourses, (state) => {
-    return {
-      ...state,
-      isLoadingRegisterCourses: true,
-    };
-  }),
-  on(CoursesActions.createCoursesSuccess, (state, { data }) => {
-    return {
-      ...state,
-      courses: [...state.courses, data]
-    };
-  }),
   on(CoursesActions.loadCourses, (state) => {
     return {
       ...state,
@@ -41,6 +29,18 @@ export const reducer = createReducer(
       ...state,
       courses: courses,
       isLoadingCourses: false,
+    };
+  }),
+  on(CoursesActions.createCourses, (state) => {
+    return {
+      ...state,
+      isLoadingRegisterCourses: true,
+    };
+  }),
+  on(CoursesActions.createCoursesSuccess, (state, { data }) => {
+    return {
+      ...state,
+      courses: [...state.courses, data]
     };
   }),
   on(CoursesActions.deleteCoursesSuccess, (state, { courses }) => ({
