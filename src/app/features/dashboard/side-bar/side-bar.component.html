@@ -6,27 +6,27 @@
       <span>Inicio</span>
     </a>
     <a routerLink="clases" mat-list-item (click)="toggleDrawer()">
-      <mat-icon>work</mat-icon>
+      <mat-icon>school</mat-icon>
       <span>Clases</span>
     </a>
     <a routerLink="courses" mat-list-item (click)="toggleDrawer()">
-      <mat-icon>book</mat-icon>
+      <mat-icon>menu_book</mat-icon>
       <span>Cursos</span>
     </a>
     <a routerLink="students" mat-list-item (click)="toggleDrawer()">
-      <mat-icon>group</mat-icon>
+      <mat-icon>groups</mat-icon>
       <span>Alumnos</span>
     </a>
     <a *ngIf="isAdmin" routerLink="users" mat-list-item (click)="toggleDrawer()">
-      <mat-icon>group</mat-icon>
+      <mat-icon>manage_accounts</mat-icon>
       <span>Usuarios</span>
     </a>
     <a *ngIf="isAdmin" routerLink="inscripciones" mat-list-item (click)="toggleDrawer()">
-      <mat-icon>pencil</mat-icon>
+      <mat-icon>assignment</mat-icon>
       <span>Inscripciones</span>
     </a>
     <a (click)="logout()" mat-list-item>
-      <mat-icon>exit_to_app</mat-icon>
+      <mat-icon>logout</mat-icon>
       <span>Cerrar sesión</span>
     </a>
   </mat-nav-list>
