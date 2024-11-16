@@ -24,6 +24,12 @@ export const reducer = createReducer(
       isLoadingRegisterCourses: true,
     };
   }),
+  on(CoursesActions.createCoursesSuccess, (state, { data }) => {
+    return {
+      ...state,
+      courses: [...state.courses, data]
+    };
+  }),
   on(CoursesActions.loadCourses, (state) => {
     return {
       ...state,

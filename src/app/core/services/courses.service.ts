@@ -27,9 +27,7 @@ export class CoursesService {
 
 
   addCourse(course: Omit<Course, 'id'>): Observable<Course> {
-    return this._httpClient.post<Course>(`${this.baseURL}/courses`, course).pipe(
-      tap((newCourse: Course) => this.courses = [...this.courses, newCourse])
-    );
+    return this._httpClient.post<Course>(`${this.baseURL}/courses`, course).pipe();
   }
 
   updateCourseById(id: string, update: Partial<Course>): Observable<Course[]> {
