@@ -6,6 +6,10 @@ import { CoursesRoutingModule } from './courses-routing.module';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { courseFeature } from './store/courses.reducer';
+import { CoursesEffects } from './store/courses.effects';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -15,7 +19,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     SharedModule,
     CoursesRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    StoreModule.forFeature(courseFeature),
+    EffectsModule.forFeature([CoursesEffects]),
   ],
   exports: [CoursesComponent]
 })

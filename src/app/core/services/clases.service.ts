@@ -24,9 +24,9 @@ export class ClasesService {
       );
   }
 
-  addClass(clase: Clase): Observable<Clase> {
+  addClass(clase: Partial<Clase>): Observable<Clase> {
     return this._httpClient.post<Clase>(`${this.baseURL}/clases`, clase).pipe(
-      tap((newClase: Clase) => this.clases = [...this.clases, newClase])
+      tap((newClase: Clase) => (this.clases = [...this.clases, newClase]))
     );
   }
 

@@ -1,143 +1,93 @@
-import { Component } from '@angular/core';
-import { Course } from './models/course';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CoursesService } from '../../../core/services/courses.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Course } from './models/course';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { CourseDetailsModalComponent } from './course-details-modal/course-details-modal.component';
 import { AlertService } from '../../../core/services/alert.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { selectCoursesOptions, selectIsLoadingCourses } from './store/courses.selector';
+import { CoursesActions } from './store/courses.actions';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrl: './courses.component.scss'
+  styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent {
+
+export class CoursesComponent implements OnInit {
   displayedColumns: string[] = ['profesor', 'commitee', 'course', 'createdAt', 'startDate', 'endDate', 'actions'];
-  dataSource: Course[] = [];
-  isLoading = false;
+  dataSource$: Observable<Course[]>;
+  isLoading$: Observable<boolean>;
   isAdmin = false;
 
   constructor(
-    private _coursesService: CoursesService,
+    private store: Store,
+    private matDialog: MatDialog,
     private _alertService: AlertService,
-    private _authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private matDialog: MatDialog
+    private _authService: AuthService
   ) {
-    this._authService.getUserRole().subscribe(role => {
+    this._authService.getUserRole().subscribe((role) => {
       this.isAdmin = role === 'admin';
     });
+
+    this.dataSource$ = this.store.select(selectCoursesOptions);
+    this.isLoading$ = this.store.select(selectIsLoadingCourses);
   }
 
   ngOnInit(): void {
-    this.loadCourses();
+    this.store.dispatch(CoursesActions.loadCourses());
   }
 
-  loadCourses(): void {
-    this.isLoading = true;
-    this._coursesService.getCourses().subscribe({
-      next: (courses: Course[]) => {
-        this.dataSource = courses;
-      },
-      error: () => {
-        this.isLoading = false;
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+  addCourse(course: Omit<Course, 'id'>): void {
+    this.store.dispatch(CoursesActions.createCourses({ course }));
   }
 
-  addCourse(course: Course): void {
-    this.isLoading = true;
-    console.log(course);
-    this._coursesService.addCourse(course).subscribe({
-      next: (newCourse: Course) => {
-        this.dataSource = [...this.dataSource, newCourse];
-      },
-      error: () => {
-        this.isLoading = false;
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
-  }
-
-  onDelete(id: string) {
-    this._alertService.showAlert({
-      title: '¡Advertencia!',
-      text: '¿Estás seguro de eliminar este curso?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
-      customClass: {
-        confirmButton: 'swal2-confirm-btn',
-        cancelButton: 'swal2-cancel-btn',
-      }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.isLoading = true;
-        this._coursesService.deleteCourseById(id).subscribe({
-          next: (courses: Course[]) => {
-            this.dataSource = courses;
-          },
-          error: (err: any) => {
-            this.isLoading = false;
-          },
-          complete: () => {
-            this.isLoading = false;
-          },
-        });
-      }
-    });
+  onDelete(courseId: string): void {
+    this._alertService
+      .showAlert({
+        title: '¡Advertencia!',
+        text: '¿Estás seguro de eliminar este curso?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          confirmButton: 'swal2-confirm-btn',
+          cancelButton: 'swal2-cancel-btn',
+        },
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.store.dispatch(CoursesActions.deleteCourses({ courseId }));
+        }
+      });
   }
 
   openModal(editingCourse?: Course): void {
     this.matDialog
-      .open(CourseDialogComponent, {
-        data: {
-          editingCourse,
-        },
-      })
+      .open(CourseDialogComponent, { data: { editingCourse } })
       .afterClosed()
-      .subscribe({
-        next: (result) => {
-          if (!!result) {
-            if (editingCourse) {
-              this.handleUpdate(editingCourse.id.toString(), result);
-            } else {
-              this.dataSource = [...this.dataSource, result];
-              this.addCourse(result)
-            }
+      .subscribe((result) => {
+        if (!!result) {
+          if (editingCourse) {
+            this.handleUpdate(editingCourse.id, result);
+          } else {
+            this.addCourse(result);
           }
-        },
+        }
       });
   }
 
-  handleUpdate(id: string, update: Course): void {
-    this.isLoading = true;
-    this._coursesService.updateCourseById(id, update).subscribe({
-      next: (courses: Course[]) => {
-        this.dataSource = courses;
-      },
-      error: (err: any) => {
-        this.isLoading = false;
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
+  handleUpdate(courseId: number, update: Course): void {
+    this.store.dispatch(CoursesActions.updateCourses({ course: { ...update, id: courseId } }));
   }
 
-  protected viewDetails(course: Course): void {
-    const dialogRef = this.matDialog.open(CourseDetailsModalComponent, {
+  viewDetails(course: Course): void {
+    this.matDialog.open(CourseDetailsModalComponent, {
       width: '500px',
-      data: course
+      data: course,
     });
   }
 }

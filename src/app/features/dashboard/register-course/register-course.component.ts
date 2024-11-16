@@ -16,7 +16,7 @@ import { RegisterCourseActions } from './store/register-course.actions';
 export class RegisterCourseComponent implements OnInit {
   registerCourse$: Observable<RegisterCourse[]>;
   userOptions$: Observable<User[]>;
-  courseOptions$: Observable<Course[]>;
+  courses$: Observable<Course[]>;
   loadRegisterCoursesError$: Observable<Error | null>;
   isLoadingRegisterCourses$: Observable<boolean>;
 
@@ -29,7 +29,7 @@ export class RegisterCourseComponent implements OnInit {
     });
 
     this.registerCourse$ = this.store.select(selectRegirterCourses);
-    this.courseOptions$ = this.store.select(selectCoursesOptions);
+    this.courses$ = this.store.select(selectCoursesOptions);
     this.userOptions$ = this.store.select(selectUserOptions);
     this.loadRegisterCoursesError$ = this.store.select(selectLoadRegisterCourseError);
     this.isLoadingRegisterCourses$ = this.store.select(selectIsLoadingRegisterCourse);

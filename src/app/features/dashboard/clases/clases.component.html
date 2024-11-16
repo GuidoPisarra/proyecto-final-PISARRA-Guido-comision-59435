@@ -2,7 +2,7 @@
   <h4>Seleccione un curso</h4>
   <mat-form-field>
     <mat-label>Curso</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="onCourseChange($event)">
+    <mat-select [(ngModel)]="selectedValue" name="course" (selectionChange)="onCourseChange($event)">
       <mat-option *ngFor="let course of listOfCourses" [value]="course.id">
         {{course.course}}
       </mat-option>

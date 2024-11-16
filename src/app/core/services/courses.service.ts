@@ -18,15 +18,15 @@ export class CoursesService {
 
   getCourses(): Observable<Course[]> {
     return this._httpClient
-      .get<Course[]>(
-        `${this.baseURL}/courses`
-      )
+      .get<Course[]>(`${this.baseURL}/courses`)
       .pipe(
         tap((courses: Course[]) => this.courses = courses)
       );
   }
 
-  addCourse(course: Course): Observable<Course> {
+
+
+  addCourse(course: Omit<Course, 'id'>): Observable<Course> {
     return this._httpClient.post<Course>(`${this.baseURL}/courses`, course).pipe(
       tap((newCourse: Course) => this.courses = [...this.courses, newCourse])
     );

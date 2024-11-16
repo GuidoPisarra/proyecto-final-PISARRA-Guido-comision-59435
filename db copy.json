@@ -1,5 +1,5 @@
 {
-  "students": [
+  "users": [
     {
       "id": "1",
       "firstName": "Homero",
@@ -8,7 +8,8 @@
       "email": "homer.simpson@gmail.com",
       "password": "password123",
       "token": "token_1",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/homero_simpson.jpg"
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "email": "marge.simpson@gmail.com",
       "password": "password123",
       "token": "token_2",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/marge_simpson.jpg"
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "email": "bart.simpson@gmail.com",
       "password": "password123",
       "token": "token_3",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/bart_simpson.jpg"
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "email": "lisa.simpson@gmail.com",
       "password": "password123",
       "token": "token_4",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/lisa_simpson.jpg"
     },
     {
       "id": "5",
@@ -48,7 +52,8 @@
       "email": "maggie.simpson@gmail.com",
       "password": "password123",
       "token": "token_5",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/maggie_simpson.jpg"
     },
     {
       "id": "6",
@@ -58,7 +63,8 @@
       "email": "apu@kwikemart.com",
       "password": "password123",
       "token": "token_6",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/apu_nahasapeemapetilon.jpg"
     },
     {
       "id": "7",
@@ -68,7 +74,8 @@
       "email": "ned.flanders@gmail.com",
       "password": "password123",
       "token": "token_7",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/ned_flanders.jpg"
     },
     {
       "id": "8",
@@ -78,7 +85,8 @@
       "email": "monty.burns@burnscorp.com",
       "password": "password123",
       "token": "token_8",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/montgomery_burns.jpg"
     },
     {
       "id": "9",
@@ -88,7 +96,8 @@
       "email": "moe.szyslak@moestavern.com",
       "password": "password123",
       "token": "token_9",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/moe_szyslak.jpg"
     },
     {
       "id": "10",
@@ -98,17 +107,142 @@
       "email": "krusty@krustytheclown.com",
       "password": "password123",
       "token": "token_10",
-      "role": "user"
+      "role": "user",
+      "avatarUrl": "assets/avatars/krusty_the_clown.jpg"
     },
     {
       "id": "111",
       "firstName": "admin",
       "lastName": "admin",
+      "createdAt": "2024-10-28T21:56:34.217Z",
       "email": "admin@mail.com",
       "password": "123456",
-      "createdAt": "2024-10-28T21:56:34.217Z",
       "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
-      "role": "admin"
+      "role": "admin",
+      "avatarUrl": "assets/avatars/admin_admin.jpg"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Homero",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "homer.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_1",
+      "role": "user",
+      "avatarUrl": "assets/avatars/homero_simpson.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "marge.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_2",
+      "role": "user",
+      "avatarUrl": "assets/avatars/marge_simpson.jpg"
+    },
+    {
+      "id": "3",
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "bart.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_3",
+      "role": "user",
+      "avatarUrl": "assets/avatars/bart_simpson.jpg"
+    },
+    {
+      "id": "4",
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "lisa.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_4",
+      "role": "user",
+      "avatarUrl": "assets/avatars/lisa_simpson.jpg"
+    },
+    {
+      "id": "5",
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "maggie.simpson@gmail.com",
+      "password": "password123",
+      "token": "token_5",
+      "role": "user",
+      "avatarUrl": "assets/avatars/maggie_simpson.jpg"
+    },
+    {
+      "id": "6",
+      "firstName": "Apu",
+      "lastName": "Nahasapeemapetilon",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "apu@kwikemart.com",
+      "password": "password123",
+      "token": "token_6",
+      "role": "user",
+      "avatarUrl": "assets/avatars/apu_nahasapeemapetilon.jpg"
+    },
+    {
+      "id": "7",
+      "firstName": "Ned",
+      "lastName": "Flanders",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "ned.flanders@gmail.com",
+      "password": "password123",
+      "token": "token_7",
+      "role": "user",
+      "avatarUrl": "assets/avatars/ned_flanders.jpg"
+    },
+    {
+      "id": "8",
+      "firstName": "Montgomery",
+      "lastName": "Burns",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "monty.burns@burnscorp.com",
+      "password": "password123",
+      "token": "token_8",
+      "role": "user",
+      "avatarUrl": "assets/avatars/montgomery_burns.jpg"
+    },
+    {
+      "id": "9",
+      "firstName": "Moe",
+      "lastName": "Szyslak",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "moe.szyslak@moestavern.com",
+      "password": "password123",
+      "token": "token_9",
+      "role": "user",
+      "avatarUrl": "assets/avatars/moe_szyslak.jpg"
+    },
+    {
+      "id": "10",
+      "firstName": "Krusty",
+      "lastName": "The Clown",
+      "createdAt": "2024-10-03T12:00:00Z",
+      "email": "krusty@krustytheclown.com",
+      "password": "password123",
+      "token": "token_10",
+      "role": "user",
+      "avatarUrl": "assets/avatars/krusty_the_clown.jpg"
+    },
+    {
+      "id": "111",
+      "firstName": "admin",
+      "lastName": "admin",
+      "createdAt": "2024-10-28T21:56:34.217Z",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "token": "abcdefghiasdasdasdlsadsalasdasfdsfsdf103232",
+      "role": "admin",
+      "avatarUrl": "assets/avatars/admin_admin.jpg"
     }
   ],
   "clases": [
@@ -904,6 +1038,36 @@
       "createdAt": "2024-07-25T17:15:00Z",
       "startDate": "2024-07-30",
       "endDate": "2024-08-15"
+    }
+  ],
+  "registerCourse": [
+    {
+      "id": "7e72",
+      "userId": "2"
+    },
+    {
+      "id": "37b4",
+      "userId": "2"
+    },
+    {
+      "id": "479a",
+      "courseId": "3",
+      "userId": "3"
+    },
+    {
+      "id": "7b6a",
+      "courseId": "2",
+      "userId": "2"
+    },
+    {
+      "id": "8e3e",
+      "courseId": "2",
+      "userId": "4"
+    },
+    {
+      "id": "07a4",
+      "courseId": "4",
+      "userId": "6"
     }
   ]
 }

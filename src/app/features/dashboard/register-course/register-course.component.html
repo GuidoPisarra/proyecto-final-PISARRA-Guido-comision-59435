@@ -2,7 +2,7 @@
   <mat-form-field>
     <mat-label>Curso</mat-label>
     <mat-select formControlName="courseId">
-      <mat-option [value]="course.id" *ngFor="let course of courseOptions$ | async">
+      <mat-option [value]="course.id" *ngFor="let course of courses$ | async">
         {{ course.course }} - {{ course.profesor }}
       </mat-option>
     </mat-select>

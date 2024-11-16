@@ -10,9 +10,7 @@ export class ClasesDetailsModalComponent {
   constructor(
     public dialogRef: MatDialogRef<ClasesDetailsModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    console.log(data);
-  }
+  ) { }
 
   onClose(): void {
     this.dialogRef.close();
