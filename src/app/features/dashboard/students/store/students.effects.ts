@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 import { of } from 'rxjs';
 import { StudentsService } from '../../../../core/services/students.service';
@@ -92,10 +92,14 @@ export class StudentsEffects {
     this.removeCourseStudent$ = createEffect(() =>
       this.actions$.pipe(
         ofType(StudentsActions.removeCourse),
-        switchMap(({ data }) =>
-          this._studentsService.removeCourse(data.studentId, data.courseId).pipe(
-            map((updatedCourses) => StudentsActions.removeCourseSuccess({ data: updatedCourses })),
-            catchError((error) => of(StudentsActions.removeCourseFailure({ error })))
+        mergeMap(({ studentId, courseId }) =>
+          this._studentsService.removeCourse(studentId, courseId).pipe(
+            map((updatedCourses) =>
+              StudentsActions.removeCourseSuccess({ course: updatedCourses })
+            ),
+            catchError((error) => {
+              return of(StudentsActions.removeCourseFailure({ error }));
+            })
           )
         )
       )

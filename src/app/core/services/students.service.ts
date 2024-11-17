@@ -22,7 +22,7 @@ export class StudentsService {
       .get<Student[]>(`${this.baseURL}/students`)
       .pipe(
         map((students: Student[]) =>
-          students.filter(student => student.role !== 'admin') // Filtra los estudiantes con rol "admin"
+          students.filter(student => student.role !== 'admin')
         ),
         tap((students: Student[]) => this.students = students)
       );

@@ -11,10 +11,16 @@
   <p><strong>Email:</strong> {{ data.email }}</p>
   <p><strong>Cursos Inscripto:</strong></p>
 
-  <mat-chip *ngFor="let course of courses$ | async" [removable]="true" (removed)="remove(course)">
-    {{ course.course }}
-    <mat-icon matChipRemove>cancel</mat-icon>
-  </mat-chip>
+  <ng-container *ngIf="(courses$ | async) as courses; else noCourses">
+    <mat-chip *ngFor="let course of courses" [removable]="true" (removed)="remove(course.id.toString())">
+      {{ course.course }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  </ng-container>
+
+  <ng-template #noCourses>
+    <p>No hay cursos inscritos.</p>
+  </ng-template>
 
 </div>
 

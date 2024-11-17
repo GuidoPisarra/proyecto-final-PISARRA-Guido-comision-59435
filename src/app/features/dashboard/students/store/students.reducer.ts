@@ -7,7 +7,7 @@ import { Course } from '../../courses/models/course';
 export const studentsFeatureKey = 'students';
 
 export interface State {
-  courses: any;
+  courses: Course[];
   student: Student[];
   studentOptions: Student[];
   isLoadingStudents: boolean;
@@ -72,10 +72,17 @@ export const reducer = createReducer(
     ...state,
     error,
   })),
-  on(StudentsActions.removeCourseSuccess, (state, { data }) => ({
+  on(StudentsActions.removeCourseSuccess, (state, { course }) => {
+    console.log('Cursos después de eliminar:', course);
+    return {
+      ...state,
+      courses: course
+    };
+  }),
+  on(StudentsActions.clearStudentCourses, state => ({
     ...state,
-    courses: data
-  }))
+    courses: []
+  })),
 );
 
 

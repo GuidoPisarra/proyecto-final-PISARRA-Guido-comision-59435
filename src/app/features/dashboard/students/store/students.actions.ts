@@ -25,9 +25,11 @@ export const StudentsActions = createActionGroup({
     'Load Student Courses Success': props<{ courses: Course[] }>(),
     'Load Student Courses Failure': props<{ error: Error }>(),
 
-    'Remove Course': props<{ data: any }>(),
-    'Remove Course Success': props<{ data: Course[] }>(),
+    'Remove Course': props<{ studentId: string, courseId: string }>(),
+    'Remove Course Success': props<{ course: Course[] }>(),
     'Remove Course Failure': props<{ error: Error }>(),
+
+    'Clear Student Courses': emptyProps(),
 
   },
 });
