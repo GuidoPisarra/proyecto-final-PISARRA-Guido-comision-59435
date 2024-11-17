@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CourseDialogComponent } from '../../courses/course-dialog/course-dialog.component';
 import { generateRandomID } from '../../../../shared/utils';
 import { Clase } from '../models/clase';
 
@@ -25,7 +24,7 @@ export class ClaseDialogComponent {
   ];
 
   constructor(
-    private matDialogRef: MatDialogRef<CourseDialogComponent>,
+    private matDialogRef: MatDialogRef<ClaseDialogComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data?: ClaseDialogData
   ) {
@@ -45,12 +44,14 @@ export class ClaseDialogComponent {
   patchFormValue() {
     if (this.data?.editingClase) {
       const { date, ...otherData } = this.data.editingClase;
-      this.claseForm.patchValue({
+      const patchedValue = {
         ...otherData,
         date: this.formatDate(date)
-      });
+      };
+      this.claseForm.patchValue(patchedValue);
     }
   }
+
 
   onSave(): void {
     if (this.claseForm.invalid) {

@@ -11,9 +11,12 @@ import { clasesFeature } from './store/clases.reducer';
 import { ClasesEffects } from './store/clases.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [ClasesComponent, ClaseDialogComponent, ClasesDetailsModalComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     SharedModule,
     ClasesRoutingModule,

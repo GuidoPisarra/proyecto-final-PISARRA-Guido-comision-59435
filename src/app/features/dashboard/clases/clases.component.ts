@@ -79,54 +79,28 @@ export class ClasesComponent implements OnInit {
      }); */
   }
 
-  protected openModal(editingClase?: Clase): void {
-    const dialogRef = this.matDialog.open(ClaseDialogComponent, {
-      data: { editingClase },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (editingClase) {
-          this.store.dispatch(ClasesActions.updateClases({ courseId: editingClase.courseId, clase: result }));
-        } else {
-          this.store.dispatch(ClasesActions.createClases({ courseId: this.selectedValue }));
+  openModal(editingClass?: Clase): void {
+    this.matDialog
+      .open(ClaseDialogComponent, { data: { editingClase: editingClass } })
+      .afterClosed()
+      .subscribe((result) => {
+        if (!!result) {
+          if (editingClass) {
+            console.log('Resultado tras EDITAR:', result);
+            this.handleUpdate(editingClass.courseId, result);
+          } else {
+            console.log('Resultado tras CREAR:', result);
+            this.store.dispatch(ClasesActions.createClases({ courseId: result.courseId, clase: result }))
+          }
         }
-      }
-    });
+      });
   }
 
-  private addClass(newClase: Clase): void {
-    /*  this.isLoading = true;
-     newClase.courseId = this.selectedValue;
-     this._clasesService.addClass(newClase).subscribe({
-       next: (addedClase: Clase) => {
-         this.listOfClases = [...this.listOfClases, addedClase];
-       },
-       error: (err) => {
-         console.error('Error al agregar la clase:', err);
-         this.isLoading = false;
-       },
-       complete: () => {
-         this.isLoading = false;
-       }
-     }); */
+
+  private handleUpdate(courseId: string, update: Clase): void {
+    this.store.dispatch(ClasesActions.updateClases({ courseId: courseId, clase: { ...update } }));
   }
 
-  protected handleUpdate(id: string, update: Clase): void {
-    /*  this.isLoading = true;
-     this._clasesService.updateClassById(id, update).subscribe({
-       next: (updatedClases: Clase[]) => {
-         this.listOfClases = updatedClases;
-       },
-       error: (err: any) => {
-         console.error('Error al actualizar la clase:', err);
-         this.isLoading = false;
-       },
-       complete: () => {
-         this.isLoading = false;
-       }
-     }); */
-  }
 
   protected viewDetails(clase: Clase): void {
     const dialogRef = this.matDialog.open(ClasesDetailsModalComponent, {

@@ -16,7 +16,7 @@
     Agregar clase
   </button>
 
-  <table mat-table [dataSource]="clases$">
+  <table mat-table [dataSource]="clases$ ">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef>Clase</th>
       <td color="red" app-hightlight mat-cell *matCellDef="let clase">{{ clase.title }}</td>

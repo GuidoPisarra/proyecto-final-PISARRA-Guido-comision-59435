@@ -19,7 +19,11 @@ export class ClasesService {
   getClases(courseId: string): Observable<Clase[]> {
     return this._httpClient
       .get<Clase[]>(`${this.baseURL}/clases?courseId=${courseId}`)
-
+      .pipe(
+        tap((clases) => {
+          this.clases = clases;
+        })
+      );
   }
 
   addClass(clase: Partial<Clase>): Observable<Clase> {
@@ -29,15 +33,21 @@ export class ClasesService {
   }
 
   updateClassById(id: string, update: Partial<Clase>): Observable<Clase[]> {
-    return this._httpClient.patch<Clase>(`${this.baseURL}/clases/${id}`, update).pipe(
+    return this._httpClient.patch<Clase>(`${this.baseURL}/clases/${update.id}?courseId=${id}`, update).pipe(
       tap((updatedClass) => {
         this.clases = this.clases.map(clase =>
           clase.id.toString() === id ? { ...clase, ...updatedClass } : clase
         );
+        console.log('Clases actualizadas localmente:', this.clases);
       }),
-      switchMap(() => of(this.clases))
+      switchMap(() => this._httpClient.get<Clase[]>(`${this.baseURL}/clases?courseId=${id}`)),
+      tap((allClases) => {
+        this.clases = allClases;
+        console.log('Todas las clases del curso:', this.clases);
+      })
     );
   }
+
 
 
   deleteClassById(id: string, courseId: string): Observable<Clase[]> {

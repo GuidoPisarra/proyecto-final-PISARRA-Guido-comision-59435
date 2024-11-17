@@ -14,6 +14,7 @@ export class ClasesEffects {
   loadClases$: Actions<Action<string>>;
   createClases$: Actions<Action<string>>;
   createClasesSuccess$: Actions<Action<string>>;
+  updateClases$: Actions<Action<string>>;
   deleteClase$: Actions<Action<string>>;
 
   constructor(
@@ -41,6 +42,7 @@ export class ClasesEffects {
         concatMap((action) =>
           this._clasesService
             .addClass({
+              ...action.clase,
               courseId: action.courseId
             })
             .pipe(
@@ -73,6 +75,19 @@ export class ClasesEffects {
         )
       )
     );
+
+    this.updateClases$ = createEffect(() => {
+      return this.actions$.pipe(
+        ofType(ClasesActions.updateClases),
+        switchMap(({ courseId, clase }) =>
+          this._clasesService.updateClassById(courseId, clase).pipe(
+            map((updatedClases: Clase[]) => ClasesActions.updateClasesSuccess({ data: updatedClases })),
+            catchError((error) => of(ClasesActions.updateClasesFailure({ error })))
+          )
+        )
+      );
+    });
+
 
 
   }

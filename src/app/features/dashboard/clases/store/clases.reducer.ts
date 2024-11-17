@@ -26,11 +26,12 @@ export const reducer = createReducer(
       isLoadingClases: true,
     };
   }),
-  on(ClasesActions.createClasesSuccess, (state) => {
+  on(ClasesActions.createClasesSuccess, (state, { data }) => {
     return {
       ...state,
       loadClasesError: null,
       isLoadingClases: false,
+      clase: [...state.clase, data]
     };
   }),
   on(ClasesActions.loadClases, state => ({
@@ -47,6 +48,10 @@ export const reducer = createReducer(
     ...state,
     error,
     loading: false
+  })),
+  on(ClasesActions.updateClasesSuccess, (state, { data }) => ({
+    ...state,
+    claseOptions: data,
   })),
   on(ClasesActions.deleteClasesSuccess, (state, { clase }) => ({
     ...state,
