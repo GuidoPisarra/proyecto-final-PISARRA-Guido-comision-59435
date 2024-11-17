@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of, switchMap, tap } from 'rxjs';
+import { forkJoin, map, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../../features/dashboard/students/models';
 import { environment } from '../../../environments/environment.development';
+import { Course } from '../../features/dashboard/courses/models/course';
+import { RegisterCourse } from '../../features/dashboard/register-course/models';
 
 @Injectable({
   providedIn: 'root'
@@ -53,4 +55,45 @@ export class StudentsService {
       switchMap(() => of(this.students))
     );
   }
+
+  getStudentCourses(studentId: string): Observable<Course[]> {
+    return this._httpClient
+      .get<any[]>(`${this.baseURL}/registerCourse`)
+      .pipe(
+        map((registrations: RegisterCourse[]) => {
+          const studentRegistrations = registrations.filter(
+            (registration) => registration.userId === studentId
+          );
+          const courseIds = studentRegistrations.map((registration) => registration.courseId);
+          return courseIds;
+        }),
+        switchMap((courseIds: string[]) => {
+          const requests = courseIds.map(courseId =>
+            this._httpClient.get<Course>(`${this.baseURL}/courses/${courseId}`)
+          );
+          return forkJoin(requests);
+        })
+      );
+  }
+
+  removeCourse(user: string, course: string): Observable<Course[]> {
+    return this._httpClient
+      .get<any[]>(`${this.baseURL}/registerCourse`)
+      .pipe(
+        map((registrations: RegisterCourse[]) => {
+          const registration = registrations.find(
+            (r) => r.userId === user && r.courseId === course
+          );
+          return registration?.id;
+        }),
+        switchMap((registrationId) => {
+          return this._httpClient.delete<void>(`${this.baseURL}/registerCourse/${registrationId}`).pipe(
+            switchMap(() => {
+              return this.getStudentCourses(user);
+            })
+          );
+        })
+      );
+  }
+
 }

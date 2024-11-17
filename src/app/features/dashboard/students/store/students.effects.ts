@@ -14,6 +14,8 @@ export class StudentsEffects {
   createStudents$: Actions<Action<string>>;
   updateStudents$: Actions<Action<string>>;
   deleteStudents$: Actions<Action<string>>;
+  loadStudentCourses$: Actions<Action<string>>;
+  removeCourseStudent$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -75,6 +77,29 @@ export class StudentsEffects {
       )
     );
 
+    this.loadStudentCourses$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(StudentsActions.loadStudentCourses),
+        switchMap(({ studentId }) =>
+          this._studentsService.getStudentCourses(studentId).pipe(
+            map((courses) => StudentsActions.loadStudentCoursesSuccess({ courses })),
+            catchError((error) => of(StudentsActions.loadStudentCoursesFailure({ error })))
+          )
+        )
+      )
+    );
+
+    this.removeCourseStudent$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(StudentsActions.removeCourse),
+        switchMap(({ data }) =>
+          this._studentsService.removeCourse(data.studentId, data.courseId).pipe(
+            map((updatedCourses) => StudentsActions.removeCourseSuccess({ data: updatedCourses })),
+            catchError((error) => of(StudentsActions.removeCourseFailure({ error })))
+          )
+        )
+      )
+    );
   }
 }
 

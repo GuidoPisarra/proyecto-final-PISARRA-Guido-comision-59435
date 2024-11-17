@@ -30,3 +30,8 @@ export const selectIsLoadingStudents = createSelector(
   selectStudentsState,
   (state) => state.isLoadingStudents
 );
+
+export const selectStudentCourses = createSelector(
+  selectStudentsState,
+  (state) => state.courses
+);

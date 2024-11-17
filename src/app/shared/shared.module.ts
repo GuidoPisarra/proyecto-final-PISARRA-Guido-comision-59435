@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 import { ErrorsTemplateComponent } from '../features/dashboard/errors-template/errors-template.component';
 import { MatOptionModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';  // Importa MatChipsModule
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatOptionModule } from '@angular/material/core';
     RepeatDirective,
     FormsModule,
     MatOptionModule,
-    ErrorsTemplateComponent
+    ErrorsTemplateComponent,
+    MatChipsModule
   ],
 })
 export class SharedModule { }

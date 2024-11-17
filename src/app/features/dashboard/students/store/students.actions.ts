@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Student } from '../models';
+import { Course } from '../../courses/models/course';
 
 export const StudentsActions = createActionGroup({
   source: 'Student',
@@ -19,6 +20,14 @@ export const StudentsActions = createActionGroup({
     'Delete Students': props<{ studentId: string }>(),
     'Delete Students Success': props<{ student: Student[] }>(),
     'Delete Students Failure': props<{ error: Error }>(),
+
+    'Load Student Courses': props<{ studentId: string }>(),
+    'Load Student Courses Success': props<{ courses: Course[] }>(),
+    'Load Student Courses Failure': props<{ error: Error }>(),
+
+    'Remove Course': props<{ data: any }>(),
+    'Remove Course Success': props<{ data: Course[] }>(),
+    'Remove Course Failure': props<{ error: Error }>(),
 
   },
 });

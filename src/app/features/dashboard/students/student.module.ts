@@ -9,6 +9,7 @@ import { studentsFeature } from './store/students.reducer';
 import { StudentsEffects } from './store/students.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
     SharedModule,
     StoreModule.forFeature(studentsFeature),
     EffectsModule.forFeature([StudentsEffects]),
+    MatChipsModule
   ],
   exports: [StudentComponent],
 })

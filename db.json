@@ -1043,26 +1043,13 @@
   "registerCourse": [
     {
       "id": "7e72",
+      "courseId": "3",
       "userId": "2"
     },
     {
       "id": "37b4",
+      "courseId": "4",
       "userId": "2"
-    },
-    {
-      "id": "479a",
-      "courseId": "3",
-      "userId": "3"
-    },
-    {
-      "id": "7b6a",
-      "courseId": "2",
-      "userId": "2"
-    },
-    {
-      "id": "8e3e",
-      "courseId": "2",
-      "userId": "4"
     },
     {
       "id": "07a4",
