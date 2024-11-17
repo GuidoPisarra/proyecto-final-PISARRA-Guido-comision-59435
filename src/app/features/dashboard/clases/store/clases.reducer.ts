@@ -55,7 +55,7 @@ export const reducer = createReducer(
   })),
   on(ClasesActions.deleteClasesSuccess, (state, { clase }) => ({
     ...state,
-    clases: clase,
+    claseOptions: clase,
   }))
 
 

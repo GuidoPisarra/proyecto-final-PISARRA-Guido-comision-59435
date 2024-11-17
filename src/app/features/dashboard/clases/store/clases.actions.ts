@@ -17,7 +17,7 @@ export const ClasesActions = createActionGroup({
     'Update Clases Failure': props<{ error: Error }>(),
 
     'Delete Clases': props<{ courseId: string, clase: Clase }>(),
-    'Delete Clases Success': props<{ clase: Clase }>(),
+    'Delete Clases Success': props<{ clase: Clase[] }>(),
     'Delete Clases Failure': props<{ error: Error }>(),
 
   },

@@ -314,7 +314,7 @@
       "courseId": 1,
       "title": "Práctica final",
       "date": "2024-10-22",
-      "duration": "3h",
+      "duration": "1 h 30 min.",
       "id": "e9e6",
       "createdAt": "2024-10-22"
     },
@@ -947,20 +947,6 @@
       "date": "2024-09-02T17:15:00Z",
       "duration": "3h",
       "id": "d856"
-    },
-    {
-      "id": "8527",
-      "title": "test",
-      "date": "2025-11-08",
-      "duration": "30 min.",
-      "createdAt": "2024-11-17T17:00:36.043Z"
-    },
-    {
-      "id": "7365",
-      "title": "aaaaaaa",
-      "date": "2024-01-01",
-      "duration": "2 hs 30 min.",
-      "createdAt": "2024-11-17T17:11:25.753Z"
     }
   ],
   "courses": [

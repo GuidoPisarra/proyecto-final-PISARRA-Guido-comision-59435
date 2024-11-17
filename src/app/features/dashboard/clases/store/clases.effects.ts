@@ -60,20 +60,6 @@ export class ClasesEffects {
       );
     });
 
-    this.deleteClase$ = createEffect(() =>
-      this.actions$.pipe(
-        ofType(ClasesActions.deleteClases),
-        mergeMap(({ courseId, clase }) =>
-          this._clasesService.deleteClassById(courseId, clase.id).pipe(
-            map((clases: Clase[]) => ClasesActions.deleteClasesSuccess({ clase })),
-            catchError((error) =>
-              of(ClasesActions.deleteClasesFailure({ error }))
-            )
-          )
-        )
-      )
-    );
-
     this.updateClases$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(ClasesActions.updateClases),
@@ -86,7 +72,19 @@ export class ClasesEffects {
       );
     });
 
-
+    this.deleteClase$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(ClasesActions.deleteClases),
+        mergeMap(({ courseId, clase }) =>
+          this._clasesService.deleteClassById(courseId, clase.id).pipe(
+            map((clases: Clase[]) => ClasesActions.deleteClasesSuccess({ clase: clases })),
+            catchError((error) =>
+              of(ClasesActions.deleteClasesFailure({ error }))
+            )
+          )
+        )
+      )
+    );
 
   }
 }
