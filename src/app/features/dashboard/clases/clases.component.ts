@@ -49,34 +49,24 @@ export class ClasesComponent implements OnInit {
 
 
   onDelete(clase: Clase) {
-    /*  this._alertService.showAlert({
-       title: '¡Advertencia!',
-       text: '¿Estás seguro de eliminar esta clase?',
-       icon: 'warning',
-       showCancelButton: true,
-       confirmButtonText: 'Sí, eliminar',
-       cancelButtonText: 'Cancelar',
-       customClass: {
-         confirmButton: 'swal2-confirm-btn',
-         cancelButton: 'swal2-cancel-btn',
-       }
-     }).then((result) => {
-       if (result.isConfirmed) {
-         this.isLoading = true;
-         this._clasesService.deleteClassById(clase.id, clase.courseId).subscribe({
-           next: (clases: Clase[]) => {
-             this.listOfClases = clases;
-           },
-           error: (err: any) => {
-             console.error('Error al eliminar la clase:', err);
-             this.isLoading = false;
-           },
-           complete: () => {
-             this.isLoading = false;
-           }
-         });
-       }
-     }); */
+    this._alertService
+      .showAlert({
+        title: '¡Advertencia!',
+        text: '¿Estás seguro de eliminar esta clase?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          confirmButton: 'swal2-confirm-btn',
+          cancelButton: 'swal2-cancel-btn',
+        },
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.store.dispatch(ClasesActions.deleteClases({ courseId: this.selectedValue, clase: clase }));
+        }
+      });
   }
 
   openModal(editingClass?: Clase): void {
@@ -86,11 +76,9 @@ export class ClasesComponent implements OnInit {
       .subscribe((result) => {
         if (!!result) {
           if (editingClass) {
-            console.log('Resultado tras EDITAR:', result);
             this.handleUpdate(editingClass.courseId, result);
           } else {
-            console.log('Resultado tras CREAR:', result);
-            this.store.dispatch(ClasesActions.createClases({ courseId: result.courseId, clase: result }))
+            this.store.dispatch(ClasesActions.createClases({ courseId: this.selectedValue, clase: result }))
           }
         }
       });

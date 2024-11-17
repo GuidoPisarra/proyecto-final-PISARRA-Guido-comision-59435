@@ -31,7 +31,7 @@ export const reducer = createReducer(
       ...state,
       loadClasesError: null,
       isLoadingClases: false,
-      clase: [...state.clase, data]
+      claseOptions: [...state.claseOptions, data]
     };
   }),
   on(ClasesActions.loadClases, state => ({

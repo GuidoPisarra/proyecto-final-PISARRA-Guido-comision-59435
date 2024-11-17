@@ -39,19 +39,17 @@ export class ClasesEffects {
     this.createClases$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(ClasesActions.createClases),
-        concatMap((action) =>
-          this._clasesService
-            .addClass({
-              ...action.clase,
-              courseId: action.courseId
-            })
-            .pipe(
-              map((data) => ClasesActions.createClasesSuccess({ data })),
-              catchError((error) =>
-                of(ClasesActions.createClasesFailure({ error }))
-              )
+        concatMap((action) => {
+          return this._clasesService.addClass({
+            ...action.clase,
+            courseId: action.courseId
+          }).pipe(
+            map((newClase) => ClasesActions.createClasesSuccess({ data: newClase })),
+            catchError((error) =>
+              of(ClasesActions.createClasesFailure({ error }))
             )
-        )
+          );
+        })
       );
     });
 
