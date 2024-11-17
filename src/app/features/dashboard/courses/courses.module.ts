@@ -14,7 +14,11 @@ import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
-  declarations: [CoursesComponent, CourseDialogComponent, CourseDetailsModalComponent],
+  declarations: [
+    CoursesComponent,
+    CourseDialogComponent,
+    CourseDetailsModalComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
