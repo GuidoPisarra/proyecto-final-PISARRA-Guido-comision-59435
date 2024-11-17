@@ -249,10 +249,9 @@
     {
       "courseId": 1,
       "title": "Introducción a HTML",
-      "date": "2024-10-04",
-      "duration": "1 h",
-      "id": "4c67",
-      "createdAt": "2024-10-04"
+      "date": "2024-10-04T12:00:00Z",
+      "duration": "2h",
+      "id": "4c67"
     },
     {
       "courseId": 1,
@@ -314,7 +313,7 @@
       "courseId": 1,
       "title": "Práctica final",
       "date": "2024-10-22",
-      "duration": "1 h 30 min.",
+      "duration": "3h",
       "id": "e9e6",
       "createdAt": "2024-10-22"
     },

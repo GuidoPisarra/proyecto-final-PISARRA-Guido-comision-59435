@@ -5,7 +5,7 @@
     Crear alumno
   </button>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z10">
+  <table mat-table [dataSource]="dataSource$" class="mat-elevation-z10">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nombre</th>
       <td color="red" app-hightlight mat-cell *matCellDef="let student">{{ student | studentFullName:'uppercase' }}
