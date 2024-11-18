@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { generateRandomID } from '../../../../shared/utils';
 import { EmailValidator, StudentNameValidator } from '../../../../shared/utils/validators/customValidators';
-import { Student } from '../../students/models';
+import { User } from '../models';
 
-interface StudentDialogData {
-  editingStudent?: Student;
+interface UserDialogData {
+  editingUser?: User;
 }
 
 @Component({
@@ -15,14 +15,14 @@ interface StudentDialogData {
   styles: ``,
 })
 export class UsersDialogComponent {
-  studentForm: FormGroup;
+  userForm: FormGroup;
 
   constructor(
     private matDialogRef: MatDialogRef<UsersDialogComponent>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data?: StudentDialogData
+    @Inject(MAT_DIALOG_DATA) public data?: UserDialogData
   ) {
-    this.studentForm = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       firstName: [null, [Validators.required, StudentNameValidator]],
       lastName: [null, [Validators.required, StudentNameValidator]],
       email: [null, [EmailValidator]],
@@ -31,39 +31,39 @@ export class UsersDialogComponent {
   }
 
   private get isEditing() {
-    return !!this.data?.editingStudent;
+    return !!this.data?.editingUser;
   }
 
   patchFormValue() {
-    if (this.data?.editingStudent) {
-      this.studentForm.patchValue(this.data.editingStudent);
+    if (this.data?.editingUser) {
+      this.userForm.patchValue(this.data.editingUser);
     }
   }
 
   onSave(): void {
-    if (this.studentForm.invalid) {
-      this.studentForm.markAllAsTouched();
+    if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched();
     } else {
       this.matDialogRef.close({
-        ...this.studentForm.value,
+        ...this.userForm.value,
         id: this.isEditing
-          ? this.data!.editingStudent!.id
+          ? this.data!.editingUser!.id
           : generateRandomID(4),
         createdAt: this.isEditing
-          ? this.data!.editingStudent!.createdAt
+          ? this.data!.editingUser!.createdAt
           : new Date(),
       });
     }
   }
 
   get firstName() {
-    return this.studentForm.get('firstName');
+    return this.userForm.get('firstName');
   }
   get lastName() {
-    return this.studentForm.get('lastName');
+    return this.userForm.get('lastName');
   }
   get email() {
-    return this.studentForm.get('email');
+    return this.userForm.get('email');
   }
 
 }

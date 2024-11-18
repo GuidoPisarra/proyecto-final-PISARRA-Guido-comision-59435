@@ -100,17 +100,6 @@
       "avatarUrl": "assets/avatars/moe_szyslak.jpg"
     },
     {
-      "id": "10",
-      "firstName": "Krusty",
-      "lastName": "The Clown",
-      "createdAt": "2024-10-03T12:00:00Z",
-      "email": "krusty@krustytheclown.com",
-      "password": "password123",
-      "token": "token_10",
-      "role": "user",
-      "avatarUrl": "assets/avatars/krusty_the_clown.jpg"
-    },
-    {
       "id": "111",
       "firstName": "admin",
       "lastName": "admin",
@@ -1059,7 +1048,7 @@
     {
       "id": "44b2",
       "courseId": "1",
-      "userId": "10"
+      "userId": null
     },
     {
       "id": "489f",

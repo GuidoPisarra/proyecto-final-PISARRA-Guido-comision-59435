@@ -39,9 +39,9 @@ export class UsersService {
       .pipe(concatMap(() => this.getUsers()));
   }
 
-  updateUserById(id: string, update: Partial<User>) {
+  updateUserById(update: Partial<User>) {
     return this._httpClient
-      .patch<User>(`${this.baseURL}/users/${id}`, update)
+      .patch<User>(`${this.baseURL}/users/${update.id}`, update)
       .pipe(concatMap(() => this.getUsers()));
   }
 }

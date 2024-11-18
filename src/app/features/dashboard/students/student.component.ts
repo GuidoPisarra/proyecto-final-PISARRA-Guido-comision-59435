@@ -30,7 +30,6 @@ export class StudentComponent implements OnInit {
     this._authService.getUserRole().subscribe((role) => {
       this.isAdmin = role === 'admin';
     });
-
     this.dataSource$ = this.store.select(selectStudents);
     this.isLoading$ = this.store.select(selectIsLoadingStudents);
   }

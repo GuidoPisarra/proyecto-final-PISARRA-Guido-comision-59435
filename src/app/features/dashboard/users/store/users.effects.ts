@@ -63,7 +63,7 @@ export class UsersEffects {
       this.actions$.pipe(
         ofType(UsersActions.updateUsers),
         mergeMap((action) =>
-          this._usersService.updateUserById(action.user.id.toString(), action.user).pipe(
+          this._usersService.updateUserById(action.user).pipe(
             map((updatedUser) =>
               UsersActions.updateUsersSuccess({ data: updatedUser })
             ),

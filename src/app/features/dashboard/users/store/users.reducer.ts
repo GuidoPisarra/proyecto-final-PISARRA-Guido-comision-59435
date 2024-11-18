@@ -31,7 +31,7 @@ export const reducer = createReducer(
       ...state,
       loadUsersError: null,
       isLoadingUsers: false,
-      userOptions: [...state.userOptions, user]
+      user: [...state.userOptions, user]
     };
   }),
   on(UsersActions.loadUsers, state => ({
@@ -59,7 +59,6 @@ export const reducer = createReducer(
     user: user,
     userOptions: user,
   }))
-
 
 );
 
