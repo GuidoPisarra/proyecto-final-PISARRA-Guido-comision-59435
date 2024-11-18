@@ -11,6 +11,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatOptionModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
+import { MatSortModule } from '@angular/material/sort';
+import { studentsFeature } from '../students/store/students.reducer';
+import { StudentsEffects } from '../students/store/students.effects';
 
 @NgModule({
   declarations: [RegisterCourseComponent],
@@ -23,7 +26,9 @@ import { SharedModule } from '../../../shared/shared.module';
     MatProgressSpinnerModule,
     MatOptionModule,
     StoreModule.forFeature(registerCourseFeature),
-    EffectsModule.forFeature([RegisterCourseEffects]),
+    EffectsModule.forFeature([RegisterCourseEffects, StudentsEffects]),
+    StoreModule.forFeature(studentsFeature),
+    MatSortModule
   ],
 })
 export class RegisterCourseModule { }

@@ -73,7 +73,6 @@ export const reducer = createReducer(
     error,
   })),
   on(StudentsActions.removeCourseSuccess, (state, { course }) => {
-    console.log('Cursos después de eliminar:', course);
     return {
       ...state,
       courses: course

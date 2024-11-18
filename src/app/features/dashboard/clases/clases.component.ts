@@ -7,7 +7,7 @@ import { ClasesDetailsModalComponent } from './clases-details-modal/clases-detai
 import { AlertService } from '../../../core/services/alert.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectClases, selectClasesOptions, selectIsLoadingClases, selectLoadClasesError } from './store/clases.selector';
+import { selectClasesOptions, selectIsLoadingClases, selectLoadClasesError } from './store/clases.selector';
 import { ClasesActions } from './store/clases.actions';
 import { CoursesActions } from '../courses/store/courses.actions';
 import { selectCourses } from '../courses/store/courses.selector';

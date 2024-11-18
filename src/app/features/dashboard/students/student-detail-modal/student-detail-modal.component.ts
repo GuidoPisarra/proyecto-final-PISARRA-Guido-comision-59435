@@ -39,8 +39,6 @@ export class StudentDetailModalComponent implements OnInit {
   }
 
   remove(courseId: string): void {
-    console.log('Disparando acción para eliminar curso', courseId);
-
     this.store.dispatch(StudentsActions.removeCourse({ studentId: this.studentID, courseId: courseId }))
     this.courses$?.subscribe(courses => {
       this.cdr.detectChanges();
