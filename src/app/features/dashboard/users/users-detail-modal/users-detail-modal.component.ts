@@ -21,10 +21,10 @@ export class UsersDetailModalComponent {
     private cdr: ChangeDetectorRef,
     private store: Store
   ) {
-    console.log(data);
     this.store.dispatch(UsersActions.loadUserCourses({ userId: data.id }));
     this.userID = data.id;
     this.courses$ = this.store.select(selectUserCourses);
+
   }
 
   ngOnInit() {
@@ -41,9 +41,9 @@ export class UsersDetailModalComponent {
   }
 
   remove(courseId: string): void {
-    /* this.store.dispatch(UsersActions.removeUserCourse({ userId: this.userID, courseId: courseId }))
+    this.store.dispatch(UsersActions.removeUserCourse({ userId: this.userID, courseId: courseId }))
     this.courses$?.subscribe(courses => {
       this.cdr.detectChanges();
-    }); */
+    });
   }
 }

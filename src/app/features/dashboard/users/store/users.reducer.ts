@@ -67,8 +67,21 @@ export const reducer = createReducer(
   })),
   on(UsersActions.loadUserCoursesSuccess, (state, { courses }) => ({
     ...state,
-    userCourses: courses, // Actualiza el estado con los cursos cargados
+    userCourses: courses,
   })),
+  on(UsersActions.removeUserCourse, (state) => ({
+    ...state,
+  })),
+  on(UsersActions.removeUserCourseSuccess, (state, { courses }) => ({
+    ...state,
+    userCourses: courses,
+  })),
+  on(UsersActions.removeUserCourseFailure, (state, { error }) => ({
+    ...state,
+    loadUsersError: error,
+  })),
+
+
   on(UsersActions.clearUserCourses, state => ({
     ...state,
     userCourses: []

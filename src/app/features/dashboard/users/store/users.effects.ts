@@ -15,6 +15,7 @@ export class UsersEffects {
   updateUsers$: Actions<Action<string>>;
   deleteUsers$: Actions<Action<string>>;
   loadUsersCourses$: Actions<Action<string>>;
+  removeUserCourse$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -83,6 +84,18 @@ export class UsersEffects {
             catchError((error) =>
               of(UsersActions.updateUsersFailure({ error }))
             )
+          )
+        )
+      )
+    );
+
+    this.removeUserCourse$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(UsersActions.removeUserCourse),
+        switchMap((action) =>
+          this._usersService.removeUserCourse(action.userId, action.courseId).pipe(
+            map((courses) => UsersActions.removeUserCourseSuccess({ courses })),
+            catchError((error) => of(UsersActions.removeUserCourseFailure({ error })))
           )
         )
       )
