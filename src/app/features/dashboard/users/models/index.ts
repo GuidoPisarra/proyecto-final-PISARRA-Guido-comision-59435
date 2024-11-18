@@ -1,3 +1,5 @@
+import { Course } from "../../courses/models/course";
+
 export interface User {
   id: number;
   firstName: string;
@@ -8,4 +10,5 @@ export interface User {
   token: string;
   role: string;
   avatarUrl?: string;
+  courses: Course[];
 }

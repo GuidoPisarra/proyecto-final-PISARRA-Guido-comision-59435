@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { User } from '../models';
 import { UsersActions } from './users.actions';
+import { Course } from '../../courses/models/course';
 
 export const usersFeatureKey = 'users';
 
@@ -9,13 +10,15 @@ export interface State {
   userOptions: User[];
   isLoadingUsers: boolean;
   loadUsersError: Error | null;
+  userCourses: Course[]
 }
 
 export const initialState: State = {
   isLoadingUsers: false,
   loadUsersError: null,
   user: [],
-  userOptions: []
+  userOptions: [],
+  userCourses: []
 };
 
 export const reducer = createReducer(
@@ -58,7 +61,18 @@ export const reducer = createReducer(
     ...state,
     user: user,
     userOptions: user,
-  }))
+  })),
+  on(UsersActions.loadUserCourses, (state) => ({
+    ...state,
+  })),
+  on(UsersActions.loadUserCoursesSuccess, (state, { courses }) => ({
+    ...state,
+    userCourses: courses, // Actualiza el estado con los cursos cargados
+  })),
+  on(UsersActions.clearUserCourses, state => ({
+    ...state,
+    userCourses: []
+  })),
 
 );
 

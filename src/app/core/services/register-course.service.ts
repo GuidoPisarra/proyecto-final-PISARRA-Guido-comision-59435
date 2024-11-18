@@ -13,8 +13,6 @@ export class RegisterCourseService {
 
   constructor(private _httpClient: HttpClient) { }
 
-
-
   getRegisteredCourses(): Observable<RegisterCourse[]> {
     return this._httpClient.get<RegisterCourse[]>(
       `${environment.baseURL}/registerCourse?_embed=user&_embed=course`

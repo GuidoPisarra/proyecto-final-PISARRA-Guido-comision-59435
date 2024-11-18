@@ -14,6 +14,7 @@ export class UsersEffects {
   createUsers$: Actions<Action<string>>;
   updateUsers$: Actions<Action<string>>;
   deleteUsers$: Actions<Action<string>>;
+  loadUsersCourses$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -27,6 +28,18 @@ export class UsersEffects {
           this._usersService.getUsers().pipe(
             map((users) => UsersActions.loadUsersSuccess({ data: users })),
             catchError((error) => of(UsersActions.loadUsersFailure({ error })))
+          )
+        )
+      )
+    });
+
+    this.loadUsersCourses$ = createEffect(() => {
+      return this.actions$.pipe(
+        ofType(UsersActions.loadUserCourses),
+        concatMap((action) =>
+          this._usersService.getUserCourses(action.userId).pipe(
+            map((courses) => UsersActions.loadUserCoursesSuccess({ courses: courses })),
+            catchError((error) => of(UsersActions.loadUserCoursesFailure({ error })))
           )
         )
       )

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { User } from '../../features/dashboard/users/models';
-import { concatMap, Observable } from 'rxjs';
+import { concatMap, forkJoin, map, Observable, switchMap } from 'rxjs';
 import { generateRandomID } from '../../shared/utils';
+import { RegisterCourse } from '../../features/dashboard/register-course/models';
+import { Course } from '../../features/dashboard/courses/models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class UsersService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getUserById(id: string): Observable<User | undefined> {
+  getUserById(id: string): Observable<User> {
     return this._httpClient.get<User>(`${this.baseURL}/users/${id}`);
   }
 
@@ -44,4 +46,21 @@ export class UsersService {
       .patch<User>(`${this.baseURL}/users/${update.id}`, update)
       .pipe(concatMap(() => this.getUsers()));
   }
+
+  getUserCourses(userId: string): Observable<Course[]> {
+    
+    return this._httpClient
+      .get<RegisterCourse[]>(`${this.baseURL}/registerCourse?userId=${userId}`)
+      .pipe(
+        switchMap((registrations: RegisterCourse[]) => {
+          const courseIds = registrations.map((reg) => reg.courseId);
+          const courseRequests = courseIds.map((courseId) =>
+            this._httpClient.get<Course>(`${this.baseURL}/courses/${courseId}`)
+          );
+          return forkJoin(courseRequests);
+        })
+      );
+  }
+
+
 }

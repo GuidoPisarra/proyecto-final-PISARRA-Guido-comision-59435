@@ -5,7 +5,6 @@ import { Course } from '../../courses/models/course';
 import { Store } from '@ngrx/store';
 import { StudentsActions } from '../store/students.actions';
 import { selectStudentCourses } from '../store/students.selector';
-import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-student-detail-modal',

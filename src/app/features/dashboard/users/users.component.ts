@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertService } from '../../../core/services/alert.service';
-import { Student } from '../students/models';
-import { StudentDetailModalComponent } from '../students/student-detail-modal/student-detail-modal.component';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
@@ -10,6 +8,7 @@ import { UsersActions } from './store/users.actions';
 import { Observable } from 'rxjs';
 import { User } from './models';
 import { selectUsers } from './store/users.selector';
+import { UsersDetailModalComponent } from './users-detail-modal/users-detail-modal.component';
 
 @Component({
   selector: 'app-users',
@@ -82,10 +81,10 @@ export class UsersComponent {
 
   }
 
-  protected viewDetails(student: Student): void {
-    const dialogRef = this.matDialog.open(StudentDetailModalComponent, {
+  protected viewDetails(user: User): void {
+    const dialogRef = this.matDialog.open(UsersDetailModalComponent, {
       width: '500px',
-      data: student
+      data: user
     });
   }
 }
