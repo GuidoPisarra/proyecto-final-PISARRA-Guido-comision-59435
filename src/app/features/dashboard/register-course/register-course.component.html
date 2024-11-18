@@ -1,30 +1,87 @@
 <form [formGroup]="registerCourseForm" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>Curso</mat-label>
-    <mat-select formControlName="courseId">
-      <mat-option [value]="course.id" *ngFor="let course of courses$ | async">
-        {{ course.course }} - {{ course.profesor }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Usuario</mat-label>
-    <mat-select formControlName="userId">
-      <mat-option [value]="user.id" *ngFor="let user of userOptions$ | async">
-        {{ user.firstName }} {{ user.lastName }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button type="submit" mat-flat-button>Guardar</button>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registrar Curso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="courseId" required>
+            <mat-option [value]="course.id" *ngFor="let course of courses$ | async">
+              {{ course.course }} - {{ course.profesor }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerCourseForm.get('courseId')?.hasError('required')">
+            El curso es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="userId" required>
+            <mat-option [value]="user.id" *ngFor="let user of userOptions$ | async">
+              {{ user.firstName }} {{ user.lastName }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerCourseForm.get('userId')?.hasError('required')">
+            El usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" mat-raised-button color="primary" [disabled]="registerCourseForm.invalid">
+          Guardar
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </form>
 
-@if(isLoadingRegisterCourses$| async) {
-<p>Cargando</p>
-}@else {
-@if (loadRegisterCoursesError$ | async; as error) {
-<h2>Error!</h2>
-<p>{{ error["message"] }}</p>
-} @else {
-<pre>{{ registerCourse$ | async  | json}}</pre>
-}
-}
+<div *ngIf="isLoadingRegisterCourses$ | async" class="loading-state">
+  <mat-spinner diameter="50"></mat-spinner>
+  <p>Cargando...</p>
+</div>
+
+<div *ngIf="loadRegisterCoursesError$ | async as error" class="error-state">
+  <mat-card class="error-card">
+    <mat-card-header>
+      <mat-card-title>Error</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ error.message }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="!(isLoadingRegisterCourses$ | async) && !(loadRegisterCoursesError$ | async)">
+  <mat-card *ngIf="registerCourse$ | async as courses">
+    <mat-card-header>
+      <mat-card-title>Cursos Registrados</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="courses">
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef> Curso </th>
+          <td mat-cell *matCellDef="let course"> {{ course.course.course }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="profesor">
+          <th mat-header-cell *matHeaderCellDef> Profesor </th>
+          <td mat-cell *matCellDef="let course"> {{ course.course.profesor }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+          <th mat-header-cell *matHeaderCellDef> Usuario </th>
+          <td mat-cell *matCellDef="let course">
+            {{ course.user.firstName }} {{ course.user.lastName }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

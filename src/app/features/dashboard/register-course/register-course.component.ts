@@ -14,6 +14,9 @@ import { RegisterCourseActions } from './store/register-course.actions';
   styleUrl: './register-course.component.scss',
 })
 export class RegisterCourseComponent implements OnInit {
+  displayedColumns: string[] = ['course', 'profesor', 'user'];
+
+
   registerCourse$: Observable<RegisterCourse[]>;
   userOptions$: Observable<User[]>;
   courses$: Observable<Course[]>;
