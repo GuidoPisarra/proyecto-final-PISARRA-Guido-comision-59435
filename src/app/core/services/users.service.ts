@@ -81,9 +81,7 @@ export class UsersService {
   // No tuve otra opción que hacerlo asi, quise implementar la funcion comentada pero no encontre
   //la solucion, me daba un 404
   removeUserCourse(userId: string, courseId: string): Observable<Course[]> {
-    console.log(userId);
-    console.log(courseId);
-    return this._httpClient
+     return this._httpClient
       .get<RegisterCourse[]>(`${this.baseURL}/registerCourse?userId=${userId}&courseId=${courseId}`)
       .pipe(
         switchMap((registrations) => {

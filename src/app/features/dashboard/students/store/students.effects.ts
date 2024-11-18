@@ -92,18 +92,15 @@ export class StudentsEffects {
     this.removeCourseStudent$ = createEffect(() =>
       this.actions$.pipe(
         ofType(StudentsActions.removeCourse),
-        mergeMap(({ studentId, courseId }) =>
-          this._studentsService.removeCourse(studentId, courseId).pipe(
-            map((updatedCourses) =>
-              StudentsActions.removeCourseSuccess({ course: updatedCourses })
-            ),
-            catchError((error) => {
-              return of(StudentsActions.removeCourseFailure({ error }));
-            })
+        switchMap((action) =>
+          this._studentsService.removeCourse(action.studentId, action.courseId).pipe(
+            map((course) => StudentsActions.removeCourseSuccess({ course })),
+            catchError((error) => of(StudentsActions.removeCourseFailure({ error })))
           )
         )
       )
     );
+
   }
 }
 

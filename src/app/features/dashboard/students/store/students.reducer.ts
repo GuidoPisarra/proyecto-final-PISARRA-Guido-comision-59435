@@ -72,12 +72,13 @@ export const reducer = createReducer(
     ...state,
     error,
   })),
-  on(StudentsActions.removeCourseSuccess, (state, { course }) => {
-    return {
-      ...state,
-      courses: course
-    };
-  }),
+  on(StudentsActions.removeCourse, (state) => ({
+    ...state,
+  })),
+  on(StudentsActions.removeCourseSuccess, (state, { course }) => ({
+    ...state,
+    courses: course,
+  })),
   on(StudentsActions.clearStudentCourses, state => ({
     ...state,
     courses: []

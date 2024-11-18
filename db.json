@@ -1031,6 +1031,16 @@
   ],
   "registerCourse": [
     {
+      "id": "7e72",
+      "courseId": "3",
+      "userId": "2"
+    },
+    {
+      "id": "37b4",
+      "courseId": "4",
+      "userId": "2"
+    },
+    {
       "id": "07a4",
       "courseId": "4",
       "userId": "6"
@@ -1039,6 +1049,11 @@
       "id": "44b2",
       "courseId": "1",
       "userId": "4"
+    },
+    {
+      "id": "489f",
+      "courseId": "2",
+      "userId": "2"
     }
   ]
 }

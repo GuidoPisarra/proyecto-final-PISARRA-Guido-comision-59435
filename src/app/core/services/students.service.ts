@@ -78,21 +78,26 @@ export class StudentsService {
 
   removeCourse(user: string, course: string): Observable<Course[]> {
     return this._httpClient
-      .get<any[]>(`${this.baseURL}/registerCourse`)
+      .get<RegisterCourse[]>(`${this.baseURL}/registerCourse?userId=${user}&courseId=${course}`)
       .pipe(
-        map((registrations: RegisterCourse[]) => {
-          const registration = registrations.find(
-            (r) => r.userId === user && r.courseId === course
-          );
-          return registration?.id;
+        switchMap((registrations) => {
+          const recordId = registrations[0].id;
+          return this._httpClient.delete(`${this.baseURL}/registerCourse/${recordId}`);
         }),
-        switchMap((registrationId) => {
-          return this._httpClient.delete<void>(`${this.baseURL}/registerCourse/${registrationId}`).pipe(
-            switchMap(() => {
-              return this.getStudentCourses(user);
-            })
+        switchMap(() =>
+          this._httpClient.get<RegisterCourse[]>(`${this.baseURL}/registerCourse?userId=${user}`)
+        ),
+        switchMap((registrations: RegisterCourse[]) => {
+          if (registrations.length === 0) {
+            return of([]);
+          }
+          const courseIds = registrations.map((reg) => reg.courseId);
+          const courseRequests = courseIds.map((courseId) =>
+            this._httpClient.get<Course>(`${this.baseURL}/courses/${courseId}`)
           );
-        })
+          return forkJoin(courseRequests);
+        }),
+
       );
   }
 
