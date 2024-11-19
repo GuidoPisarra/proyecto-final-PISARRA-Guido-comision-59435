@@ -1,8 +1,3 @@
-<h2 mat-dialog-title class="dialog-title">
-  <mat-icon aria-hidden="true">info</mat-icon>
-  Detalles del Curso
-</h2>
-
 <mat-dialog-content class="dialog-content">
   <mat-card class="course-details-card">
     <mat-card-content>
@@ -10,20 +5,38 @@
         <p><strong>Curso:</strong> {{ data.course }}</p>
         <p><strong>Profesor:</strong> {{ data.profesor }}</p>
         <p><strong>Comisión:</strong> {{ data.commitee }}</p>
-
         <div class="date-row">
           <p><strong>Inicio:</strong> {{ data.startDate | date: 'dd/MM/yyyy' }}</p>
           <p><strong>Fin:</strong> {{ data.endDate | date: 'dd/MM/yyyy' }}</p>
         </div>
+        <p><strong>Cantidad de estudiantes inscritos:</strong> {{ studentCount$ | async }}</p>
       </div>
     </mat-card-content>
   </mat-card>
+
+  <table mat-table [dataSource]="students$" class="mat-elevation-z8">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let student"> {{ student.firstName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Apellido </th>
+      <td mat-cell *matCellDef="let student"> {{ student.lastName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let student">
+        <button mat-button color="warn" (click)="removeStudent(student)">Eliminar</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-flat-button class="green-button" (click)="register()">
-    <mat-icon>edit</mat-icon> Inscribirme
-  </button>
-
   <button mat-flat-button (click)="onClose()">Cerrar</button>
 </mat-dialog-actions>

@@ -15,6 +15,7 @@ export class CoursesEffects {
   createCoursesSuccess$: Actions<Action<string>>;
   deleteCourse$: Actions<Action<string>>;
   updateCourse$: Actions<Action<string>>;
+  loadStudentsOfCourses$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -76,6 +77,22 @@ export class CoursesEffects {
             ),
             catchError((error) =>
               of(CoursesActions.updateCoursesFailure({ error }))
+            )
+          )
+        )
+      )
+    );
+
+    this.loadStudentsOfCourses$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(CoursesActions.loadStudentsOfCourses),
+        mergeMap((action) =>
+          this._coursesService.getStudentsOfCourse(action.courseId.toString()).pipe(
+            map((students) =>
+              CoursesActions.loadStudentsOfCoursesSuccess({ students: students })
+            ),
+            catchError((error) =>
+              of(CoursesActions.loadStudentsOfCoursesFailure({ error }))
             )
           )
         )

@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { CoursesActions } from './courses.actions';
 import { Course } from '../models/course';
+import { Student } from '../../students/models';
 
 export const courseFeatureKey = 'course';
 
@@ -8,12 +9,14 @@ export interface State {
   isLoadingCourses: boolean;
   loadCoursesError: Error | null;
   courses: Course[];
+  students: Student[]
 }
 
 export const initialState: State = {
   isLoadingCourses: false,
   loadCoursesError: null,
   courses: [],
+  students: []
 };
 
 export const reducer = createReducer(
@@ -54,6 +57,17 @@ export const reducer = createReducer(
       courses: state.courses.map(course =>
         course.id === data.id ? { ...course, ...data } : course
       ),
+    };
+  }),
+  on(CoursesActions.loadStudentsOfCourses, (state, { courseId }) => {
+    return {
+      ...state
+    };
+  }),
+  on(CoursesActions.loadStudentsOfCoursesSuccess, (state, { students }) => {
+    return {
+      ...state,
+      students: students
     };
   }),
 );

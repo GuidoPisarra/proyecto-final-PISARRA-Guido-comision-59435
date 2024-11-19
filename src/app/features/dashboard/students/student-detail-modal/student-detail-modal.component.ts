@@ -17,7 +17,6 @@ export class StudentDetailModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<StudentDetailModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private cdr: ChangeDetectorRef,
     private store: Store
   ) {
     this.store.dispatch(StudentsActions.loadStudentCourses({ studentId: data.id }));
@@ -39,8 +38,5 @@ export class StudentDetailModalComponent implements OnInit {
 
   remove(courseId: string): void {
     this.store.dispatch(StudentsActions.removeCourse({ studentId: this.studentID, courseId: courseId }))
-    this.courses$?.subscribe(courses => {
-      this.cdr.detectChanges();
-    });
   }
 }

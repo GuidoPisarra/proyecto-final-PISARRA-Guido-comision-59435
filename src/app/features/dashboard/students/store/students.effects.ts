@@ -16,6 +16,7 @@ export class StudentsEffects {
   deleteStudents$: Actions<Action<string>>;
   loadStudentCourses$: Actions<Action<string>>;
   removeCourseStudent$: Actions<Action<string>>;
+  removeStudentFromCourse$: Actions<Action<string>>;
 
   constructor(
     private actions$: Actions,
@@ -100,6 +101,24 @@ export class StudentsEffects {
         )
       )
     );
+
+    this.removeStudentFromCourse$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(StudentsActions.removeStudentFromCourse),
+        mergeMap((action) =>
+          this._studentsService.removeStudentFromCourse(action.studentId, action.courseId).pipe(
+            map((students) => {
+              return StudentsActions.removeStudentFromCourseSuccess({ students });
+            }),
+            catchError((error) => {
+              return of(StudentsActions.removeStudentFromCourseFailure({ error }));
+            })
+          )
+        )
+      )
+    );
+
+
 
   }
 }

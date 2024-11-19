@@ -101,4 +101,28 @@ export class StudentsService {
       );
   }
 
+  removeStudentFromCourse(userId: string, courseId: string): Observable<Student[]> {
+    return this._httpClient
+      .get<RegisterCourse[]>(`${this.baseURL}/registerCourse?userId=${userId}&courseId=${courseId}`)
+      .pipe(
+        switchMap((registrations) => {
+          const recordId = registrations[0].id; // Asegúrate de manejar casos donde no haya registros
+          return this._httpClient.delete(`${this.baseURL}/registerCourse/${recordId}`);
+        }),
+        switchMap(() =>
+          this._httpClient.get<RegisterCourse[]>(`${this.baseURL}/registerCourse?courseId=${courseId}`)
+        ),
+        switchMap((registrations) => {
+          if (registrations.length === 0) {
+            return of([]);
+          }
+          const studentIds = registrations.map((reg) => reg.userId);
+          const studentRequests = studentIds.map((id) =>
+            this._httpClient.get<Student>(`${this.baseURL}/students/${id}`)
+          );
+          return forkJoin(studentRequests);
+        })
+      );
+  }
+
 }

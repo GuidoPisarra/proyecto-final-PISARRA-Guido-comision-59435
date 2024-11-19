@@ -83,6 +83,21 @@ export const reducer = createReducer(
     ...state,
     courses: []
   })),
+  on(StudentsActions.removeStudentFromCourse, (state) => ({
+    ...state,
+    isLoadingStudents: true,
+  })),
+  on(StudentsActions.removeStudentFromCourseSuccess, (state, { students }) => ({
+    ...state,
+    studentOptions: students,
+    student: students,
+    isLoadingStudents: false,
+  })),
+  on(StudentsActions.removeStudentFromCourseFailure, (state, { error }) => ({
+    ...state,
+    isLoadingStudents: false,
+    loadStudentsError: error,
+  }))
 );
 
 

@@ -10,6 +10,8 @@ import { courseFeature } from './store/courses.reducer';
 import { CoursesEffects } from './store/courses.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { studentsFeature } from '../students/store/students.reducer';
+import { StudentsEffects } from '../students/store/students.effects';
 
 
 
@@ -25,7 +27,8 @@ import { EffectsModule } from '@ngrx/effects';
     CoursesRoutingModule,
     MatDialogModule,
     StoreModule.forFeature(courseFeature),
-    EffectsModule.forFeature([CoursesEffects]),
+    StoreModule.forFeature(studentsFeature),
+    EffectsModule.forFeature([CoursesEffects, StudentsEffects]),
   ],
   exports: [CoursesComponent]
 })

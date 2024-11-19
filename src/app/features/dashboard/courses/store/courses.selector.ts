@@ -24,3 +24,8 @@ export const selectIsLoadingCourses = createSelector(
   selectCoursesState,
   (state) => state.isLoadingCourses
 );
+
+export const selectLoadStudentsOfCourses = createSelector(
+  selectCoursesState,
+  (state) => state.students
+);
